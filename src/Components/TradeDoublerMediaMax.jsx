@@ -5,8 +5,12 @@ import { saveAs } from "file-saver";
 
 const Campaigns = [
   {
-    name: "EuroParcs Resort",
-    Id: 2401,
+    name: "Caledonian Travel",
+    Id: 2460,
+  },
+  {
+    name: "PULL and BEAR UK",
+    Id: 2464,
   },
   {
     name: "HSE.de",
@@ -20,20 +24,21 @@ const Campaigns = [
     name: "Sportstylestory.com(PL)",
     Id: 2394,
   },
+
   {
-    name: "PULL and BEAR UK",
-    Id: 2464,
+    // name: "EuroParcs Resort",
+    Id: 2401,
   },
   {
-    name: "GANT PL",
+    // name: "GANT PL",
     Id: 2396,
   },
   {
-    name: "Lacoste PL",
+    // name: "Lacoste PL",
     Id: 2395,
   },
   {
-    name: "Lycamobile",
+    // name: "Lycamobile",
     Id: 2331,
   },
 ];
@@ -169,6 +174,20 @@ export default function TradeDoublerMediaMax() {
         sub1: row["orderNumber"],
         device_id: row["mobileDeviceType"] || "unknown",
       };
+    } else if (campaign.Id === 2460 && campaign.name === "Caledonian Travel") {
+      return {
+        created: row["timeOfTransaction"],
+        txn_id: row["transactionId"],
+        sale_amount: row["orderValue"],
+        revenue: actionEarning,
+        payout: ((actionEarning * 80) / 100).toFixed(10),
+        payout_currency: "USD",
+        campaign_id: campaign.Id,
+        publisher_id: row["epi2"].split("_")[0],
+        status: row["epi2"].split("_")[0] === "77" ? "Pending" : "Approved",
+        sub1: row["orderNumber"],
+        device_id: row["mobileDeviceType"] || "unknown",
+      };
     }
   };
 
@@ -200,7 +219,7 @@ export default function TradeDoublerMediaMax() {
         const brandWise = {};
         uniqueBrands.forEach((brand) => {
           const brandRows = cleaned.filter(
-            (row) => row.programName.trim() === brand
+            (row) => row.programName.trim() === brand,
           );
           const config = Campaigns.find((c) => c.name === brand);
 
@@ -210,7 +229,7 @@ export default function TradeDoublerMediaMax() {
           }
 
           brandWise[brand] = brandRows.map((row) =>
-            mapTradeDoublerRow(row, config)
+            mapTradeDoublerRow(row, config),
           );
         });
 
@@ -223,17 +242,85 @@ export default function TradeDoublerMediaMax() {
     }
   };
 
+  const parseImpactDate = (value) => {
+    if (!value) return null;
+
+    // ✅ If already Date (xlsx usually gives this)
+    if (value instanceof Date && !isNaN(value)) {
+      return new Date(value.getFullYear(), value.getMonth(), value.getDate());
+    }
+
+    // ✅ If Excel serial number
+    if (typeof value === "number") {
+      const excelEpoch = new Date(1899, 11, 30);
+      const date = new Date(excelEpoch.getTime() + value * 86400000);
+
+      return new Date(date.getFullYear(), date.getMonth(), date.getDate());
+    }
+
+    // ✅ If string (Impact MM/DD/YYYY)
+    if (typeof value === "string") {
+      const clean = value.split(" ")[0];
+      const [month, day, year] = clean.split("/");
+
+      return new Date(year, month - 1, day);
+    }
+
+    return null;
+  };
+
+  const formatDateRange = (dates) => {
+    const sorted = [...dates].sort((a, b) => a - b);
+
+    const start = sorted[0];
+    const end = sorted[sorted.length - 1];
+
+    const startDay = start.getDate();
+    const endDay = end.getDate();
+    const startMonth = start.getMonth();
+    const endMonth = end.getMonth();
+    const year = start.getFullYear();
+
+    const monthFormatter = (d) => d.toLocaleString("en-US", { month: "short" });
+
+    // ✅ Same day
+    if (startDay === endDay && startMonth === endMonth) {
+      return `${startDay} ${monthFormatter(start)} ${year}`;
+    }
+
+    // ✅ Same month
+    if (startMonth === endMonth) {
+      return `${startDay}-${endDay} ${monthFormatter(start)} ${year}`;
+    }
+
+    // ✅ Cross-month (rare but correct)
+    return `${startDay} ${monthFormatter(start)} - ${endDay} ${monthFormatter(
+      end,
+    )} ${year}`;
+  };
+
   const handleDownloadCSV = (brand) => {
     const data = groupedData[brand];
     if (!data || !data.length) return;
 
-    const csv = Papa.unparse(data);
-    // const blob = new Blob([csv], { type: "text/csv;charset=utf-8" });
-    // saveAs(blob, `${brand}_mapped.csv`);
-    const fileName = customFileName
-      ? `${customFileName}.csv`
-      : `${brand}_output.csv`;
+    // 🔍 Find campaign config
+    const campaign = Campaigns.find((c) => c.name === brand);
+    if (!campaign) return;
 
+    // 📅 Extract dates
+    const dates = data
+      .map((row) => {
+        parseImpactDate(row.created);
+        console.log(row.created);
+      })
+      .filter(Boolean);
+
+    const dateRange = dates.length ? formatDateRange(dates) : "";
+
+    // 📝 Final file name
+    const fileName = `${brand} (${campaign.Id}) ${dateRange}.csv`;
+
+    const csv = Papa.unparse(data);
     const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
     saveAs(blob, fileName);
   };

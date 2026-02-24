@@ -5,56 +5,77 @@ import { saveAs } from "file-saver";
 
 const Campaigns = [
   {
-    name: "Avanti Travel Insurance",
-    Id: 2416,
-  },
-  {
-    name: "Billiger Mietwagen",
-    Id: 2414,
-  },
-  {
-    name: "Destinia UK",
-    Id: 2418,
-  },
-  {
-    name: "Eurowings ES",
-    Id: 2421,
-  },
-  {
-    name: "Falke DE",
-    Id: 1683,
-  },
-  {
-    name: "getyourguide.fr",
-    Id: 2411,
-  },
-  {
-    name: "Lycamobile",
-    Id: 2371,
-  },
-  {
-    name: "Tamaris DE",
-    Id: 1684,
-  },
-  {
-    name: "Teletext Holidays",
-    Id: 2419,
-  },
-  {
     name: "Hugendubel",
     Id: 2025,
   },
   {
-    name: "Promovacances",
+    name: "Irish Ferries DE",
+    Id: 2520,
+  },
+
+  {
+    // name: "Avanti Travel Insurance",
+    Id: 2416,
+  },
+  {
+    // name: "Billiger Mietwagen",
+    Id: 2414,
+  },
+  {
+    // name: "Destinia UK",
+    Id: 2418,
+  },
+  {
+    // name: "Eurowings ES",
+    Id: 2421,
+  },
+  {
+    // name: "Falke DE",
+    Id: 1683,
+  },
+  {
+    // name: "getyourguide.fr",
+    Id: 2411,
+  },
+  {
+    // name: "Lycamobile",
+    Id: 2371,
+  },
+  {
+    // name: "Tamaris DE",
+    Id: 1684,
+  },
+  {
+    // name: "Teletext Holidays",
+    Id: 2419,
+  },
+  {
+    // name: "Promovacances",
     Id: 1689,
   },
   {
-    name: "ArmedAngels DE",
+    // name: "ArmedAngels DE",
     Id: 2407,
   },
   {
-    name: "Bonprix SE",
+    // name: "Bonprix SE",
     Id: 2409,
+  },
+  {
+    // name: "Best Western",
+    Id: 2519,
+  },
+  {
+    // name: "AutoEurope",
+    Id: 2415,
+  },
+  {
+    // name: "Open Ferry UK",
+    Id: 2568,
+  },
+  {
+    // name: "eDreams",
+    Id: 2452,
   },
 ];
 
@@ -174,6 +195,7 @@ export default function TradeDoublerMaxMania() {
       };
     } else if (campaign.Id === 1684 && campaign.name === "Tamaris DE") {
       return {
+        p1: row["epi"].split("_")[1],
         created: row["timeOfTransaction"],
         txn_id: row["transactionId"],
         sale_amount: row["orderValue"],
@@ -241,7 +263,7 @@ export default function TradeDoublerMaxMania() {
         campaign_id: campaign.Id,
         publisher_id: row["epi2"].split("_")[0],
         status: row["epi2"].split("_")[0] === "77" ? "Pending" : "Approved",
-        sub1: row["epi"],
+        sub1: row["orderNumber"],
         device_id: row["mobileDeviceType"] || "unknown",
       };
     } else if (campaign.Id === 2409 && campaign.name === "Bonprix SE") {
@@ -254,6 +276,81 @@ export default function TradeDoublerMaxMania() {
         payout_currency: "USD",
         campaign_id: campaign.Id,
         publisher_id: row["epi"],
+        status: row["epi"].split("_")[0] === "77" ? "Pending" : "Approved",
+        sub1: row["orderNumber"],
+        device_id: row["mobileDeviceType"] || "unknown",
+      };
+    } else if (campaign.Id === 2520 && campaign.name === "Irish Ferries DE") {
+      return {
+        p1: row["epi"].split("_")[1],
+        created: row["timeOfTransaction"],
+        txn_id: row["transactionId"],
+        sale_amount: row["orderValue"],
+        revenue: actionEarning,
+        payout: ((actionEarning * 80) / 100).toFixed(10),
+        payout_currency: "USD",
+        campaign_id: campaign.Id,
+        publisher_id: row["epi"].split("_")[0],
+        status: row["epi"].split("_")[0] === "77" ? "Pending" : "Approved",
+        sub1: row["orderNumber"],
+        device_id: row["mobileDeviceType"] || "unknown",
+      };
+    } else if (campaign.Id === 2519 && campaign.name === "Best Western") {
+      return {
+        p1: row["epi"].split("_")[1],
+        created: row["timeOfTransaction"],
+        txn_id: row["transactionId"],
+        sale_amount: row["orderValue"],
+        revenue: actionEarning,
+        payout: ((actionEarning * 80) / 100).toFixed(10),
+        payout_currency: "USD",
+        campaign_id: campaign.Id,
+        publisher_id: row["epi"].split("_")[0],
+        status: row["epi"].split("_")[0] === "77" ? "Pending" : "Approved",
+        sub1: row["orderNumber"],
+        device_id: row["mobileDeviceType"] || "unknown",
+      };
+    } else if (campaign.Id === 2415 && campaign.name === "AutoEurope") {
+      return {
+        p1: row["epi2"].split("_")[1],
+        created: row["timeOfTransaction"],
+        txn_id: row["transactionId"],
+        sale_amount: row["orderValue"],
+        revenue: actionEarning,
+        payout: ((actionEarning * 80) / 100).toFixed(10),
+        payout_currency: "USD",
+        campaign_id: campaign.Id,
+        publisher_id: row["epi2"].split("_")[0],
+        status: row["epi2"].split("_")[0] === "77" ? "Pending" : "Approved",
+        sub1: row["orderNumber"],
+        device_id: row["mobileDeviceType"] || "unknown",
+      };
+    } else if (campaign.Id === 2452 && campaign.name === "eDreams") {
+      return {
+        // p1: row["epi2"].split("_")[1],
+        created: row["timeOfTransaction"],
+        txn_id: row["transactionId"],
+        sale_amount: row["orderValue"],
+        revenue: actionEarning,
+        payout: ((actionEarning * 80) / 100).toFixed(10),
+        payout_currency: "USD",
+        campaign_id: campaign.Id,
+        publisher_id: row["epi2"].split("_")[0],
+        status: row["epi2"].split("_")[0] === "77" ? "Pending" : "Approved",
+        sub1: row["orderNumber"],
+        device_id: row["mobileDeviceType"] || "unknown",
+      };
+    } else if (campaign.Id === 2568 && campaign.name === "Open Ferry UK") {
+      return {
+        p1: row["epi"].split("_")[1],
+        created: row["timeOfTransaction"],
+        txn_id: row["transactionId"],
+        sale_amount: row["orderValue"],
+        revenue: actionEarning,
+        payout: ((actionEarning * 80) / 100).toFixed(10),
+        payout_currency: "USD",
+        campaign_id: campaign.Id,
+        publisher_id: row["epi"].split("_")[0],
         status: row["epi"].split("_")[0] === "77" ? "Pending" : "Approved",
         sub1: row["orderNumber"],
         device_id: row["mobileDeviceType"] || "unknown",
@@ -289,7 +386,7 @@ export default function TradeDoublerMaxMania() {
         const brandWise = {};
         uniqueBrands.forEach((brand) => {
           const brandRows = cleaned.filter(
-            (row) => row.programName.trim() === brand
+            (row) => row.programName.trim() === brand,
           );
           const config = Campaigns.find((c) => c.name === brand);
 
@@ -299,7 +396,7 @@ export default function TradeDoublerMaxMania() {
           }
 
           brandWise[brand] = brandRows.map((row) =>
-            mapTradeDoublerRow(row, config)
+            mapTradeDoublerRow(row, config),
           );
         });
 
@@ -312,17 +409,82 @@ export default function TradeDoublerMaxMania() {
     }
   };
 
+  const parseImpactDate = (value) => {
+    if (!value) return null;
+
+    // ✅ If already Date (xlsx usually gives this)
+    if (value instanceof Date && !isNaN(value)) {
+      return new Date(value.getFullYear(), value.getMonth(), value.getDate());
+    }
+
+    // ✅ If Excel serial number
+    if (typeof value === "number") {
+      const excelEpoch = new Date(1899, 11, 30);
+      const date = new Date(excelEpoch.getTime() + value * 86400000);
+
+      return new Date(date.getFullYear(), date.getMonth(), date.getDate());
+    }
+
+    // ✅ If string (Impact MM/DD/YYYY)
+    if (typeof value === "string") {
+      const clean = value.split(" ")[0];
+      const [month, day, year] = clean.split("/");
+
+      return new Date(year, month - 1, day);
+    }
+
+    return null;
+  };
+
+  const formatDateRange = (dates) => {
+    const sorted = [...dates].sort((a, b) => a - b);
+
+    const start = sorted[0];
+    const end = sorted[sorted.length - 1];
+
+    const startDay = start.getDate();
+    const endDay = end.getDate();
+    const startMonth = start.getMonth();
+    const endMonth = end.getMonth();
+    const year = start.getFullYear();
+
+    const monthFormatter = (d) => d.toLocaleString("en-US", { month: "short" });
+
+    // ✅ Same day
+    if (startDay === endDay && startMonth === endMonth) {
+      return `${startDay} ${monthFormatter(start)} ${year}`;
+    }
+
+    // ✅ Same month
+    if (startMonth === endMonth) {
+      return `${startDay}-${endDay} ${monthFormatter(start)} ${year}`;
+    }
+
+    // ✅ Cross-month (rare but correct)
+    return `${startDay} ${monthFormatter(start)} - ${endDay} ${monthFormatter(
+      end,
+    )} ${year}`;
+  };
+
   const handleDownloadCSV = (brand) => {
     const data = groupedData[brand];
     if (!data || !data.length) return;
 
-    const csv = Papa.unparse(data);
-    // const blob = new Blob([csv], { type: "text/csv;charset=utf-8" });
-    // saveAs(blob, `${brand}_mapped.csv`);
-    const fileName = customFileName
-      ? `${customFileName}.csv`
-      : `${brand}_output.csv`;
+    // 🔍 Find campaign config
+    const campaign = Campaigns.find((c) => c.name === brand);
+    if (!campaign) return;
 
+    // 📅 Extract dates
+    const dates = data
+      .map((row) => parseImpactDate(row.created))
+      .filter(Boolean);
+
+    const dateRange = dates.length ? formatDateRange(dates) : "";
+
+    // 📝 Final file name
+    const fileName = `${brand} (${campaign.Id}) ${dateRange}.csv`;
+
+    const csv = Papa.unparse(data);
     const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
     saveAs(blob, fileName);
   };

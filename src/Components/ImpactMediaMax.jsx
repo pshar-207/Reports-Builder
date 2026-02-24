@@ -9,44 +9,8 @@ const Campaigns = [
     Id: 1702,
   },
   {
-    name: "edX",
-    Id: 1505,
-  },
-  {
     name: "JEGS High Performance",
     Id: 1503,
-  },
-  {
-    name: "Leaseloco",
-    Id: 2270,
-  },
-  {
-    name: "Malaysia Airlines",
-    Id: 2431,
-  },
-  {
-    name: "Ro",
-    Id: 1305,
-  },
-  {
-    name: "Sunwarrior",
-    Id: 1312,
-  },
-  {
-    name: "Udemy",
-    Id: 2333,
-  },
-  {
-    name: "Whatnot Affiliates",
-    Id: 2250,
-  },
-  {
-    name: "WPS SOFTWARE PTE.LTD.",
-    Id: 2326,
-  },
-  {
-    name: "LATAM Airlines ( USA )",
-    Id: 2355,
   },
   {
     name: "OpenArt AI",
@@ -55,6 +19,67 @@ const Campaigns = [
   {
     name: "Qatar Airways",
     Id: 1707,
+  },
+  {
+    name: "Ro",
+    Id: 1305,
+  },
+  {
+    name: "Malaysia Airlines",
+    Id: 2431,
+  },
+  {
+    name: "Udemy",
+    Id: 2333,
+  },
+  {
+    name: "Thortful",
+    Id: 2234,
+  },
+  {
+    name: "Walmart Affiliate Program",
+    Id: 248,
+  },
+  {
+    name: "Coursera B2C Affiliate Program",
+    Id: 2587,
+  },
+  {
+    name: "Skylum Affiliate Program",
+    Id: 2316,
+  },
+  {
+    name: "Going",
+    Id: 2501,
+  },
+
+  {
+    // name: "edX",
+    Id: 1505,
+  },
+  {
+    // name: "Hims, Inc.",
+    Id: 2351,
+  },
+  {
+    // name: "LATAM Airlines ( USA )",
+    Id: 2355,
+  },
+  {
+    // name: "Leaseloco",
+    Id: 2270,
+  },
+  {
+    // name: "Sunwarrior",
+    Id: 1312,
+  },
+  {
+    // name: "Whatnot Affiliates",
+    Id: 2250,
+  },
+  {
+    // name: "WPS SOFTWARE PTE.LTD.",
+    Id: 2326,
   },
 ];
 
@@ -97,12 +122,9 @@ export default function ImpactMediaMax() {
         sub1: row["Sub Id 3"],
         device_id: row["Device Type"] || "unknown",
       };
-    } else if (
-      campaign.Id === 1503 &&
-      campaign.name === "JEGS High Performance"
-    ) {
+    } else if (campaign.Id === 2351 && campaign.name === "Hims, Inc.") {
       return {
-        p1: row["Sub Id 1"],
+        p1: row["Sub Id 3"],
         created: row["Action Date"],
         txn_id: row["Action Id"],
         sale_amount: row["Sale Amount"],
@@ -112,12 +134,46 @@ export default function ImpactMediaMax() {
         campaign_id: campaign.Id,
         publisher_id: row["Sub Id 2"],
         status: row["Sub Id 2"] === "77" ? "Pending" : "Approved",
-        sub1: row["Sub Id 3"],
+        sub1: row["Sub Id 1"],
         device_id: row["Device Type"] || "unknown",
       };
-    } else if (campaign.Id === 2270 && 
-      campaign.name === "Leaseloco"
+    } else if (
+      campaign.Id === 1503 &&
+      campaign.name === "JEGS High Performance"
     ) {
+      return {
+        p1: row["Sub Id 3"],
+        created: row["Action Date"],
+        txn_id: row["Action Id"],
+        sale_amount: row["Sale Amount"],
+        revenue: actionEarning,
+        payout: ((actionEarning * 80) / 100).toFixed(10),
+        payout_currency: "USD",
+        campaign_id: campaign.Id,
+        publisher_id: row["Sub Id 2"],
+        status: row["Sub Id 2"] === "77" ? "Pending" : "Approved",
+        sub1: row["Sub Id 1"],
+        device_id: row["Device Type"] || "unknown",
+      };
+    } else if (
+      campaign.Id === 2355 &&
+      campaign.name === "LATAM Airlines ( USA )"
+    ) {
+      return {
+        p1: row["Sub Id 3"],
+        created: row["Action Date"],
+        txn_id: row["Action Id"],
+        sale_amount: row["Sale Amount"],
+        revenue: actionEarning,
+        payout: ((actionEarning * 80) / 100).toFixed(10),
+        payout_currency: "USD",
+        campaign_id: campaign.Id,
+        publisher_id: row["Sub Id 2"],
+        status: row["Sub Id 2"] === "77" ? "Pending" : "Approved",
+        sub1: row["Sub Id 1"],
+        device_id: row["Device Type"] || "unknown",
+      };
+    } else if (campaign.Id === 2270 && campaign.name === "Leaseloco") {
       return {
         created: row["Action Date"],
         txn_id: row["Action Id"],
@@ -136,11 +192,39 @@ export default function ImpactMediaMax() {
         txn_id: row["Action Id"],
         sale_amount: row["Sale Amount"],
         revenue: actionEarning,
-        payout: ((actionEarning * 80) / 100).toFixed(10),
+        payout: ((actionEarning * 85) / 100).toFixed(10),
         payout_currency: "USD",
         campaign_id: campaign.Id,
         publisher_id: row["Sub Id 1"],
         status: row["Sub Id 1"] === "77" ? "Pending" : "Approved",
+        device_id: row["Device Type"] || "unknown",
+      };
+    } else if (campaign.Id === 2530 && campaign.name === "OpenArt AI") {
+      return {
+        created: row["Action Date"],
+        txn_id: row["Action Id"],
+        sale_amount: row["Sale Amount"],
+        revenue: actionEarning,
+        payout: ((actionEarning * 85) / 100).toFixed(10),
+        payout_currency: "USD",
+        campaign_id: campaign.Id,
+        publisher_id: row["Sub Id 1"],
+        status: row["Sub Id 1"] === "77" ? "Pending" : "Approved",
+        // sub1: row["Sub Id 1"],
+        device_id: row["Device Type"] || "unknown",
+      };
+    } else if (campaign.Id === 1707 && campaign.name === "Qatar Airways") {
+      return {
+        created: row["Action Date"],
+        txn_id: row["Action Id"],
+        sale_amount: row["Sale Amount"],
+        revenue: actionEarning,
+        payout: ((actionEarning * 85) / 100).toFixed(10),
+        payout_currency: "USD",
+        campaign_id: campaign.Id,
+        publisher_id: row["Sub Id 2"],
+        status: row["Sub Id 2"] === "77" ? "Pending" : "Approved",
+        sub1: row["Sub Id 1"],
         device_id: row["Device Type"] || "unknown",
       };
     } else if (campaign.Id === 1305 && campaign.name === "Ro") {
@@ -183,28 +267,14 @@ export default function ImpactMediaMax() {
         payout: ((actionEarning * 80) / 100).toFixed(10),
         payout_currency: "USD",
         campaign_id: campaign.Id,
-        publisher_id: row["SharedId"],
-        status: row["SharedId"] === "77" ? "Pending" : "Approved",
+        publisher_id: row["Sub Id 2"],
+        status: row["Sub Id 2"] === "77" ? "Pending" : "Approved",
         sub1: row["Sub Id 1"],
         device_id: row["Device Type"] || "unknown",
       };
     } else if (campaign.Id === 2250 && campaign.name === "Whatnot Affiliates") {
       return {
-        p1: row["Sub Id 2"],
-        created: row["Action Date"],
-        txn_id: row["Action Id"],
-        sale_amount: row["Sale Amount"],
-        revenue: actionEarning,
-        payout: ((actionEarning * 80) / 100).toFixed(10),
-        payout_currency: "USD",
-        campaign_id: campaign.Id,
-        publisher_id: row["SharedId"],
-        status: row["SharedId"] === "77" ? "Pending" : "Approved",
-        sub1: row["Sub Id 1"],
-        device_id: row["Device Type"] || "unknown",
-      };
-      } else if (campaign.Id === 1707 && campaign.name === "Qatar Airways") {
-      return {
+        p1: row["Sub Id 3"],
         created: row["Action Date"],
         txn_id: row["Action Id"],
         sale_amount: row["Sale Amount"],
@@ -213,7 +283,7 @@ export default function ImpactMediaMax() {
         payout_currency: "USD",
         campaign_id: campaign.Id,
         publisher_id: row["Sub Id 2"],
-        status: row["Sub Id 2"] === "79" ? "Pending" : "Approved",
+        status: row["Sub Id 2"] === "77" ? "Pending" : "Approved",
         sub1: row["Sub Id 1"],
         device_id: row["Device Type"] || "unknown",
       };
@@ -235,43 +305,90 @@ export default function ImpactMediaMax() {
         sub1: row["Sub Id 1"],
         device_id: row["Device Type"] || "unknown",
       };
-      } else if (
-      campaign.Id === 2355 &&
-      campaign.name === "LATAM Airlines ( USA )"
-    ) {
+    } else if (campaign.Id === 2234 && campaign.name === "Thortful") {
       return {
+        p1: row["Sub Id 3"],
         created: row["Action Date"],
-        txn_id: row["Action Id"], 
-        sale_amount: row["Sale Amount"],
-        revenue: actionEarning,
-        payout: ((actionEarning * 80) / 100).toFixed(10),
-        payout_currency: "USD",
-        campaign_id: campaign.Id,
-        publisher_id: row["SharedId"],
-        status: row["SharedId"] === "77" ? "Pending" : "Approved",
-        sub1: row["Sub Id 1"],
-        device_id: row["Device Type"] || "unknown",
-      };
-      } else if (
-      campaign.Id === 2530 &&
-      campaign.name === "OpenArt AI"
-    ) {
-      return {
-        created: row["Action Date"],
-        txn_id: row["Action Id"], 
+        txn_id: row["Action Id"],
         sale_amount: row["Sale Amount"],
         revenue: actionEarning,
         payout: ((actionEarning * 80) / 100).toFixed(10),
         payout_currency: "USD",
         campaign_id: campaign.Id,
         publisher_id: row["Sub Id 2"],
-        status: row["SharedId"] === "77" ? "Pending" : "Approved",
+        status: row["Sub Id 2"] === "77" ? "Pending" : "Approved",
         sub1: row["Sub Id 1"],
         device_id: row["Device Type"] || "unknown",
       };
-       
+    } else if (
+      campaign.Id === 248 &&
+      campaign.name === "Walmart Affiliate Program"
+    ) {
+      return {
+        p1: row["Sub Id 1"],
+        created: row["Action Date"],
+        txn_id: row["Action Id"],
+        sale_amount: row["Sale Amount"],
+        revenue: actionEarning,
+        payout: ((actionEarning * 80) / 100).toFixed(10),
+        payout_currency: "USD",
+        campaign_id: campaign.Id,
+        publisher_id: row["Sub Id 2"],
+        status: row["Sub Id 2"] === "77" ? "Pending" : "Approved",
+        sub1: row["Sub Id 3"],
+        device_id: row["Device Type"] || "unknown",
+      };
+    } else if (
+      campaign.Id === 2587 &&
+      campaign.name === "Coursera B2C Affiliate Program"
+    ) {
+      return {
+        created: row["Action Date"],
+        txn_id: row["Action Id"],
+        sale_amount: row["Sale Amount"],
+        revenue: actionEarning,
+        payout: ((actionEarning * 80) / 100).toFixed(10),
+        payout_currency: "USD",
+        campaign_id: campaign.Id,
+        publisher_id: row["Sub Id 2"],
+        status: row["Sub Id 2"] === "77" ? "Pending" : "Approved",
+        sub1: row["Sub Id 3"],
+        device_id: row["Device Type"] || "unknown",
+      };
+    } else if (
+      campaign.Id === 2316 &&
+      campaign.name === "Skylum Affiliate Program"
+    ) {
+      return {
+        p1: row["Sub Id 3"],
+        created: row["Action Date"],
+        txn_id: row["Action Id"],
+        sale_amount: row["Sale Amount"],
+        revenue: actionEarning,
+        payout: ((actionEarning * 80) / 100).toFixed(10),
+        payout_currency: "USD",
+        campaign_id: campaign.Id,
+        publisher_id: row["Sub Id 2"],
+        status: row["Sub Id 2"] === "77" ? "Pending" : "Approved",
+        sub1: row["Sub Id 1"],
+        device_id: row["Device Type"] || "unknown",
+      };
+    } else if (campaign.Id === 2501 && campaign.name === "Going") {
+      return {
+        // p1: row["Sub Id 3"],
+        created: row["Action Date"],
+        txn_id: row["Action Id"],
+        sale_amount: row["Sale Amount"],
+        revenue: actionEarning,
+        payout: ((actionEarning * 80) / 100).toFixed(10),
+        payout_currency: "USD",
+        campaign_id: campaign.Id,
+        publisher_id: row["Sub Id 1"],
+        status: row["Sub Id 1"] === "77" ? "Pending" : "Approved",
+        // sub1: row["Sub Id 1"],
+        device_id: row["Device Type"] || "unknown",
+      };
     }
-    
   };
 
   // 📥 Handle Excel Upload
@@ -281,6 +398,7 @@ export default function ImpactMediaMax() {
 
     const extension = file.name.split(".").pop().toLowerCase();
     const reader = new FileReader();
+
     if (extension === "xlsx") {
       reader.onload = (evt) => {
         const workbook = XLSX.read(evt.target.result, { type: "array" });
@@ -321,17 +439,82 @@ export default function ImpactMediaMax() {
     }
   };
 
+  const parseImpactDate = (value) => {
+    if (!value) return null;
+
+    // ✅ If already Date (xlsx usually gives this)
+    if (value instanceof Date && !isNaN(value)) {
+      return new Date(value.getFullYear(), value.getMonth(), value.getDate());
+    }
+
+    // ✅ If Excel serial number
+    if (typeof value === "number") {
+      const excelEpoch = new Date(1899, 11, 30);
+      const date = new Date(excelEpoch.getTime() + value * 86400000);
+
+      return new Date(date.getFullYear(), date.getMonth(), date.getDate());
+    }
+
+    // ✅ If string (Impact MM/DD/YYYY)
+    if (typeof value === "string") {
+      const clean = value.split(" ")[0];
+      const [month, day, year] = clean.split("/");
+
+      return new Date(year, month - 1, day);
+    }
+
+    return null;
+  };
+
+  const formatDateRange = (dates) => {
+    const sorted = [...dates].sort((a, b) => a - b);
+
+    const start = sorted[0];
+    const end = sorted[sorted.length - 1];
+
+    const startDay = start.getDate();
+    const endDay = end.getDate();
+    const startMonth = start.getMonth();
+    const endMonth = end.getMonth();
+    const year = start.getFullYear();
+
+    const monthFormatter = (d) => d.toLocaleString("en-US", { month: "short" });
+
+    // ✅ Same day
+    if (startDay === endDay && startMonth === endMonth) {
+      return `${startDay} ${monthFormatter(start)} ${year}`;
+    }
+
+    // ✅ Same month
+    if (startMonth === endMonth) {
+      return `${startDay}-${endDay} ${monthFormatter(start)} ${year}`;
+    }
+
+    // ✅ Cross-month (rare but correct)
+    return `${startDay} ${monthFormatter(start)} - ${endDay} ${monthFormatter(
+      end,
+    )} ${year}`;
+  };
+
   const handleDownloadCSV = (brand) => {
     const data = groupedData[brand];
     if (!data || !data.length) return;
 
-    const csv = Papa.unparse(data);
-    // const blob = new Blob([csv], { type: "text/csv;charset=utf-8" });
-    // saveAs(blob, `${brand}_mapped.csv`);
-    const fileName = customFileName
-      ? `${customFileName}.csv`
-      : `${brand}_output.csv`;
+    // 🔍 Find campaign config
+    const campaign = Campaigns.find((c) => c.name === brand);
+    if (!campaign) return;
 
+    // 📅 Extract dates
+    const dates = data
+      .map((row) => parseImpactDate(row.created))
+      .filter(Boolean);
+
+    const dateRange = dates.length ? formatDateRange(dates) : "";
+
+    // 📝 Final file name
+    const fileName = `${brand} (${campaign.Id}) ${dateRange}.csv`;
+
+    const csv = Papa.unparse(data);
     const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
     saveAs(blob, fileName);
   };

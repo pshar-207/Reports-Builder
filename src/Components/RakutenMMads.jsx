@@ -161,7 +161,7 @@ export default function RakutenMMAds() {
 
           // Remove rows with no Transaction ID
           const cleaned = cleanData.filter(
-            (r) => r["Transaction ID"] && r["Transaction ID"] !== ""
+            (r) => r["Transaction ID"] && r["Transaction ID"] !== "",
           );
 
           setRawData(cleaned);
@@ -177,11 +177,11 @@ export default function RakutenMMAds() {
           const brandWise = {};
           uniqueBrands.forEach((brand) => {
             const rows = cleaned.filter(
-              (r) => r["Advertiser Name"].trim() === brand
+              (r) => r["Advertiser Name"].trim() === brand,
             );
 
             const config = Campaigns.find(
-              (c) => c.name.trim().toLowerCase() === brand.trim().toLowerCase()
+              (c) => c.name.trim().toLowerCase() === brand.trim().toLowerCase(),
             );
 
             if (!config) return;
@@ -197,16 +197,103 @@ export default function RakutenMMAds() {
     reader.readAsText(file);
   };
 
+  const parseImpactDate = (value) => {
+    if (!value) return null;
+
+    // ✅ Already a Date object
+    if (value instanceof Date && !isNaN(value)) {
+      return new Date(value.getFullYear(), value.getMonth(), value.getDate());
+    }
+
+    // ✅ Excel serial number
+    if (typeof value === "number") {
+      const excelEpoch = new Date(1899, 11, 30);
+      const date = new Date(excelEpoch.getTime() + value * 86400000);
+
+      return new Date(date.getFullYear(), date.getMonth(), date.getDate());
+    }
+
+    // ✅ String formats
+    if (typeof value === "string") {
+      const clean = value.split(" ")[0]; // remove time
+
+      // ✅ D-M-YY  →  8-1-26 = 8 Jan 2026
+      if (/^\d{1,2}-\d{1,2}-\d{2}$/.test(clean)) {
+        let [day, month, year] = clean.split("-");
+        year = Number(year) + 2000; // 26 → 2026
+        return new Date(year, month - 1, day);
+      }
+
+      // ✅ D/M/YYYY
+      if (/^\d{1,2}\/\d{1,2}\/\d{4}$/.test(clean)) {
+        const [day, month, year] = clean.split("/");
+        return new Date(year, month - 1, day);
+      }
+
+      // ✅ YYYY-MM-DD (fallback)
+      if (/^\d{4}-\d{2}-\d{2}$/.test(clean)) {
+        const [year, month, day] = clean.split("-");
+        return new Date(year, month - 1, day);
+      }
+    }
+
+    return null;
+  };
+
+  const formatDateRange = (dates) => {
+    const sorted = [...dates].sort((a, b) => a - b);
+
+    const start = sorted[0];
+    const end = sorted[sorted.length - 1];
+
+    const startDay = start.getDate();
+    const endDay = end.getDate();
+    const startMonth = start.getMonth();
+    const endMonth = end.getMonth();
+    const year = start.getFullYear();
+
+    const monthFormatter = (d) => d.toLocaleString("en-US", { month: "short" });
+
+    // ✅ Same day
+    if (startDay === endDay && startMonth === endMonth) {
+      return `${startDay} ${monthFormatter(start)} ${year}`;
+    }
+
+    // ✅ Same month
+    if (startMonth === endMonth) {
+      return `${startDay}-${endDay} ${monthFormatter(start)} ${year}`;
+    }
+
+    // ✅ Cross-month (rare but correct)
+    return `${startDay} ${monthFormatter(start)} - ${endDay} ${monthFormatter(
+      end,
+    )} ${year}`;
+  };
+
   const handleDownloadCSV = (brand) => {
     const data = groupedData[brand];
     if (!data || !data.length) return;
 
-    const csv = Papa.unparse(data);
-    const fileName = customFileName
-      ? `${customFileName}.csv`
-      : `${brand}_output.csv`;
+    // 🔍 Find campaign config
+    const campaign = Campaigns.find((c) => c.name === brand);
+    if (!campaign) return;
 
-    saveAs(new Blob([csv], { type: "text/csv;charset=utf-8;" }), fileName);
+    // 📅 Extract dates
+    const dates = data
+      .map((row) => {
+        console.log(row.created);
+        return parseImpactDate(row.created);
+      })
+      .filter(Boolean);
+
+    const dateRange = dates.length ? formatDateRange(dates) : "";
+
+    // 📝 Final file name
+    const fileName = `${brand} (${campaign.Id}) ${dateRange}.csv`;
+
+    const csv = Papa.unparse(data);
+    const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
+    saveAs(blob, fileName);
   };
 
   return (
