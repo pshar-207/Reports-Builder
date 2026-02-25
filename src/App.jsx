@@ -2,25 +2,32 @@ import React, { useEffect, useState } from "react";
 import * as XLSX from "xlsx";
 import Papa from "papaparse";
 import { saveAs } from "file-saver";
-import TradeDoublerMaatr from "./Components/TradeDoublerMaatr";
+
 import TradeDoublerMMads from "./Components/TradeDoublerMMads";
 import TradeDoublerMaxMania from "./Components/TradeDoublerMaxMania";
 import TradeDoublerMediaMax from "./Components/TradeDoublerMediaMax";
-import FlexoffersMaatr from "./Components/FlexoffersMaatr";
+
 import RakutenMMads from "./Components/RakutenMMads";
 import RakutenMaxMania from "./Components/RakutenMaxMania";
+
 import Finance_ad from "./Components/Finance_ad";
+
 import MyLeadsMaatr from "./Components/MyLeadsMaatr";
+
 import ImpactMediaMax from "./Components/ImpactMediaMax";
 import ImpactTechMMads from "./Components/ImpactTechMMads";
 import ImpactSaleMMads from "./Components/ImpactSaleMMads";
 import ImpactMaxMania from "./Components/ImpactMaxMania";
+
 import Partnerizemediamaxadv from "./Components/Partnerizemediamaxadv";
 import PartnerizeMaxMania from "./Components/PartnerizeMaxMania";
 import PartnerizeMMadsTech from "./Components/PartnerizeMMadsTech";
 import PartnerizeMnkdigi from "./Components/PartnerizeMnkdigi";
+
 import AwinMediamax from "./Components/AwinMediamax";
+
 import OctaadsMedia from "./Components/OctaadsMedia";
+
 import HumeClickOrbit from "./Components/HumeClickOrbit";
 
 export default function App() {
@@ -203,15 +210,6 @@ export default function App() {
       </div>
       <div className="TradeDoublerMediaMax">
         <TradeDoublerMediaMax />
-      </div>
-      <div className="TradeDoublerMaatr">
-        <TradeDoublerMaatr />
-      </div>
-      <hr></hr>
-
-      <hr></hr>
-      <div className="FlexoffersMaatr">
-        <FlexoffersMaatr />
       </div>
       <hr></hr>
 
