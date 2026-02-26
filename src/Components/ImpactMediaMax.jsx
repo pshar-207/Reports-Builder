@@ -56,6 +56,10 @@ const Campaigns = [
     name: "WPS SOFTWARE PTE.LTD.",
     Id: 2326,
   },
+  {
+    name: "Whatnot Affiliates",
+    Id: 2250,
+  },
 
   {
     // name: "edX",
@@ -76,10 +80,6 @@ const Campaigns = [
   {
     // name: "Sunwarrior",
     Id: 1312,
-  },
-  {
-    // name: "Whatnot Affiliates",
-    Id: 2250,
   },
 ];
 
