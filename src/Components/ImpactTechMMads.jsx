@@ -44,6 +44,10 @@ const Campaigns = [
     name: "Solo Stove",
     Id: 2437,
   },
+  {
+    name: "Whatnot Affiliates",
+    Id: 2214,
+  },
 
   {
     // name: "Envato Placeit",
@@ -93,10 +97,7 @@ const Campaigns = [
     // name: "Vecteezy.com",
     Id: 2204,
   },
-  {
-    // name: "Whatnot Affiliates",
-    Id: 2214,
-  },
+
   {
     // name: "Belkin US",
     Id: 2346,
