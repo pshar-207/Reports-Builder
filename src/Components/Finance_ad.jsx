@@ -23,6 +23,8 @@ export default function TradeDoublerMaatr() {
       camp_id = 2140;
     } else if (row["Program"] == "FINOM") {
       camp_id = 2575;
+    } else if (row["Program"] == "Bank of Scotland") {
+      camp_id = 2576;
     }
 
     const revenue = parseFloat(
