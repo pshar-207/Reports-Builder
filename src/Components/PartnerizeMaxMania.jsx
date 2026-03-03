@@ -16,6 +16,10 @@ const Campaigns = [
     name: "StubHub NORAM",
     Id: 1540,
   },
+  {
+    name: "Victoria's Secret",
+    Id: 2433,
+  },
 
   {
     // name: "AH Voordeelshop",
@@ -32,10 +36,6 @@ const Campaigns = [
   {
     // name: "Trainline",
     Id: 2162,
-  },
-  {
-    // name: "Victoria's Secret",
-    Id: 2433,
   },
 ];
 
