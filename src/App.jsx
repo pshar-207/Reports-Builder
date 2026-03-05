@@ -30,6 +30,8 @@ import OctaadsMedia from "./Components/OctaadsMedia";
 
 import HumeClickOrbit from "./Components/HumeClickOrbit";
 
+import ViatorMNK from "./Components/ViatorMNK";
+
 export default function App() {
   const [fileType, setFileType] = useState("Impact");
   const [rawData, setRawData] = useState([]);
@@ -285,6 +287,12 @@ export default function App() {
       <hr></hr>
       <div className="HumeClickOrbit">
         <HumeClickOrbit />
+      </div>
+      <hr></hr>
+
+      <hr></hr>
+      <div className="ViatorMNK">
+        <ViatorMNK />
       </div>
       <hr></hr>
 

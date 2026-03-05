@@ -4,33 +4,39 @@ import { saveAs } from "file-saver";
 
 const Campaigns = [
   {
-    name: "GoCity",
-    Id: 2154,
+    name: "viator",
+    Id: 2570,
   },
 ];
 
-export default function Partnerizemediamaxadv() {
+export default function ViatorMNK() {
   const [rawData, setRawData] = useState([]);
   const [brands, setBrands] = useState([]);
   const [groupedData, setGroupedData] = useState({});
   const [customFileName, setCustomFileName] = useState("");
 
-  const mapPartnerizeRow = (row, campaign) => {
-    const actionEarning = parseFloat(row["publisher_commission"]);
+  const mapViatorRow = (row, campaign) => {
+    const sale_amount = parseFloat(
+      row["Total amount (Customer currency)"].split(" ")[1],
+    );
+    const revenue = parseFloat(
+      (
+        (row["Total amount (Customer currency)"].split(" ")[1] * 8) /
+        100
+      ).toFixed(10),
+    );
 
-    if (campaign.Id === 2154 && campaign.name === "GoCity") {
+    if (campaign.Id === 2570 && campaign.name === "viator") {
       return {
-        created: row["conversion_date"],
-        txn_id: row["conversion_id"],
-        sale_amount: row["value"],
-        revenue: actionEarning,
-        payout: ((actionEarning * 80) / 100).toFixed(10),
-        payout_currency: row["currency"].split(" ")[0],
+        created: row["Booking date"],
+        txn_id: row["Booking reference"],
+        sale_amount: sale_amount,
+        revenue: revenue,
+        payout: ((revenue * 80) / 100).toFixed(10),
+        payout_currency: row["Total amount (Customer currency)"].split(" ")[0],
         campaign_id: campaign.Id,
-        publisher_id: row["publisher_reference"],
-        status: row["publisher_reference"] === "77" ? "Pending" : "Approved",
-        sub1: row["clickref"],
-        device_id: row["ref_device"] || "unknown",
+        publisher_id: " ",
+        status: "Approved",
       };
     }
   };
@@ -63,16 +69,24 @@ export default function Partnerizemediamaxadv() {
 
             // 🔍 Extract unique brands
             const uniqueBrands = [
-              ...new Set(cleaned.map((row) => row.campaign_title.trim())),
+              ...new Set(
+                cleaned
+                  .map((row) => {
+                    const link = row["Source Link"]?.trim().toLowerCase();
+                    if (link?.includes("viator")) {
+                      return "viator";
+                    }
+                    return null;
+                  })
+                  .filter(Boolean),
+              ),
             ];
             setBrands(uniqueBrands);
 
             // 🔄 Group by brand and map data
             const brandWise = {};
             uniqueBrands.forEach((brand) => {
-              const brandRows = cleaned.filter(
-                (row) => row.campaign_title.trim() === brand,
-              );
+              const brandRows = cleaned.filter((row) => "viator" === brand);
               const config = Campaigns.find((c) => c.name === brand);
 
               if (!config) {
@@ -81,7 +95,7 @@ export default function Partnerizemediamaxadv() {
               }
 
               brandWise[brand] = brandRows.map((row) =>
-                mapPartnerizeRow(row, config),
+                mapViatorRow(row, config),
               );
             });
 
@@ -95,7 +109,7 @@ export default function Partnerizemediamaxadv() {
     }
   };
 
-  const parsePartnerizeDate = (value) => {
+  const parseViatorDate = (value) => {
     if (!value) return null;
 
     // If already Date object
@@ -152,7 +166,7 @@ export default function Partnerizemediamaxadv() {
 
     // 📅 Extract dates from created field
     const dates = data
-      .map((row) => parsePartnerizeDate(row.created))
+      .map((row) => parseViatorDate(row.created))
       .filter(Boolean);
 
     const dateRange = dates.length ? formatDateRange(dates) : "";
@@ -169,7 +183,7 @@ export default function Partnerizemediamaxadv() {
 
   return (
     <div style={{ padding: "20px" }}>
-      <h2>📁 Upload Partnerize mediamaxadv Report</h2>
+      <h2>📁 Upload Viator MNK Report</h2>
 
       <input
         type="file"
