@@ -1,37 +1,15 @@
 import React, { useEffect, useState } from "react";
-import * as XLSX from "xlsx";
 import Papa from "papaparse";
 import { saveAs } from "file-saver";
 
 const Campaigns = [
   {
-    name: "FARFETCH Partnerships Global",
-    Id: 289,
-  },
-  {
-    name: "stadium_goods_us",
-    Id: 2463,
-  },
-  {
-    name: "Charlotte Tilbury UK",
-    Id: 534,
-  },
-  {
     name: "GoCity",
-    Id: 1179,
-  },
-  {
-    name: "Saatva.com",
-    Id: 1275,
-  },
-
-  {
-    // name: "Gamivo Global",
-    Id: 2367,
+    Id: 2154,
   },
 ];
 
-export default function PartnerizeMaxMania() {
+export default function Partnerizemediamaxadv() {
   const [rawData, setRawData] = useState([]);
   const [brands, setBrands] = useState([]);
   const [groupedData, setGroupedData] = useState({});
@@ -40,10 +18,7 @@ export default function PartnerizeMaxMania() {
   const mapPartnerizeRow = (row, campaign) => {
     const actionEarning = parseFloat(row["publisher_commission"]);
 
-    if (
-      campaign.Id === 289 &&
-      campaign.name === "FARFETCH Partnerships Global"
-    ) {
+    if (campaign.Id === 2154 && campaign.name === "GoCity") {
       return {
         created: row["conversion_date"],
         txn_id: row["conversion_id"],
@@ -54,79 +29,6 @@ export default function PartnerizeMaxMania() {
         campaign_id: campaign.Id,
         publisher_id: row["publisher_reference"],
         status: row["publisher_reference"] === "77" ? "Pending" : "Approved",
-        sub1: row["clickref"],
-        device_id: row["ref_device"] || "unknown",
-      };
-    } else if (campaign.Id === 2367 && campaign.name === "Gamivo Global") {
-      return {
-        created: row["conversion_date"],
-        txn_id: row["conversion_id"],
-        sale_amount: row["value"],
-        revenue: actionEarning,
-        payout: ((actionEarning * 80) / 100).toFixed(10),
-        payout_currency: row["currency"].split(" ")[0],
-        campaign_id: campaign.Id,
-        publisher_id: row["publisher_reference"],
-        status: row["publisher_reference"] === "77" ? "Pending" : "Approved",
-        sub1: row["clickref"],
-        device_id: row["ref_device"] || "unknown",
-      };
-    } else if (campaign.Id === 2463 && campaign.name === "stadium_goods_us") {
-      return {
-        created: row["conversion_date"],
-        txn_id: row["conversion_id"],
-        sale_amount: row["value"],
-        revenue: actionEarning,
-        payout: ((actionEarning * 80) / 100).toFixed(10),
-        payout_currency: row["currency"].split(" ")[0],
-        campaign_id: campaign.Id,
-        publisher_id: row["publisher_reference"],
-        status: row["publisher_reference"] === "77" ? "Pending" : "Approved",
-        sub1: row["clickref"],
-        device_id: row["ref_device"] || "unknown",
-      };
-    } else if (
-      campaign.Id === 534 &&
-      campaign.name === "Charlotte Tilbury UK"
-    ) {
-      return {
-        created: row["conversion_date"],
-        txn_id: row["conversion_id"],
-        sale_amount: row["value"],
-        revenue: actionEarning,
-        payout: ((actionEarning * 80) / 100).toFixed(10),
-        payout_currency: row["currency"].split(" ")[0],
-        campaign_id: campaign.Id,
-        publisher_id: row["advertiser_reference"],
-        status: row["advertiser_reference"] === "77" ? "Pending" : "Approved",
-        sub1: row["clickref"],
-        device_id: row["ref_device"] || "unknown",
-      };
-    } else if (campaign.Id === 1179 && campaign.name === "GoCity") {
-      return {
-        created: row["conversion_date"],
-        txn_id: row["conversion_id"],
-        sale_amount: row["value"],
-        revenue: actionEarning,
-        payout: ((actionEarning * 80) / 100).toFixed(10),
-        payout_currency: row["currency"].split(" ")[0],
-        campaign_id: campaign.Id,
-        publisher_id: row["advertiser_reference"],
-        status: row["advertiser_reference"] === "77" ? "Pending" : "Approved",
-        sub1: row["clickref"],
-        device_id: row["ref_device"] || "unknown",
-      };
-    } else if (campaign.Id === 1275 && campaign.name === "Saatva.com") {
-      return {
-        created: row["conversion_date"],
-        txn_id: row["conversion_id"],
-        sale_amount: row["value"],
-        revenue: actionEarning,
-        payout: ((actionEarning * 80) / 100).toFixed(10),
-        payout_currency: row["currency"].split(" ")[0],
-        campaign_id: campaign.Id,
-        publisher_id: row["advertiser_reference"],
-        status: row["advertiser_reference"] === "77" ? "Pending" : "Approved",
         sub1: row["clickref"],
         device_id: row["ref_device"] || "unknown",
       };
@@ -152,7 +54,10 @@ export default function PartnerizeMaxMania() {
             const csvData = results.data;
 
             const cleaned = csvData.filter(
-              (row) => parseFloat(row["publisher_commission"] || 0) > 0,
+              (row) =>
+                parseFloat(
+                  row["Total amount (Customer currency)"].split(" ")[1] || 0,
+                ) > 0,
             );
             setRawData(cleaned);
 
@@ -264,7 +169,7 @@ export default function PartnerizeMaxMania() {
 
   return (
     <div style={{ padding: "20px" }}>
-      <h2>📁 Upload Partnerize MMadsTech Report</h2>
+      <h2>📁 Upload Partnerize mediamaxadv Report</h2>
 
       <input
         type="file"
