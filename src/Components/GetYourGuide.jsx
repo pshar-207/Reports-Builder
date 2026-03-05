@@ -5,53 +5,31 @@ import { saveAs } from "file-saver";
 
 const Campaigns = [
   {
-    name: "SHEIN",
-    Id: 2019,
-  },
-  {
-    name: "Allegro v2.0",
-    Id: 2036,
+    name: "Getyourguide",
+    Id: 1165,
   },
 ];
 
-export default function MyLeadsMaatr() {
+export default function ImpactMediaMax() {
   const [rawData, setRawData] = useState([]);
   const [brands, setBrands] = useState([]);
   const [groupedData, setGroupedData] = useState({});
   const [customFileName, setCustomFileName] = useState("");
 
-  const mapMyLeadrow = (row, campaign) => {
-    const actionEarning = parseFloat(row["Amount"]);
+  const mapGetyourguideRow = (row, campaign) => {
+    const actionEarning = parseFloat(row["Potential income"]);
 
-    if (campaign.Id === 2019 && campaign.name === "SHEIN") {
+    if (campaign.Id === 1165 && campaign.name === "Getyourguide") {
       return {
-        p1: row["ml_sub1"].split("=")[1],
-        created: row["Created at"],
-        txn_id: row["Transaction ID"],
-        sale_amount: row["Cart value"].split("U")[0],
+        created: row["Booking date"],
+        txn_id: row["Booking Reference"],
+        sale_amount: 0,
         revenue: actionEarning,
         payout: ((actionEarning * 80) / 100).toFixed(10),
         payout_currency: "USD",
         campaign_id: campaign.Id,
-        publisher_id: "77",
-        status: "Pending",
-        sub1: row["Order ID"],
-        device_id: row["Device"] || "unknown",
-      };
-    } else if (campaign.Id === 2036 && campaign.name === "Allegro v2.0") {
-      return {
-        p1: row["ml_sub1"].split("=")[1],
-        created: row["Created at"],
-        txn_id: row["Transaction ID"],
-        sale_amount: row["Cart value"] ? row["Cart value"] : 0,
-        revenue: actionEarning,
-        payout: ((actionEarning * 80) / 100).toFixed(10),
-        payout_currency: "USD",
-        campaign_id: campaign.Id,
-        publisher_id: "77",
-        status: "Pending",
-        sub1: row["Order ID"],
-        device_id: row["Device"] || "unknown",
+        publisher_id: " ",
+        status: "Approved",
       };
     }
   };
@@ -63,31 +41,38 @@ export default function MyLeadsMaatr() {
 
     const extension = file.name.split(".").pop().toLowerCase();
     const reader = new FileReader();
+
     if (extension === "xlsx") {
       reader.onload = (evt) => {
         const workbook = XLSX.read(evt.target.result, { type: "array" });
         const worksheet = workbook.Sheets[workbook.SheetNames[0]];
         const jsonData = XLSX.utils.sheet_to_json(worksheet, { defval: "" });
 
-        const cleaned = jsonData
-          .filter(
-            (row) => row["Program name"] && row["Program name"].trim() !== "",
-          )
-          .filter((row) => row["Amount"] !== 0);
+        const cleaned = jsonData.filter(
+          (row) => parseFloat(row["Potential income"] || 0) > 0,
+        );
         setRawData(cleaned);
 
         // 🔍 Extract unique brands
         const uniqueBrands = [
-          ...new Set(cleaned.map((row) => row["Program name"].trim())),
+          ...new Set(
+            cleaned
+              .map((row) => {
+                const link = row["View activity"]?.trim().toLowerCase();
+                if (link?.includes("getyourguide")) {
+                  return "Getyourguide";
+                }
+                return null;
+              })
+              .filter(Boolean),
+          ),
         ];
         setBrands(uniqueBrands);
 
         // 🔄 Group by brand and map data
         const brandWise = {};
         uniqueBrands.forEach((brand) => {
-          const brandRows = cleaned.filter(
-            (row) => row["Program name"].trim() === brand,
-          );
+          const brandRows = cleaned.filter((row) => "Getyourguide" === brand);
           const config = Campaigns.find((c) => c.name === brand);
 
           if (!config) {
@@ -95,7 +80,9 @@ export default function MyLeadsMaatr() {
             return;
           }
 
-          brandWise[brand] = brandRows.map((row) => mapMyLeadrow(row, config));
+          brandWise[brand] = brandRows.map((row) =>
+            mapGetyourguideRow(row, config),
+          );
         });
 
         setGroupedData(brandWise);
@@ -107,24 +94,89 @@ export default function MyLeadsMaatr() {
     }
   };
 
+  const parseGetyourguidetDate = (value) => {
+    if (!value) return null;
+
+    // ✅ If already Date (xlsx usually gives this)
+    if (value instanceof Date && !isNaN(value)) {
+      return new Date(value.getFullYear(), value.getMonth(), value.getDate());
+    }
+
+    // ✅ If Excel serial number
+    if (typeof value === "number") {
+      const excelEpoch = new Date(1899, 11, 30);
+      const date = new Date(excelEpoch.getTime() + value * 86400000);
+
+      return new Date(date.getFullYear(), date.getMonth(), date.getDate());
+    }
+
+    // ✅ If string (Impact MM/DD/YYYY)
+    if (typeof value === "string") {
+      const clean = value.split(" ")[0];
+      const [month, day, year] = clean.split("/");
+
+      return new Date(year, month - 1, day);
+    }
+
+    return null;
+  };
+
+  const formatDateRange = (dates) => {
+    const sorted = [...dates].sort((a, b) => a - b);
+
+    const start = sorted[0];
+    const end = sorted[sorted.length - 1];
+
+    const startDay = start.getDate();
+    const endDay = end.getDate();
+    const startMonth = start.getMonth();
+    const endMonth = end.getMonth();
+    const year = start.getFullYear();
+
+    const monthFormatter = (d) => d.toLocaleString("en-US", { month: "short" });
+
+    // ✅ Same day
+    if (startDay === endDay && startMonth === endMonth) {
+      return `${startDay} ${monthFormatter(start)} ${year}`;
+    }
+
+    // ✅ Same month
+    if (startMonth === endMonth) {
+      return `${startDay}-${endDay} ${monthFormatter(start)} ${year}`;
+    }
+
+    // ✅ Cross-month (rare but correct)
+    return `${startDay} ${monthFormatter(start)} - ${endDay} ${monthFormatter(
+      end,
+    )} ${year}`;
+  };
+
   const handleDownloadCSV = (brand) => {
     const data = groupedData[brand];
     if (!data || !data.length) return;
 
-    const csv = Papa.unparse(data);
-    // const blob = new Blob([csv], { type: "text/csv;charset=utf-8" });
-    // saveAs(blob, `${brand}_mapped.csv`);
-    const fileName = customFileName
-      ? `${customFileName}.csv`
-      : `${brand}_output.csv`;
+    // 🔍 Find campaign config
+    const campaign = Campaigns.find((c) => c.name === brand);
+    if (!campaign) return;
 
+    // 📅 Extract dates
+    const dates = data
+      .map((row) => parseGetyourguidetDate(row.created))
+      .filter(Boolean);
+
+    const dateRange = dates.length ? formatDateRange(dates) : "";
+
+    // 📝 Final file name
+    const fileName = `${brand} (${campaign.Id}) ${dateRange}.csv`;
+
+    const csv = Papa.unparse(data);
     const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
     saveAs(blob, fileName);
   };
 
   return (
     <div style={{ padding: "20px" }}>
-      <h2>📁 Upload MyLead Maatr Report</h2>
+      <h2>📁 Upload GetYourGuide MMAds Report</h2>
 
       <input
         type="file"
