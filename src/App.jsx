@@ -32,6 +32,8 @@ import HumeClickOrbit from "./Components/HumeClickOrbit";
 
 import ViatorMNK from "./Components/ViatorMNK";
 
+import SaatvaClickdealerMaxMania from "./Components/SaatvaClickdealerMaxMania";
+
 export default function App() {
   const [fileType, setFileType] = useState("Impact");
   const [rawData, setRawData] = useState([]);
@@ -293,6 +295,12 @@ export default function App() {
       <hr></hr>
       <div className="ViatorMNK">
         <ViatorMNK />
+      </div>
+      <hr></hr>
+
+      <hr></hr>
+      <div className="SaatvaClickdealerMaxMania">
+        <SaatvaClickdealerMaxMania />
       </div>
       <hr></hr>
 
