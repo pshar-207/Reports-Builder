@@ -93,7 +93,7 @@ const Campaigns = [
     Id: 2119,
   },
   {
-    name: "SHOKZ_US",
+    name: "SHOKZ US",
     Id: 2660,
   },
   {
@@ -552,7 +552,7 @@ export default function ImpactMaxMania() {
         // sub1: row["Sub Id 1"],
         device_id: row["Device Type"] || "unknown",
       };
-    } else if (campaign.Id === 2660 && campaign.name === "SHOKZ_US") {
+    } else if (campaign.Id === 2660 && campaign.name === "SHOKZ US") {
       return {
         // p1: row["Sub Id 3"],
         created: row["Action Date"],
