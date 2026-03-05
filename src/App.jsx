@@ -36,6 +36,8 @@ import SaatvaClickdealerMaxMania from "./Components/SaatvaClickdealerMaxMania";
 
 import MedviMaxmania from "./Components/MedviMaxmania";
 
+import Aroma360MMads from "./Components/Aroma360MMads";
+
 export default function App() {
   const [fileType, setFileType] = useState("Impact");
   const [rawData, setRawData] = useState([]);
@@ -309,6 +311,12 @@ export default function App() {
       <hr></hr>
       <div className="MedviMaxmania">
         <MedviMaxmania />
+      </div>
+      <hr></hr>
+
+      <hr></hr>
+      <div className="Aroma360MMads">
+        <Aroma360MMads />
       </div>
       <hr></hr>
 
