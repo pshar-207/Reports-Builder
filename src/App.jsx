@@ -34,6 +34,8 @@ import ViatorMNK from "./Components/ViatorMNK";
 
 import SaatvaClickdealerMaxMania from "./Components/SaatvaClickdealerMaxMania";
 
+import MedviMaxmania from "./Components/MedviMaxmania";
+
 export default function App() {
   const [fileType, setFileType] = useState("Impact");
   const [rawData, setRawData] = useState([]);
@@ -301,6 +303,12 @@ export default function App() {
       <hr></hr>
       <div className="SaatvaClickdealerMaxMania">
         <SaatvaClickdealerMaxMania />
+      </div>
+      <hr></hr>
+
+      <hr></hr>
+      <div className="MedviMaxmania">
+        <MedviMaxmania />
       </div>
       <hr></hr>
 
