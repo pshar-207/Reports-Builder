@@ -92,7 +92,19 @@ const Campaigns = [
     name: "AARP",
     Id: 2119,
   },
+  {
+    name: "SHOKZ_US",
+    Id: 2660,
+  },
+  {
+    name: "1st Phorm",
+    Id: 2659,
+  },
 
+  {
+    // name: "StockX",
+    Id: 2049,
+  },
   {
     // name: "Fleshlight and Fleshjack",
     Id: 2424,
@@ -108,10 +120,6 @@ const Campaigns = [
   {
     // name: "Otter.ai",
     Id: 2167,
-  },
-  {
-    // name: "StockX",
-    Id: 2049,
   },
 ];
 
@@ -530,6 +538,36 @@ export default function ImpactMaxMania() {
       campaign.Id === 2671 &&
       campaign.name === "Kovo Affiliate Program"
     ) {
+      return {
+        // p1: row["Sub Id 3"],
+        created: row["Action Date"],
+        txn_id: row["Action Id"],
+        sale_amount: row["Sale Amount"],
+        revenue: actionEarning,
+        payout: ((actionEarning * 80) / 100).toFixed(10),
+        payout_currency: "USD",
+        campaign_id: campaign.Id,
+        publisher_id: row["Sub Id 1"],
+        status: row["Sub Id 1"] === "77" ? "Pending" : "Approved",
+        // sub1: row["Sub Id 1"],
+        device_id: row["Device Type"] || "unknown",
+      };
+    } else if (campaign.Id === 2660 && campaign.name === "SHOKZ_US") {
+      return {
+        // p1: row["Sub Id 3"],
+        created: row["Action Date"],
+        txn_id: row["Action Id"],
+        sale_amount: row["Sale Amount"],
+        revenue: actionEarning,
+        payout: ((actionEarning * 80) / 100).toFixed(10),
+        payout_currency: "USD",
+        campaign_id: campaign.Id,
+        publisher_id: row["Sub Id 3"],
+        status: row["Sub Id 3"] === "77" ? "Pending" : "Approved",
+        // sub1: row["Sub Id 1"],
+        device_id: row["Device Type"] || "unknown",
+      };
+    } else if (campaign.Id === 2659 && campaign.name === "1st Phorm") {
       return {
         // p1: row["Sub Id 3"],
         created: row["Action Date"],
