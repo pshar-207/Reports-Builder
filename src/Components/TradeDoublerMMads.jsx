@@ -16,6 +16,10 @@ const Campaigns = [
     name: "Irish Ferries UK",
     Id: 2497,
   },
+  {
+    name: "PULL and BEAR UK",
+    Id: 2496,
+  },
 
   {
     // name: "Eobuwie (PL)",
@@ -24,10 +28,6 @@ const Campaigns = [
   {
     // name: "Modivo.pl",
     Id: 2121,
-  },
-  {
-    // name: "PULL and BEAR UK",
-    Id: 2496,
   },
   {
     // name: "EuroParcs | Unique holiday parks in the Netherlands, Belgium, Luxembourg, Austria and Germany",

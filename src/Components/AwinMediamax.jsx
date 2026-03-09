@@ -23,6 +23,10 @@ const Campaigns = [
     name: "Cottages.com",
     Id: 2600,
   },
+  {
+    name: "Greyhound Lines - US",
+    Id: 2667,
+  },
 
   {
     // name: "Hume Health US",
@@ -121,6 +125,24 @@ export default function AwinMediamax() {
         campaign_id: campaign.Id,
         publisher_id: row["click_ref"],
         status: row["click_ref"] === "77" ? "Pending" : "Approved",
+        // sub1: row["clickref"],
+        device_id: row["click_device"] || "unknown",
+      };
+    } else if (
+      campaign.Id === 2667 &&
+      campaign.name === "Greyhound Lines - US"
+    ) {
+      return {
+        p1: row["click_ref3"],
+        created: row["date"],
+        txn_id: row["id"],
+        sale_amount: row["sale_amount"],
+        revenue: actionEarning,
+        payout: ((actionEarning * 80) / 100).toFixed(10),
+        payout_currency: "USD",
+        campaign_id: campaign.Id,
+        publisher_id: row["click_ref2"],
+        status: row["click_ref2"] === "77" ? "Pending" : "Approved",
         // sub1: row["clickref"],
         device_id: row["click_device"] || "unknown",
       };

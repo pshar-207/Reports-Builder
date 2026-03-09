@@ -125,6 +125,21 @@ export default function Partnerizemediamaxadv() {
         sub1: row["clickref"],
         device_id: row["ref_device"] || "unknown",
       };
+    } else if (campaign.Id === 662 && campaign.name === "StubHub NORAM") {
+      return {
+        // p1: row["publisher_reference"],
+        created: row["conversion_date"],
+        txn_id: row["conversion_id"],
+        sale_amount: row["value"],
+        revenue: actionEarning,
+        payout: ((actionEarning * 80) / 100).toFixed(10),
+        payout_currency: row["currency"].split(" ")[0],
+        campaign_id: campaign.Id,
+        publisher_id: row["publisher_reference"],
+        status: row["publisher_reference"] === "77" ? "Pending" : "Approved",
+        sub1: row["clickref"],
+        device_id: row["ref_device"] || "unknown",
+      };
     }
   };
 
