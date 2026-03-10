@@ -36,7 +36,7 @@ export default function TradeDoublerMaatr() {
       txn_id: row["Order-ID"] || "",
       sale_amount: 0,
       revenue: revenue || 0,
-      payout: ((revenue * 70) / 100).toFixed(10),
+      payout: ((revenue * 80) / 100).toFixed(10),
       payout_currency: "EUR",
       campaign_id: camp_id,
       publisher_id: "",
