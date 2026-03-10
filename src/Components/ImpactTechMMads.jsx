@@ -48,6 +48,18 @@ const Campaigns = [
     name: "Whatnot Affiliates",
     Id: 2214,
   },
+  {
+    name: "PopAi",
+    Id: 2677,
+  },
+  {
+    name: "Malaysia Airlines",
+    Id: 1717,
+  },
+  {
+    name: "WPS SOFTWARE PTE.LTD.",
+    Id: 2209,
+  },
 
   {
     // name: "Envato Placeit",
@@ -82,10 +94,6 @@ const Campaigns = [
     Id: 2517,
   },
   {
-    // name: "Malaysia Airlines",
-    Id: 1717,
-  },
-  {
     // name: "Qatar Airways",
     Id: 1638,
   },
@@ -109,10 +117,6 @@ const Campaigns = [
   {
     // name: "Spocket",
     Id: 2205,
-  },
-  {
-    // name: "WPS SOFTWARE PTE.LTD.",
-    Id: 2209,
   },
   {
     // name: "Hydro Flask",
@@ -264,7 +268,7 @@ export default function ImpactTechMMads() {
         campaign_id: campaign.Id,
         publisher_id: row["Sub Id 2"],
         status: row["Sub Id 2"] === "77" ? "Pending" : "Approved",
-        sub1: row["Sub Id 3"],
+        sub1: row["Sub Id 1"],
         device_id: row["Device Type"] || "unknown",
       };
     } else if (campaign.Id === 2342 && campaign.name === "Orthofeet") {
@@ -554,6 +558,21 @@ export default function ImpactTechMMads() {
         campaign_id: campaign.Id,
         publisher_id: row["Sub Id 2"],
         status: row["Sub Id 2"] === "77" ? "Pending" : "Approved",
+        sub1: row["Sub Id 1"],
+        device_id: row["Device Type"] || "unknown",
+      };
+    } else if (campaign.Id === 2677 && campaign.name === "PopAi") {
+      return {
+        // p1: row["Sub Id 1"],
+        created: row["Action Date"],
+        txn_id: row["Action Id"],
+        sale_amount: row["Sale Amount"],
+        revenue: actionEarning,
+        payout: ((actionEarning * 80) / 100).toFixed(10),
+        payout_currency: "USD",
+        campaign_id: campaign.Id,
+        publisher_id: row["Sub Id 3"],
+        status: row["Sub Id 3"] === "77" ? "Pending" : "Approved",
         sub1: row["Sub Id 1"],
         device_id: row["Device Type"] || "unknown",
       };
