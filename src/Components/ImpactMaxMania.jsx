@@ -100,6 +100,14 @@ const Campaigns = [
     name: "1st Phorm",
     Id: 2659,
   },
+  {
+    name: "Skylum Affiliate Program",
+    Id: 2426,
+  },
+  {
+    name: "Otter.ai",
+    Id: 2167,
+  },
 
   {
     // name: "StockX",
@@ -116,10 +124,6 @@ const Campaigns = [
   {
     // name: "Orthofeet",
     Id: 2343,
-  },
-  {
-    // name: "Otter.ai",
-    Id: 2167,
   },
 ];
 
@@ -245,7 +249,7 @@ export default function ImpactMaxMania() {
       };
     } else if (campaign.Id === 2167 && campaign.name === "Otter.ai") {
       return {
-        p1: row["Sub Id 3"],
+        p1: row["Sub Id 1"],
         created: row["Action Date"],
         txn_id: row["Action Id"],
         sale_amount: row["Sale Amount"],
@@ -255,7 +259,7 @@ export default function ImpactMaxMania() {
         campaign_id: campaign.Id,
         publisher_id: row["Sub Id 2"],
         status: row["Sub Id 2"] === "77" ? "Pending" : "Approved",
-        sub1: row["Sub Id 1"],
+        sub1: row["Sub Id 3"],
         device_id: row["Device Type"] || "unknown",
       };
     } else if (campaign.Id === 2164 && campaign.name === "Reolink") {
@@ -580,6 +584,24 @@ export default function ImpactMaxMania() {
         publisher_id: row["Sub Id 1"],
         status: row["Sub Id 1"] === "77" ? "Pending" : "Approved",
         // sub1: row["Sub Id 1"],
+        device_id: row["Device Type"] || "unknown",
+      };
+    } else if (
+      campaign.Id === 2426 &&
+      campaign.name === "Skylum Affiliate Program"
+    ) {
+      return {
+        // p1: row["Sub Id 3"],
+        created: row["Action Date"],
+        txn_id: row["Action Id"],
+        sale_amount: row["Sale Amount"],
+        revenue: actionEarning,
+        payout: ((actionEarning * 80) / 100).toFixed(10),
+        payout_currency: "USD",
+        campaign_id: campaign.Id,
+        publisher_id: row["Sub Id 2"],
+        status: row["Sub Id 2"] === "77" ? "Pending" : "Approved",
+        sub1: row["Sub Id 1"],
         device_id: row["Device Type"] || "unknown",
       };
     }
