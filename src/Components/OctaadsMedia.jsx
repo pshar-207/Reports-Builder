@@ -20,6 +20,10 @@ const Campaigns = [
     name: "Turkish Airlines",
     Id: 2017,
   },
+  {
+    name: "Dorothy Perkins UK",
+    Id: 2541,
+  },
 ];
 
 export default function OctaadsMedia() {
@@ -50,6 +54,21 @@ export default function OctaadsMedia() {
       campaign.Id === 1605 &&
       campaign.name === "Booking.com North America"
     ) {
+      return {
+        p1: row["click_ref3"],
+        created: row["date"],
+        txn_id: row["id"],
+        sale_amount: row["sale_amount"],
+        revenue: actionEarning,
+        payout: ((actionEarning * 80) / 100).toFixed(10),
+        payout_currency: row["Currency"],
+        campaign_id: campaign.Id,
+        publisher_id: row["click_ref2"],
+        status: row["click_ref2"] === "77" ? "Pending" : "Approved",
+        // sub1: row["clickref"],
+        device_id: row["click_device"] || "unknown",
+      };
+    } else if (campaign.Id === 2541 && campaign.name === "Dorothy Perkins UK") {
       return {
         p1: row["click_ref3"],
         created: row["date"],
