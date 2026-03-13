@@ -608,7 +608,7 @@ export default function ImpactMaxMania() {
         sub1: row["Sub Id 1"],
         device_id: row["Device Type"] || "unknown",
       };
-    } else if (campaign.Id === 1705 && campaign.name === "Hostgator.com") {
+    } else if (campaign.Id === 1705 && campaign.name === "HostGator.com") {
       return {
         p1: row["Sub Id 1"],
         created: row["Action Date"],
