@@ -108,6 +108,10 @@ const Campaigns = [
     name: "Otter.ai",
     Id: 2167,
   },
+  {
+    name: "Hostgator.com",
+    Id: 1705,
+  },
 
   {
     // name: "StockX",
@@ -602,6 +606,21 @@ export default function ImpactMaxMania() {
         publisher_id: row["Sub Id 2"],
         status: row["Sub Id 2"] === "77" ? "Pending" : "Approved",
         sub1: row["Sub Id 1"],
+        device_id: row["Device Type"] || "unknown",
+      };
+    } else if (campaign.Id === 1705 && campaign.name === "Hostgator.com") {
+      return {
+        p1: row["Sub Id 1"],
+        created: row["Action Date"],
+        txn_id: row["Action Id"],
+        sale_amount: row["Sale Amount"],
+        revenue: actionEarning,
+        payout: ((actionEarning * 80) / 100).toFixed(10),
+        payout_currency: "USD",
+        campaign_id: campaign.Id,
+        publisher_id: row["Sub Id 2"],
+        status: row["Sub Id 2"] === "77" ? "Pending" : "Approved",
+        sub1: row["Sub Id 3"],
         device_id: row["Device Type"] || "unknown",
       };
     }
