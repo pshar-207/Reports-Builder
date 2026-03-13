@@ -109,7 +109,7 @@ const Campaigns = [
     Id: 2167,
   },
   {
-    name: "Hostgator.com",
+    name: "HostGator.com",
     Id: 1705,
   },
 
