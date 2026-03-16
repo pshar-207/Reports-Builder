@@ -64,15 +64,20 @@ const Campaigns = [
     name: "FloatMe",
     Id: 2684,
   },
-
   {
-    // name: "edX",
-    Id: 1505,
+    name: "Hims, Inc.",
+    Id: 2700,
   },
+
   {
     // name: "Hims, Inc.",
     Id: 2351,
   },
+  {
+    // name: "edX",
+    Id: 1505,
+  },
+
   {
     // name: "LATAM Airlines ( USA )",
     Id: 2355,
@@ -126,9 +131,9 @@ export default function ImpactMediaMax() {
         sub1: row["Sub Id 3"],
         device_id: row["Device Type"] || "unknown",
       };
-    } else if (campaign.Id === 2351 && campaign.name === "Hims, Inc.") {
+    } else if (campaign.Id === 2700 && campaign.name === "Hims, Inc.") {
       return {
-        p1: row["Sub Id 3"],
+        p1: row["Sub Id 1"],
         created: row["Action Date"],
         txn_id: row["Action Id"],
         sale_amount: row["Sale Amount"],
@@ -138,7 +143,7 @@ export default function ImpactMediaMax() {
         campaign_id: campaign.Id,
         publisher_id: row["Sub Id 2"],
         status: row["Sub Id 2"] === "77" ? "Pending" : "Approved",
-        sub1: row["Sub Id 1"],
+        sub1: row["Sub Id 3"],
         device_id: row["Device Type"] || "unknown",
       };
     } else if (
