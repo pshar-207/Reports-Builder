@@ -12,6 +12,10 @@ const Campaigns = [
     name: "Irish Ferries DE",
     Id: 2520,
   },
+  {
+    name: "Bonprix SE",
+    Id: 2409,
+  },
 
   {
     // name: "Avanti Travel Insurance",
@@ -56,10 +60,6 @@ const Campaigns = [
   {
     // name: "ArmedAngels DE",
     Id: 2407,
-  },
-  {
-    // name: "Bonprix SE",
-    Id: 2409,
   },
   {
     // name: "Best Western",
@@ -275,8 +275,8 @@ export default function TradeDoublerMaxMania() {
         payout: ((actionEarning * 80) / 100).toFixed(10),
         payout_currency: "USD",
         campaign_id: campaign.Id,
-        publisher_id: row["epi"],
-        status: row["epi"].split("_")[0] === "77" ? "Pending" : "Approved",
+        publisher_id: row["epi2"],
+        status: row["epi2"].split("_")[0] === "77" ? "Pending" : "Approved",
         sub1: row["orderNumber"],
         device_id: row["mobileDeviceType"] || "unknown",
       };

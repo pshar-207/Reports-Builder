@@ -22,7 +22,7 @@ const Campaigns = [
   },
 
   {
-    // name: "Eobuwie (PL)",
+    name: "Eobuwie (PL)",
     Id: 2122,
   },
   {
@@ -84,8 +84,8 @@ export default function TradeDoublerMMads() {
         payout: ((actionEarning * 80) / 100).toFixed(10),
         payout_currency: "USD",
         campaign_id: campaign.Id,
-        publisher_id: row["epi"].split("_")[0],
-        status: row["epi"].split("_")[0] === "77" ? "Pending" : "Approved",
+        publisher_id: row["epi2"].split("_")[0],
+        status: row["epi2"].split("_")[0] === "77" ? "Pending" : "Approved",
         sub1: row["orderNumber"],
         device_id: row["mobileDeviceType"] || "unknown",
       };
