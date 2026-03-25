@@ -18,6 +18,7 @@ import ImpactMediaMax from "./Components/ImpactMediaMax";
 import ImpactTechMMads from "./Components/ImpactTechMMads";
 import ImpactSaleMMads from "./Components/ImpactSaleMMads";
 import ImpactMaxMania from "./Components/ImpactMaxMania";
+import ImpactMNK from "./Components/ImpactMNK";
 
 import Partnerizemediamaxadv from "./Components/Partnerizemediamaxadv";
 import PartnerizeMaxMania from "./Components/PartnerizeMaxMania";
@@ -259,6 +260,10 @@ export default function App() {
 
       <div className="ImpactMaxMania">
         <ImpactMaxMania />
+      </div>
+
+      <div className="ImpactMNK">
+        <ImpactMNK />
       </div>
       <hr></hr>
 
