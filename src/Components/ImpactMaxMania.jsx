@@ -120,6 +120,10 @@ const Campaigns = [
     name: "Uniform Advantage",
     Id: 2715,
   },
+  {
+    name: "ShutEye®: Sleep Tracker, Sound",
+    Id: 2669,
+  },
 
   {
     // name: "StockX",
@@ -649,6 +653,24 @@ export default function ImpactMaxMania() {
     } else if (campaign.Id === 2715 && campaign.name === "Uniform Advantage") {
       return {
         p1: row["Sub Id 3"],
+        created: row["Action Date"],
+        txn_id: row["Action Id"],
+        sale_amount: row["Sale Amount"],
+        revenue: actionEarning,
+        payout: ((actionEarning * 80) / 100).toFixed(10),
+        payout_currency: "USD",
+        campaign_id: campaign.Id,
+        publisher_id: row["Sub Id 2"],
+        status: row["Sub Id 2"] === "77" ? "Pending" : "Approved",
+        sub1: row["Sub Id 1"],
+        device_id: row["Device Type"] || "unknown",
+      };
+    } else if (
+      campaign.Id === 2669 &&
+      campaign.name === "ShutEye®: Sleep Tracker, Sound"
+    ) {
+      return {
+        // p1: row["Sub Id 3"],
         created: row["Action Date"],
         txn_id: row["Action Id"],
         sale_amount: row["Sale Amount"],
