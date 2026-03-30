@@ -37,7 +37,7 @@ export default function OctaadsMedia() {
 
     if (campaign.Id === 2545 && campaign.name === "Booking.com LATAM") {
       return {
-        p1: row["click_ref3"],
+        p1: row["click_ref2"],
         created: row["date"],
         txn_id: row["id"],
         sale_amount: row["sale_amount"],
