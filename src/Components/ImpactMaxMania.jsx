@@ -128,6 +128,10 @@ const Campaigns = [
     name: "REEF",
     Id: 2364,
   },
+  {
+    name: "Remitly",
+    Id: 2728,
+  },
 
   {
     // name: "StockX",
@@ -700,6 +704,21 @@ export default function ImpactMaxMania() {
         publisher_id: row["Sub Id 1"],
         status: row["Sub Id 1"] === "77" ? "Pending" : "Approved",
         // sub1: row["Sub Id 1"],
+        device_id: row["Device Type"] || "unknown",
+      };
+    } else if (campaign.Id === 2728 && campaign.name === "Remitly") {
+      return {
+        // p1: row["Sub Id 3"],
+        created: row["Action Date"],
+        txn_id: row["Action Id"],
+        sale_amount: row["Sale Amount"],
+        revenue: actionEarning,
+        payout: ((actionEarning * 80) / 100).toFixed(10),
+        payout_currency: "USD",
+        campaign_id: campaign.Id,
+        publisher_id: row["Sub Id 3"],
+        status: row["Sub Id 3"] === "77" ? "Pending" : "Approved",
+        sub1: row["Sub Id 1"],
         device_id: row["Device Type"] || "unknown",
       };
     }
