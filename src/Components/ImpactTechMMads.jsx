@@ -64,14 +64,14 @@ const Campaigns = [
     name: "Fubo - Live Sports  TV",
     Id: 2697,
   },
+  {
+    name: "Advance Auto Parts",
+    Id: 2253,
+  },
 
   {
     // name: "Envato Placeit",
     Id: 1318,
-  },
-  {
-    // name: "Advance Auto Parts",
-    Id: 2253,
   },
   {
     // name: "BARK",
@@ -139,7 +139,7 @@ export default function ImpactTechMMads() {
 
     if (campaign.Id === 2253 && campaign.name === "Advance Auto Parts") {
       return {
-        p1: row["Sub Id 1"],
+        // p1: row["Sub Id 1"],
         created: row["Action Date"],
         txn_id: row["Action Id"],
         sale_amount: row["Sale Amount"],
@@ -147,9 +147,9 @@ export default function ImpactTechMMads() {
         payout: ((actionEarning * 80) / 100).toFixed(10),
         payout_currency: "USD",
         campaign_id: campaign.Id,
-        publisher_id: row["Sub Id 2"],
-        status: row["Sub Id 2"] === "77" ? "Pending" : "Approved",
-        sub1: row["Sub Id 3"],
+        publisher_id: row["Sub Id 1"],
+        status: row["Sub Id 1"] === "77" ? "Pending" : "Approved",
+        // sub1: row["Sub Id 3"],
         device_id: row["Device Type"] || "unknown",
       };
     } else if (campaign.Id === 2249 && campaign.name === "BARK") {
