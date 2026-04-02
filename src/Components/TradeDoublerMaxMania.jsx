@@ -16,6 +16,10 @@ const Campaigns = [
     name: "Bonprix SE",
     Id: 2409,
   },
+  {
+    name: "Tamaris DE",
+    Id: 1684,
+  },
 
   {
     // name: "Avanti Travel Insurance",
@@ -44,10 +48,6 @@ const Campaigns = [
   {
     // name: "Lycamobile",
     Id: 2371,
-  },
-  {
-    // name: "Tamaris DE",
-    Id: 1684,
   },
   {
     // name: "Teletext Holidays",
@@ -195,7 +195,7 @@ export default function TradeDoublerMaxMania() {
       };
     } else if (campaign.Id === 1684 && campaign.name === "Tamaris DE") {
       return {
-        p1: row["epi"].split("_")[1],
+        // p1: row["epi"].split("_")[1],
         created: row["timeOfTransaction"],
         txn_id: row["transactionId"],
         sale_amount: row["orderValue"],
@@ -203,8 +203,8 @@ export default function TradeDoublerMaxMania() {
         payout: ((actionEarning * 80) / 100).toFixed(10),
         payout_currency: "USD",
         campaign_id: campaign.Id,
-        publisher_id: row["epi"],
-        status: row["epi"].split("_")[0] === "77" ? "Pending" : "Approved",
+        publisher_id: row["epi2"],
+        status: row["epi2"] === "77" ? "Pending" : "Approved",
         sub1: row["orderNumber"],
         device_id: row["mobileDeviceType"] || "unknown",
       };
