@@ -6,6 +6,7 @@ import { saveAs } from "file-saver";
 import TradeDoublerMMads from "./Components/TradeDoublerMMads";
 import TradeDoublerMaxMania from "./Components/TradeDoublerMaxMania";
 import TradeDoublerMediaMax from "./Components/TradeDoublerMediaMax";
+import TradeDoublerMNK from "./Components/TradeDoublerMNK";
 
 import RakutenMMads from "./Components/RakutenMMads";
 import RakutenMaxMania from "./Components/RakutenMaxMania";
@@ -221,6 +222,9 @@ export default function App() {
       </div>
       <div className="TradeDoublerMediaMax">
         <TradeDoublerMediaMax />
+      </div>
+      <div className="TradeDoublerMNK">
+        <TradeDoublerMNK />
       </div>
       <hr></hr>
 
