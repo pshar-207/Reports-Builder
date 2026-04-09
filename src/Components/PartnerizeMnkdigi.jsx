@@ -13,7 +13,7 @@ const Campaigns = [
     Id: 2483,
   },
   {
-    name: "Viagogo",
+    name: "viagogo",
     Id: 2696,
   },
 ];
@@ -59,7 +59,7 @@ export default function PartnerizeMnkdigi() {
         sub1: row["clickref"],
         device_id: row["ref_device"] || "unknown",
       };
-    } else if (campaign.Id === 2696 && campaign.name === "Viagogo") {
+    } else if (campaign.Id === 2696 && campaign.name === "viagogo") {
       return {
         // p1: row["publisher_reference0"],
         created: row["conversion_date"],
