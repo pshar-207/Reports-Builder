@@ -12,6 +12,10 @@ const Campaigns = [
     name: "F-Secure | Internet Security & VPN",
     Id: 2483,
   },
+  {
+    name: "Viagogo",
+    Id: 2696,
+  },
 ];
 
 export default function PartnerizeMnkdigi() {
@@ -43,6 +47,21 @@ export default function PartnerizeMnkdigi() {
     ) {
       return {
         p1: row["publisher_reference0"],
+        created: row["conversion_date"],
+        txn_id: row["conversion_id"],
+        sale_amount: row["value"],
+        revenue: actionEarning,
+        payout: ((actionEarning * 80) / 100).toFixed(10),
+        payout_currency: row["currency"],
+        campaign_id: campaign.Id,
+        publisher_id: row["advertiser_reference"],
+        status: row["advertiser_reference"] === "77" ? "Pending" : "Approved",
+        sub1: row["clickref"],
+        device_id: row["ref_device"] || "unknown",
+      };
+    } else if (campaign.Id === 2696 && campaign.name === "Viagogo") {
+      return {
+        // p1: row["publisher_reference0"],
         created: row["conversion_date"],
         txn_id: row["conversion_id"],
         sale_amount: row["value"],
