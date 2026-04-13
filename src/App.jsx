@@ -42,6 +42,8 @@ import Aroma360MMads from "./Components/Aroma360MMads";
 
 import GetYourGuide from "./Components/GetYourGuide";
 
+import NitinPartnerize from "./Components/NitinPartnerize";
+
 export default function App() {
   const [fileType, setFileType] = useState("Impact");
   const [rawData, setRawData] = useState([]);
@@ -214,6 +216,12 @@ export default function App() {
 
   return (
     <>
+      <div className="NitinPartnerize">
+        <NitinPartnerize />
+      </div>
+      <hr></hr>
+
+      <hr></hr>
       <div className="TradeDoublerMMads">
         <TradeDoublerMMads />
       </div>
