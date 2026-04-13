@@ -44,6 +44,8 @@ import GetYourGuide from "./Components/GetYourGuide";
 
 import NitinPartnerize from "./Components/NitinPartnerize";
 
+//git setup check
+
 export default function App() {
   const [fileType, setFileType] = useState("Impact");
   const [rawData, setRawData] = useState([]);
