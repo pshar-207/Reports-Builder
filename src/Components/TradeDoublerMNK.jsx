@@ -8,6 +8,10 @@ const Campaigns = [
     name: "Aegean Airlines",
     Id: 2713,
   },
+  {
+    name: "PULL and BEAR UK",
+    Id: 2744,
+  },
 ];
 
 export default function TradeDoublerMNK() {
@@ -22,6 +26,21 @@ export default function TradeDoublerMNK() {
     if (campaign.Id === 2713 && campaign.name === "Aegean Airlines") {
       return {
         p1: row["epi"].split("_")[1],
+        created: row["timeOfTransaction"],
+        txn_id: row["transactionId"],
+        sale_amount: row["orderValue"],
+        revenue: actionEarning,
+        payout: ((actionEarning * 80) / 100).toFixed(10),
+        payout_currency: "INR",
+        campaign_id: campaign.Id,
+        publisher_id: row["epi"].split("_")[0],
+        status: row["epi"].split("_")[0] === "77" ? "Pending" : "Approved",
+        sub1: row["orderNumber"],
+        // device_id: row["mobileDeviceType"] || "unknown",
+      };
+    } else if (campaign.Id === 2744 && campaign.name === "PULL and BEAR UK") {
+      return {
+        // p1: row["epi"].split("_")[1],
         created: row["timeOfTransaction"],
         txn_id: row["transactionId"],
         sale_amount: row["orderValue"],
