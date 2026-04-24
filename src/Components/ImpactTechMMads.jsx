@@ -72,6 +72,10 @@ const Campaigns = [
     name: "Emmiol-Affiliate",
     Id: 715,
   },
+  {
+    name: "Qatar Airways",
+    Id: 1638,
+  },
 
   {
     // name: "Envato Placeit",
@@ -100,10 +104,6 @@ const Campaigns = [
   {
     // name: "Logitech - US, Canada & Mexico",
     Id: 2517,
-  },
-  {
-    // name: "Qatar Airways",
-    Id: 1638,
   },
   {
     // name: "UniqueVintage",
@@ -296,7 +296,7 @@ export default function ImpactTechMMads() {
       };
     } else if (campaign.Id === 1638 && campaign.name === "Qatar Airways") {
       return {
-        p1: row["Sub Id 3"],
+        // p1: row["Sub Id 3"],
         created: row["Action Date"],
         txn_id: row["Action Id"],
         sale_amount: row["Sale Amount"],
@@ -306,7 +306,7 @@ export default function ImpactTechMMads() {
         campaign_id: campaign.Id,
         publisher_id: row["Sub Id 2"],
         status: row["Sub Id 2"] === "77" ? "Pending" : "Approved",
-        sub1: row["Sub Id 1"],
+        sub1: row["Sub Id 3"],
         device_id: row["Device Type"] || "unknown",
       };
     } else if (campaign.Id === 2437 && campaign.name === "Solo Stove") {
