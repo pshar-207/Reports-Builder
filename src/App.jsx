@@ -225,6 +225,7 @@ export default function App() {
       </div>
       <hr></hr>
 
+      <hr></hr>
       <div className="NextagMedia">
         <NextagMedia />
       </div>

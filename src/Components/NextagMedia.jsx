@@ -187,7 +187,7 @@ export default function ImpactMNK() {
 
   return (
     <div style={{ padding: "20px" }}>
-      <h2>📁 Upload Impact MNK Report</h2>
+      <h2>📁 Upload Nextag Media Report</h2>
 
       <input
         type="file"
