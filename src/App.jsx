@@ -44,6 +44,8 @@ import GetYourGuide from "./Components/GetYourGuide";
 
 import NitinPartnerize from "./Components/NitinPartnerize";
 
+import NextagMedia from "./Components/NextagMedia";
+
 //git setup check
 
 export default function App() {
@@ -220,6 +222,11 @@ export default function App() {
     <>
       <div className="NitinPartnerize">
         <NitinPartnerize />
+      </div>
+      <hr></hr>
+
+      <div className="NextagMedia">
+        <NextagMedia />
       </div>
       <hr></hr>
 
