@@ -12,6 +12,10 @@ const Campaigns = [
     name: "Trivago UK",
     Id: 2767,
   },
+  {
+    name: "Primeriti ES",
+    Id: 2783,
+  },
 ];
 
 export default function ImpactMNK() {
@@ -39,6 +43,21 @@ export default function ImpactMNK() {
         device_id: row["click_device"] || "unknown",
       };
     } else if (campaign.Id === 2767 && campaign.name === "Trivago UK") {
+      return {
+        p1: row["click_ref2"],
+        created: row["date"],
+        txn_id: row["id"],
+        sale_amount: row["sale_amount"],
+        revenue: actionEarning,
+        payout: ((actionEarning * 80) / 100).toFixed(10),
+        payout_currency: "GBP",
+        campaign_id: campaign.Id,
+        publisher_id: row["click_ref"],
+        status: row["click_ref"] === "77" ? "Pending" : "Approved",
+        // sub1: row["Sub Id 3"],
+        device_id: row["click_device"] || "unknown",
+      };
+    } else if (campaign.Id === 2783 && campaign.name === "Primeriti ES") {
       return {
         p1: row["click_ref2"],
         created: row["date"],
