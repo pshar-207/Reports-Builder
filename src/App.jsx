@@ -46,6 +46,13 @@ import NitinPartnerize from "./Components/NitinPartnerize";
 
 import NextagMedia from "./Components/NextagMedia";
 
+import ImpactMaxManiaReportSharing from "./Components/ReportsSharing/ImpactMaxMania";
+import ImpactMediaMaxReportSharing from "./Components/ReportsSharing/ImpactMediaMax";
+import ImpactTechMMadsReportSharing from "./Components/ReportsSharing/ImpactTechMMads";
+import RakutenMaxManiaReportSharing from "./Components/ReportsSharing/RakutenMaxMania";
+import AwinMediaMaxReportSharing from "./Components/ReportsSharing/AwinMediaMax";
+import PartnerizeMaxManiaReportSharing from "./Components/ReportsSharing/PartnerizeMaxMania";
+
 //git setup check
 
 export default function App() {
@@ -54,6 +61,7 @@ export default function App() {
   const [brands, setBrands] = useState([]);
   const [groupedData, setGroupedData] = useState({});
   const [customFileName, setCustomFileName] = useState("");
+  const [reportType, setReportType] = useState("Trackier");
 
   const mapKlookRow = (row) => {
     const formatCompactDate = (dateStr) => {
@@ -220,225 +228,298 @@ export default function App() {
 
   return (
     <>
-      <div className="NitinPartnerize">
-        <NitinPartnerize />
-      </div>
-      <hr></hr>
+      <div
+        style={{
+          display: "flex",
+          width: "400px",
+          margin: "20px auto",
+          border: "1px solid #ccc",
+          borderRadius: "8px",
+          overflow: "hidden",
+        }}
+      >
+        <button
+          onClick={() => setReportType("Trackier")}
+          style={{
+            flex: 1,
+            padding: "12px",
+            border: "none",
+            cursor: "pointer",
+            background: reportType === "Trackier" ? "#007bff" : "#f5f5f5",
+            color: reportType === "Trackier" ? "#fff" : "#000",
+          }}
+        >
+          Trackier Reporting
+        </button>
 
-      <hr></hr>
-      <div className="NextagMedia">
-        <NextagMedia />
-      </div>
-      <hr></hr>
-
-      <hr></hr>
-      <div className="TradeDoublerMMads">
-        <TradeDoublerMMads />
-      </div>
-      <div className="TradeDoublerMaxMania">
-        <TradeDoublerMaxMania />
-      </div>
-      <div className="TradeDoublerMediaMax">
-        <TradeDoublerMediaMax />
-      </div>
-      <div className="TradeDoublerMNK">
-        <TradeDoublerMNK />
-      </div>
-      <hr></hr>
-
-      <hr></hr>
-      <div className="RakutenMMads">
-        <RakutenMMads />
-      </div>
-      <div className="RakutenMaxMania">
-        <RakutenMaxMania />
-      </div>
-      <hr></hr>
-
-      <hr></hr>
-      <div className="Finance_ad">
-        <Finance_ad />
-      </div>
-      <hr></hr>
-
-      <hr></hr>
-      <div className="MyLeadsMaatr">
-        <MyLeadsMaatr />
-      </div>
-      <hr></hr>
-
-      <hr></hr>
-      <div className="ImpactMediaMax">
-        <ImpactMediaMax />
+        <button
+          onClick={() => setReportType("Publisher")}
+          style={{
+            flex: 1,
+            padding: "12px",
+            border: "none",
+            cursor: "pointer",
+            background: reportType === "Publisher" ? "#007bff" : "#f5f5f5",
+            color: reportType === "Publisher" ? "#fff" : "#000",
+          }}
+        >
+          Publisher Reporting
+        </button>
       </div>
 
-      <div className="ImpactTechMMads">
-        <ImpactTechMMads />
-      </div>
+      {reportType === "Publisher" && (
+        <>
+          <div className="ImpactMaxManiaReportSharing">
+            <ImpactMaxManiaReportSharing />
+          </div>
+          <hr />
+          <div className="ImpactMediaMaxReportSharing">
+            <ImpactMediaMaxReportSharing />
+          </div>
+          <hr />
+          <div className="ImpactTechMMadsReportSharing">
+            <ImpactTechMMadsReportSharing />
+          </div>
+          <hr />
+          <div className="RakutenMaxManiaReportSharing">
+            <RakutenMaxManiaReportSharing />
+          </div>
+          <hr />
+          <div className="AwinMediaMaxReportSharing">
+            <AwinMediaMaxReportSharing />
+          </div>
+          <hr />
+          <div className="PartnerizeMaxManiaReportSharing">
+            <PartnerizeMaxManiaReportSharing />
+          </div>
+          <hr />
+        </>
+      )}
 
-      <div className="ImpactSaleMMads">
-        <ImpactSaleMMads />
-      </div>
+      {reportType === "Trackier" && (
+        <>
+          <hr></hr>
+          <div className="NitinPartnerize">
+            <NitinPartnerize />
+          </div>
+          <hr></hr>
 
-      <div className="ImpactMaxMania">
-        <ImpactMaxMania />
-      </div>
+          <hr></hr>
+          <div className="NextagMedia">
+            <NextagMedia />
+          </div>
+          <hr></hr>
 
-      <div className="ImpactMNK">
-        <ImpactMNK />
-      </div>
-      <hr></hr>
+          <hr></hr>
+          <div className="TradeDoublerMMads">
+            <TradeDoublerMMads />
+          </div>
+          <div className="TradeDoublerMaxMania">
+            <TradeDoublerMaxMania />
+          </div>
+          <div className="TradeDoublerMediaMax">
+            <TradeDoublerMediaMax />
+          </div>
+          <div className="TradeDoublerMNK">
+            <TradeDoublerMNK />
+          </div>
+          <hr></hr>
 
-      <hr></hr>
-      <div className="Partnerizemediamaxadv">
-        <Partnerizemediamaxadv />
-      </div>
+          <hr></hr>
+          <div className="RakutenMMads">
+            <RakutenMMads />
+          </div>
+          <div className="RakutenMaxMania">
+            <RakutenMaxMania />
+          </div>
+          <hr></hr>
 
-      <div className="PartnerizeMaxMania">
-        <PartnerizeMaxMania />
-      </div>
+          <hr></hr>
+          <div className="Finance_ad">
+            <Finance_ad />
+          </div>
+          <hr></hr>
 
-      <div className="PartnerizeMMadsTech">
-        <PartnerizeMMadsTech />
-      </div>
+          <hr></hr>
+          <div className="MyLeadsMaatr">
+            <MyLeadsMaatr />
+          </div>
+          <hr></hr>
 
-      <div className="PartnerizeMnkdigi">
-        <PartnerizeMnkdigi />
-      </div>
-      <hr></hr>
+          <hr></hr>
+          <div className="ImpactMediaMax">
+            <ImpactMediaMax />
+          </div>
 
-      <hr></hr>
-      <div className="AwinMediamax">
-        <AwinMediamax />
-      </div>
-      <hr></hr>
+          <div className="ImpactTechMMads">
+            <ImpactTechMMads />
+          </div>
 
-      <hr></hr>
-      <div className="OctaadsMedia">
-        <OctaadsMedia />
-      </div>
-      <hr></hr>
+          <div className="ImpactSaleMMads">
+            <ImpactSaleMMads />
+          </div>
 
-      <hr></hr>
-      <div className="HumeClickOrbit">
-        <HumeClickOrbit />
-      </div>
-      <hr></hr>
+          <div className="ImpactMaxMania">
+            <ImpactMaxMania />
+          </div>
 
-      <hr></hr>
-      <div className="ViatorMNK">
-        <ViatorMNK />
-      </div>
-      <hr></hr>
+          <div className="ImpactMNK">
+            <ImpactMNK />
+          </div>
+          <hr></hr>
 
-      <hr></hr>
-      <div className="SaatvaClickdealerMaxMania">
-        <SaatvaClickdealerMaxMania />
-      </div>
-      <hr></hr>
+          <hr></hr>
+          <div className="Partnerizemediamaxadv">
+            <Partnerizemediamaxadv />
+          </div>
 
-      <hr></hr>
-      <div className="MedviMaxmania">
-        <MedviMaxmania />
-      </div>
-      <hr></hr>
+          <div className="PartnerizeMaxMania">
+            <PartnerizeMaxMania />
+          </div>
 
-      <hr></hr>
-      <div className="Aroma360MMads">
-        <Aroma360MMads />
-      </div>
-      <hr></hr>
+          <div className="PartnerizeMMadsTech">
+            <PartnerizeMMadsTech />
+          </div>
 
-      <hr></hr>
-      <div className="GetYourGuide">
-        <GetYourGuide />
-      </div>
-      <hr></hr>
+          <div className="PartnerizeMnkdigi">
+            <PartnerizeMnkdigi />
+          </div>
+          <hr></hr>
 
-      <hr></hr>
-      <div style={{ padding: "20px" }}>
-        <h2>📁 Upload Affiliate Report</h2>
+          <hr></hr>
+          <div className="AwinMediamax">
+            <AwinMediamax />
+          </div>
+          <hr></hr>
 
-        <label>
-          Select File Type:{" "}
-          <select
-            value={fileType}
-            onChange={(e) => {
-              setFileType(e.target.value);
-              setRawData([]);
-              setBrands([]);
-              setGroupedData({});
-            }}
-          >
-            <option value="Klook">Klook</option>
-            <option value="Klook-M">Klook-M</option>
-            <option value="Agoda-P">Agoda-P</option>
-          </select>
-        </label>
+          <hr></hr>
+          <div className="OctaadsMedia">
+            <OctaadsMedia />
+          </div>
+          <hr></hr>
 
-        <input
-          type="file"
-          accept=".xlsx,.csv"
-          onChange={handleExcelUpload}
-          style={{ marginLeft: "10px" }}
-        />
+          <hr></hr>
+          <div className="HumeClickOrbit">
+            <HumeClickOrbit />
+          </div>
+          <hr></hr>
 
-        {rawData.length > 0 && (
-          <>
-            <h3>✅Raw Rows - {rawData.length}</h3>
-            <pre
-              style={{
-                background: "rgb(67, 67, 67)",
-                padding: "10px",
-                border: "1px solid white",
-                maxHeight: "200px",
-                overflowY: "scroll",
-                fontSize: "12px",
-              }}
-            >
-              {JSON.stringify(rawData, null, 2)}
-            </pre>
-          </>
-        )}
+          <hr></hr>
+          <div className="ViatorMNK">
+            <ViatorMNK />
+          </div>
+          <hr></hr>
 
-        {brands.map((brand) => (
-          <div
-            key={brand}
-            style={{
-              border: "1px solid #ccc",
-              padding: "10px",
-              marginTop: "20px",
-            }}
-          >
-            <h4>
-              📌 {brand} — {groupedData[brand]?.length || 0} entries
-            </h4>
+          <hr></hr>
+          <div className="SaatvaClickdealerMaxMania">
+            <SaatvaClickdealerMaxMania />
+          </div>
+          <hr></hr>
+
+          <hr></hr>
+          <div className="MedviMaxmania">
+            <MedviMaxmania />
+          </div>
+          <hr></hr>
+
+          <hr></hr>
+          <div className="Aroma360MMads">
+            <Aroma360MMads />
+          </div>
+          <hr></hr>
+
+          <hr></hr>
+          <div className="GetYourGuide">
+            <GetYourGuide />
+          </div>
+          <hr></hr>
+
+          <hr></hr>
+          <div style={{ padding: "20px" }}>
+            <h2>📁 Upload Affiliate Report</h2>
+
+            <label>
+              Select File Type:{" "}
+              <select
+                value={fileType}
+                onChange={(e) => {
+                  setFileType(e.target.value);
+                  setRawData([]);
+                  setBrands([]);
+                  setGroupedData({});
+                }}
+              >
+                <option value="Klook">Klook</option>
+                <option value="Klook-M">Klook-M</option>
+                <option value="Agoda-P">Agoda-P</option>
+              </select>
+            </label>
+
             <input
-              type="text"
-              placeholder="Enter custom file name (optional)"
-              value={customFileName}
-              onChange={(e) => setCustomFileName(e.target.value)}
-              className="p-2 border rounded mb-2"
+              type="file"
+              accept=".xlsx,.csv"
+              onChange={handleExcelUpload}
+              style={{ marginLeft: "10px" }}
             />
 
-            <button onClick={() => handleDownloadCSV(brand)}>
-              ⬇️ Download CSV
-            </button>
-            <pre
-              style={{
-                background: "#111",
-                color: "#0f0",
-                padding: "10px",
-                fontSize: "12px",
-                maxHeight: "200px",
-                overflowY: "auto",
-              }}
-            >
-              {JSON.stringify(groupedData[brand], null, 2)}
-            </pre>
+            {rawData.length > 0 && (
+              <>
+                <h3>✅Raw Rows - {rawData.length}</h3>
+                <pre
+                  style={{
+                    background: "rgb(67, 67, 67)",
+                    padding: "10px",
+                    border: "1px solid white",
+                    maxHeight: "200px",
+                    overflowY: "scroll",
+                    fontSize: "12px",
+                  }}
+                >
+                  {JSON.stringify(rawData, null, 2)}
+                </pre>
+              </>
+            )}
+
+            {brands.map((brand) => (
+              <div
+                key={brand}
+                style={{
+                  border: "1px solid #ccc",
+                  padding: "10px",
+                  marginTop: "20px",
+                }}
+              >
+                <h4>
+                  📌 {brand} — {groupedData[brand]?.length || 0} entries
+                </h4>
+                <input
+                  type="text"
+                  placeholder="Enter custom file name (optional)"
+                  value={customFileName}
+                  onChange={(e) => setCustomFileName(e.target.value)}
+                  className="p-2 border rounded mb-2"
+                />
+
+                <button onClick={() => handleDownloadCSV(brand)}>
+                  ⬇️ Download CSV
+                </button>
+                <pre
+                  style={{
+                    background: "#111",
+                    color: "#0f0",
+                    padding: "10px",
+                    fontSize: "12px",
+                    maxHeight: "200px",
+                    overflowY: "auto",
+                  }}
+                >
+                  {JSON.stringify(groupedData[brand], null, 2)}
+                </pre>
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
+        </>
+      )}
     </>
   );
 }

@@ -5,10 +5,6 @@ import { saveAs } from "file-saver";
 
 const Campaigns = [
   {
-    name: "Alinea Invest",
-    Id: 2662,
-  },
-  {
     name: "Boden DE",
     Id: 2027,
   },
@@ -21,92 +17,16 @@ const Campaigns = [
     Id: 2566,
   },
   {
-    name: "Faye Travel Insurance",
-    Id: 2658,
-  },
-  {
-    name: "flexispot.de",
-    Id: 2500,
-  },
-  {
-    name: "Gauth AI",
-    Id: 2636,
-  },
-  {
     name: "Humble Bundle, Inc.",
     Id: 1722,
-  },
-  {
-    name: "Kovo Affiliate Program",
-    Id: 2671,
-  },
-  {
-    name: "Little Sleepies",
-    Id: 2434,
-  },
-  {
-    name: "Malaysia Airlines",
-    Id: 2451,
-  },
-  {
-    name: "Network Solutions Affiliate Program",
-    Id: 2181,
-  },
-  {
-    name: "Nutrafol",
-    Id: 2567,
-  },
-  {
-    name: "Pins & Aces",
-    Id: 2657,
   },
   {
     name: "Reolink",
     Id: 2164,
   },
   {
-    name: "Stitch Fix",
-    Id: 2344,
-  },
-  {
-    name: "Target",
-    Id: 2115,
-  },
-  {
-    name: "Travala.com",
-    Id: 2044,
-  },
-  {
-    name: "Udemy",
-    Id: 2356,
-  },
-  {
-    name: "VEGAS.com",
-    Id: 2447,
-  },
-  {
-    name: "YouFibre",
-    Id: 2656,
-  },
-  {
     name: "AARP",
     Id: 2119,
-  },
-  {
-    name: "SHOKZ US",
-    Id: 2660,
-  },
-  {
-    name: "1st Phorm",
-    Id: 2659,
-  },
-  {
-    name: "Skylum Affiliate Program",
-    Id: 2426,
-  },
-  {
-    name: "Otter.ai",
-    Id: 2167,
   },
   {
     name: "HostGator.com",
@@ -117,18 +37,6 @@ const Campaigns = [
     Id: 2720,
   },
   {
-    name: "Uniform Advantage",
-    Id: 2715,
-  },
-  {
-    name: "ShutEye®: Sleep Tracker, Sound",
-    Id: 2669,
-  },
-  {
-    name: "REEF",
-    Id: 2364,
-  },
-  {
     name: "Remitly",
     Id: 2728,
   },
@@ -137,45 +45,48 @@ const Campaigns = [
     Id: 2733,
   },
   {
-    name: "iHerb",
-    Id: 2051,
-  },
-  {
-    name: "Wolf & Badger",
-    Id: 2737,
-  },
-  {
     name: "NordVPN",
     Id: 2727,
-  },
-  {
-    name: "Ro",
-    Id: 2754,
   },
   {
     name: "Fabletics Performance",
     Id: 2752,
   },
   {
-    name: "QVC - US",
-    Id: 2751,
-  },
-
-  {
-    // name: "StockX",
-    Id: 2049,
+    name: "Airpaz",
+    Id: 2779,
   },
   {
-    // name: "Fleshlight and Fleshjack",
-    Id: 2424,
+    name: "Boden USA",
+    Id: 2851,
   },
   {
-    // name: "Hostinger",
-    Id: 2338,
+    name: "Crypto.com Affiliates",
+    Id: 2789,
   },
   {
-    // name: "Orthofeet",
-    Id: 2343,
+    name: "en route jewelry",
+    Id: 2812,
+  },
+  {
+    name: "GLD",
+    Id: 2847,
+  },
+  {
+    name: "Hill House Home",
+    Id: 2829,
+  },
+  {
+    name: "Nomad eSIM",
+    Id: 2741,
+  },
+  {
+    name: "Samsonite",
+    Id: 2821,
+  },
+  {
+    name: "Ticketmaster Denmark",
+    Id: 2846,
   },
 ];
 
@@ -276,7 +187,7 @@ export default function ImpactMaxMania() {
         txn_id: row["Action Id"],
         sale_amount: row["Sale Amount"],
         revenue: actionEarning,
-        payout: ((actionEarning * 90) / 100).toFixed(10),
+        payout: ((actionEarning * 80) / 100).toFixed(10),
         payout_currency: "USD",
         campaign_id: campaign.Id,
         publisher_id: row["Sub Id 2"],
@@ -316,7 +227,7 @@ export default function ImpactMaxMania() {
       };
     } else if (campaign.Id === 2164 && campaign.name === "Reolink") {
       return {
-        p1: row["Sub Id 3"],
+        p1: row["Sub Id 1"],
         created: row["Action Date"],
         txn_id: row["Action Id"],
         sale_amount: row["Sale Amount"],
@@ -326,7 +237,7 @@ export default function ImpactMaxMania() {
         campaign_id: campaign.Id,
         publisher_id: row["Sub Id 2"],
         status: row["Sub Id 2"] === "77" ? "Pending" : "Approved",
-        sub1: row["Sub Id 1"],
+        sub1: row["Sub Id 3"],
         device_id: row["Device Type"] || "unknown",
       };
     } else if (campaign.Id === 2344 && campaign.name === "Stitch Fix") {
@@ -396,7 +307,7 @@ export default function ImpactMaxMania() {
         txn_id: row["Action Id"],
         sale_amount: row["Sale Amount"],
         revenue: actionEarning,
-        payout: ((actionEarning * 80) / 100).toFixed(10),
+        payout: ((actionEarning * 90) / 100).toFixed(10),
         payout_currency: "USD",
         campaign_id: campaign.Id,
         publisher_id: row["Sub Id 1"],
@@ -744,9 +655,9 @@ export default function ImpactMaxMania() {
         payout: ((actionEarning * 80) / 100).toFixed(10),
         payout_currency: "USD",
         campaign_id: campaign.Id,
-        publisher_id: row["Sub Id 3"],
-        status: row["Sub Id 3"] === "77" ? "Pending" : "Approved",
-        sub1: row["Sub Id 1"],
+        publisher_id: row["Sub Id 1"],
+        status: row["Sub Id 1"] === "77" ? "Pending" : "Approved",
+        sub1: row["Sub Id 2"],
         device_id: row["Device Type"] || "unknown",
       };
     } else if (campaign.Id === 2733 && campaign.name === "Rothy's") {
@@ -855,6 +766,147 @@ export default function ImpactMaxMania() {
         publisher_id: row["Sub Id 2"],
         status: row["Sub Id 2"] === "77" ? "Pending" : "Approved",
         sub1: row["Sub Id 1"],
+        device_id: row["Device Type"] || "unknown",
+      };
+    } else if (campaign.Id === 2779 && campaign.name === "Airpaz") {
+      return {
+        // p1: row["Sub Id 1"],
+        created: row["Action Date"],
+        txn_id: row["Action Id"],
+        sale_amount: row["Sale Amount"],
+        revenue: actionEarning,
+        payout: ((actionEarning * 80) / 100).toFixed(10),
+        payout_currency: "USD",
+        campaign_id: campaign.Id,
+        publisher_id: row["Sub Id 2"],
+        status: row["Sub Id 2"] === "77" ? "Pending" : "Approved",
+        sub1: row["Sub Id 1"],
+        device_id: row["Device Type"] || "unknown",
+      };
+    } else if (campaign.Id === 2851 && campaign.name === "Boden USA") {
+      return {
+        p1: row["Sub Id 3"],
+        created: row["Action Date"],
+        txn_id: row["Action Id"],
+        sale_amount: row["Sale Amount"],
+        revenue: actionEarning,
+        payout: ((actionEarning * 80) / 100).toFixed(10),
+        payout_currency: "USD",
+        campaign_id: campaign.Id,
+        publisher_id: row["Sub Id 2"],
+        status: row["Sub Id 2"] === "77" ? "Pending" : "Approved",
+        sub1: row["Sub Id 1"],
+        device_id: row["Device Type"] || "unknown",
+      };
+    } else if (
+      campaign.Id === 2789 &&
+      campaign.name === "Crypto.com Affiliates"
+    ) {
+      return {
+        p1: row["Sub Id 3"],
+        created: row["Action Date"],
+        txn_id: row["Action Id"],
+        sale_amount: row["Sale Amount"],
+        revenue: actionEarning,
+        payout: ((actionEarning * 80) / 100).toFixed(10),
+        payout_currency: "USD",
+        campaign_id: campaign.Id,
+        publisher_id: row["Sub Id 2"],
+        status: row["Sub Id 2"] === "77" ? "Pending" : "Approved",
+        sub1: row["Sub Id 1"],
+        device_id: row["Device Type"] || "unknown",
+      };
+    } else if (campaign.Id === 2812 && campaign.name === "en route jewelry") {
+      return {
+        p1: row["Sub Id 3"],
+        created: row["Action Date"],
+        txn_id: row["Action Id"],
+        sale_amount: row["Sale Amount"],
+        revenue: actionEarning,
+        payout: ((actionEarning * 80) / 100).toFixed(10),
+        payout_currency: "USD",
+        campaign_id: campaign.Id,
+        publisher_id: row["Sub Id 2"],
+        status: row["Sub Id 2"] === "77" ? "Pending" : "Approved",
+        sub1: row["Sub Id 1"],
+        device_id: row["Device Type"] || "unknown",
+      };
+    } else if (campaign.Id === 2847 && campaign.name === "GLD") {
+      return {
+        p1: row["Sub Id 3"],
+        created: row["Action Date"],
+        txn_id: row["Action Id"],
+        sale_amount: row["Sale Amount"],
+        revenue: actionEarning,
+        payout: ((actionEarning * 80) / 100).toFixed(10),
+        payout_currency: "USD",
+        campaign_id: campaign.Id,
+        publisher_id: row["Sub Id 2"],
+        status: row["Sub Id 2"] === "77" ? "Pending" : "Approved",
+        sub1: row["Sub Id 1"],
+        device_id: row["Device Type"] || "unknown",
+      };
+    } else if (campaign.Id === 2829 && campaign.name === "Hill House Home") {
+      return {
+        p1: row["Sub Id 3"],
+        created: row["Action Date"],
+        txn_id: row["Action Id"],
+        sale_amount: row["Sale Amount"],
+        revenue: actionEarning,
+        payout: ((actionEarning * 80) / 100).toFixed(10),
+        payout_currency: "USD",
+        campaign_id: campaign.Id,
+        publisher_id: row["Sub Id 2"],
+        status: row["Sub Id 2"] === "77" ? "Pending" : "Approved",
+        sub1: row["Sub Id 1"],
+        device_id: row["Device Type"] || "unknown",
+      };
+    } else if (campaign.Id === 2741 && campaign.name === "Nomad eSIM") {
+      return {
+        p1: row["Sub Id 1"],
+        created: row["Action Date"],
+        txn_id: row["Action Id"],
+        sale_amount: row["Sale Amount"],
+        revenue: actionEarning,
+        payout: ((actionEarning * 80) / 100).toFixed(10),
+        payout_currency: "USD",
+        campaign_id: campaign.Id,
+        publisher_id: row["Sub Id 2"],
+        status: row["Sub Id 2"] === "77" ? "Pending" : "Approved",
+        sub1: row["Sub Id 3"],
+        device_id: row["Device Type"] || "unknown",
+      };
+    } else if (campaign.Id === 2821 && campaign.name === "Samsonite") {
+      return {
+        // p1: row["Sub Id 1"],
+        created: row["Action Date"],
+        txn_id: row["Action Id"],
+        sale_amount: row["Sale Amount"],
+        revenue: actionEarning,
+        payout: ((actionEarning * 80) / 100).toFixed(10),
+        payout_currency: "USD",
+        campaign_id: campaign.Id,
+        publisher_id: row["Sub Id 2"],
+        status: row["Sub Id 2"] === "77" ? "Pending" : "Approved",
+        sub1: row["Sub Id 1"],
+        device_id: row["Device Type"] || "unknown",
+      };
+    } else if (
+      campaign.Id === 2846 &&
+      campaign.name === "Ticketmaster Denmark"
+    ) {
+      return {
+        p1: row["Sub Id 1"],
+        created: row["Action Date"],
+        txn_id: row["Action Id"],
+        sale_amount: row["Sale Amount"],
+        revenue: actionEarning,
+        payout: ((actionEarning * 80) / 100).toFixed(10),
+        payout_currency: "USD",
+        campaign_id: campaign.Id,
+        publisher_id: row["Sub Id 2"],
+        status: row["Sub Id 2"] === "77" ? "Pending" : "Approved",
+        // sub1: row["Sub Id 1"],
         device_id: row["Device Type"] || "unknown",
       };
     }

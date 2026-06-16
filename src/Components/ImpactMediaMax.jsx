@@ -93,10 +93,6 @@ const Campaigns = [
     Id: 2534,
   },
   {
-    name: "BetterHelp",
-    Id: 2680,
-  },
-  {
     name: "Airalo",
     Id: 2466,
   },

@@ -1,0 +1,228 @@
+import React, { useState } from "react";
+import Papa from "papaparse";
+import { saveAs } from "file-saver";
+
+const Campaigns = [
+  {
+    name: "Etsy Affiliate US",
+    payoutPercent: 80,
+    publisher: "AM Tech",
+  },
+];
+
+export default function RakutenMaxManiaReportSharing() {
+  const [rawData, setRawData] = useState([]);
+  const [brands, setBrands] = useState([]);
+  const [groupedData, setGroupedData] = useState({});
+
+  const parseDate = (dateStr) => {
+    if (!dateStr) return new Date(0);
+
+    const parts = dateStr.split("/");
+
+    if (parts.length === 3) {
+      const month = parseInt(parts[0], 10);
+      const day = parseInt(parts[1], 10);
+      const year = parseInt(parts[2], 10);
+
+      return new Date(year, month - 1, day);
+    }
+
+    return new Date(dateStr);
+  };
+
+  const formatDateRange = (dates) => {
+    const sorted = [...dates].sort((a, b) => a - b);
+
+    const start = sorted[0];
+    const end = sorted[sorted.length - 1];
+
+    const startDay = start.getDate();
+    const endDay = end.getDate();
+    const startMonth = start.getMonth();
+    const endMonth = end.getMonth();
+    const year = start.getFullYear();
+
+    const monthFormatter = (d) => d.toLocaleString("en-US", { month: "short" });
+
+    if (startDay === endDay && startMonth === endMonth) {
+      return `${startDay} ${monthFormatter(start)} ${year}`;
+    }
+
+    if (startMonth === endMonth) {
+      return `${startDay}-${endDay} ${monthFormatter(start)} ${year}`;
+    }
+
+    return `${startDay} ${monthFormatter(
+      start,
+    )} - ${endDay} ${monthFormatter(end)} ${year}`;
+  };
+
+  const handleUpload = (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    Papa.parse(file, {
+      skipEmptyLines: false,
+
+      complete: (results) => {
+        const csvData = results.data;
+
+        // Skip top report rows
+        const usableRows = csvData.slice(4);
+
+        const [header, ...rowValues] = usableRows;
+
+        const cleanData = rowValues
+          .filter((row) => row.length > 1)
+          .map((row) => {
+            const obj = {};
+
+            header.forEach((col, i) => {
+              obj[col] = row[i] || "";
+            });
+
+            return obj;
+          });
+
+        // Only campaigns in Campaigns array
+        const filteredRows = cleanData.filter((row) =>
+          Campaigns.some(
+            (campaign) => campaign.name === row["Advertiser Name"]?.trim(),
+          ),
+        );
+
+        setRawData(filteredRows);
+
+        const uniqueBrands = [
+          ...new Set(filteredRows.map((row) => row["Advertiser Name"]?.trim())),
+        ];
+
+        setBrands(uniqueBrands);
+
+        const brandWise = {};
+
+        uniqueBrands.forEach((brand) => {
+          const campaign = Campaigns.find((c) => c.name === brand);
+
+          if (!campaign) return;
+
+          const rows = filteredRows
+            .filter((row) => row["Advertiser Name"]?.trim() === brand)
+            .map((row) => {
+              const commission = parseFloat(row["Total Commission"] || 0);
+
+              const payout = (commission * campaign.payoutPercent) / 100;
+
+              const newRow = {};
+
+              Object.keys(row).forEach((key) => {
+                if (key === "Total Commission") {
+                  newRow["Payout(USD)"] = payout.toFixed(10);
+                } else {
+                  newRow[key] = row[key];
+                }
+              });
+
+              return newRow;
+            })
+            .sort(
+              (a, b) =>
+                parseDate(a["Transaction Date"]) -
+                parseDate(b["Transaction Date"]),
+            );
+
+          brandWise[brand] = rows;
+        });
+
+        setGroupedData(brandWise);
+      },
+    });
+  };
+
+  const handleDownloadCSV = (brand) => {
+    const data = groupedData[brand];
+
+    if (!data?.length) return;
+
+    const dates = data
+      .map((row) => parseDate(row["Transaction Date"]))
+      .filter(Boolean);
+
+    const dateRange = dates.length ? formatDateRange(dates) : "";
+
+    const fileName = `${brand} ${dateRange}.csv`;
+
+    const csv = Papa.unparse(data);
+
+    const blob = new Blob([csv], {
+      type: "text/csv;charset=utf-8;",
+    });
+
+    saveAs(blob, fileName);
+  };
+
+  return (
+    <div style={{ padding: "20px" }}>
+      <h2>📁 Upload Rakuten MaxMania Report</h2>
+
+      <input type="file" accept=".csv" onChange={handleUpload} />
+
+      {rawData.length > 0 && (
+        <>
+          <h3>✅ Matching Rows - {rawData.length}</h3>
+
+          <pre
+            style={{
+              background: "#444",
+              padding: "10px",
+              maxHeight: "200px",
+              overflowY: "auto",
+              fontSize: "12px",
+            }}
+          >
+            {JSON.stringify(rawData, null, 2)}
+          </pre>
+        </>
+      )}
+
+      {brands.map((brand) => (
+        <div
+          key={brand}
+          style={{
+            border: "1px solid #ccc",
+            padding: "10px",
+            marginTop: "20px",
+          }}
+        >
+          <h4>
+            📌
+            {Campaigns.find((c) => c.name === brand)?.publisher}
+            {" - "}
+            {brand}({Campaigns.find((c) => c.name === brand)?.payoutPercent}
+            %)
+            {" — "}
+            {groupedData[brand]?.length || 0} rows
+          </h4>
+
+          <button onClick={() => handleDownloadCSV(brand)}>
+            ⬇️ Download CSV
+          </button>
+
+          <pre
+            style={{
+              background: "#111",
+              color: "#0f0",
+              padding: "10px",
+              maxHeight: "200px",
+              overflowY: "auto",
+              fontSize: "12px",
+            }}
+          >
+            {JSON.stringify(groupedData[brand], null, 2)}
+          </pre>
+        </div>
+      ))}
+    </div>
+  );
+}

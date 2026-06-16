@@ -20,6 +20,10 @@ const Campaigns = [
     name: "StubHub NORAM",
     Id: 662,
   },
+  {
+    name: "F-Secure | Internet Security & VPN",
+    Id: 2279,
+  },
 
   {
     // name: "Playstation Direct DE",
@@ -137,6 +141,27 @@ export default function Partnerizemediamaxadv() {
         campaign_id: campaign.Id,
         publisher_id: row["publisher_reference"],
         status: row["publisher_reference"] === "77" ? "Pending" : "Approved",
+        sub1: row["clickref"],
+        device_id: row["ref_device"] || "unknown",
+      };
+    } else if (
+      campaign.Id === 2279 &&
+      campaign.name === "F-Secure | Internet Security & VPN"
+    ) {
+      return {
+        p1: row["advertiser_reference"].split("_")[1],
+        created: row["conversion_date"],
+        txn_id: row["conversion_id"],
+        sale_amount: row["value"],
+        revenue: actionEarning,
+        payout: ((actionEarning * 80) / 100).toFixed(10),
+        payout_currency: row["currency"].split(" ")[0],
+        campaign_id: campaign.Id,
+        publisher_id: row["advertiser_reference"].split("_")[0],
+        status:
+          row["advertiser_reference"].split("_")[0] === "77"
+            ? "Pending"
+            : "Approved",
         sub1: row["clickref"],
         device_id: row["ref_device"] || "unknown",
       };
