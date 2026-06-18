@@ -84,6 +84,14 @@ const Campaigns = [
     name: "Alinea Invest",
     Id: 2760,
   },
+  {
+    name: "Airpaz",
+    Id: 2593,
+  },
+  {
+    name: "EaseUS (EN - Global)",
+    Id: 2853,
+  },
 
   {
     // name: "Envato Placeit",
@@ -569,9 +577,9 @@ export default function ImpactTechMMads() {
         payout: ((actionEarning * 80) / 100).toFixed(10),
         payout_currency: "USD",
         campaign_id: campaign.Id,
-        publisher_id: row["Sub Id 2"],
-        status: row["Sub Id 2"] === "77" ? "Pending" : "Approved",
-        sub1: row["Sub Id 1"],
+        publisher_id: row["Sub Id 1"],
+        status: row["Sub Id 1"] === "77" ? "Pending" : "Approved",
+        sub1: row["Sub Id 2"],
         device_id: row["Device Type"] || "unknown",
       };
     } else if (campaign.Id === 2677 && campaign.name === "PopAi") {
@@ -630,6 +638,39 @@ export default function ImpactTechMMads() {
         sale_amount: row["Sale Amount"],
         revenue: actionEarning,
         payout: ((actionEarning * 80) / 100).toFixed(10),
+        payout_currency: "USD",
+        campaign_id: campaign.Id,
+        publisher_id: row["Sub Id 2"],
+        status: row["Sub Id 2"] === "77" ? "Pending" : "Approved",
+        sub1: row["Sub Id 1"],
+        device_id: row["Device Type"] || "unknown",
+      };
+    } else if (campaign.Id === 2593 && campaign.name === "Airpaz") {
+      return {
+        // p1: row["Sub Id 1"],
+        created: row["Action Date"],
+        txn_id: row["Action Id"],
+        sale_amount: row["Sale Amount"],
+        revenue: actionEarning,
+        payout: ((actionEarning * 80) / 100).toFixed(10),
+        payout_currency: "USD",
+        campaign_id: campaign.Id,
+        publisher_id: row["Sub Id 2"],
+        status: row["Sub Id 2"] === "77" ? "Pending" : "Approved",
+        sub1: row["Sub Id 1"],
+        device_id: row["Device Type"] || "unknown",
+      };
+    } else if (
+      campaign.Id === 2853 &&
+      campaign.name === "EaseUS (EN - Global)"
+    ) {
+      return {
+        // p1: row["Sub Id 1"],
+        created: row["Action Date"],
+        txn_id: row["Action Id"],
+        sale_amount: row["Sale Amount"],
+        revenue: actionEarning,
+        payout: ((actionEarning * 90) / 100).toFixed(10),
         payout_currency: "USD",
         campaign_id: campaign.Id,
         publisher_id: row["Sub Id 2"],
