@@ -181,7 +181,7 @@ export default function AwinMaxmania() {
 
   return (
     <div style={{ padding: "20px" }}>
-      <h2>📁 Upload Awin Mediamax Report</h2>
+      <h2>📁 Upload Awin Maxmania Report</h2>
 
       <input
         type="file"

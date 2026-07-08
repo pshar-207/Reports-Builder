@@ -245,7 +245,7 @@ export default function RakutenMnk() {
 
   return (
     <div style={{ padding: "20px" }}>
-      <h2>📁 Upload Rakuten MMAds Report</h2>
+      <h2>📁 Upload Rakuten MNK Report</h2>
 
       <input
         type="file"
