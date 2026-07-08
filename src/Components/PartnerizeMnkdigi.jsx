@@ -65,7 +65,7 @@ export default function PartnerizeMnkdigi() {
       };
     } else if (campaign.Id === 2696 && campaign.name === "viagogo") {
       return {
-        // p1: row["publisher_reference0"],
+        p1: row["publisher_reference"],
         created: row["conversion_date"],
         txn_id: row["conversion_id"],
         sale_amount: row["value"],
@@ -80,7 +80,7 @@ export default function PartnerizeMnkdigi() {
       };
     } else if (campaign.Id === 2758 && campaign.name === "G-Star RAW") {
       return {
-        // p1: row["publisher_reference0"],
+        p1: row["publisher_reference"],
         created: row["conversion_date"],
         txn_id: row["conversion_id"],
         sale_amount: row["value"],
