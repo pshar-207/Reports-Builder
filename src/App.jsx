@@ -10,6 +10,7 @@ import TradeDoublerMNK from "./Components/TradeDoublerMNK";
 
 import RakutenMMads from "./Components/RakutenMMads";
 import RakutenMaxMania from "./Components/RakutenMaxMania";
+import RakutenMnk from "./Components/RakutenMnk";
 
 import Finance_ad from "./Components/Finance_ad";
 
@@ -332,6 +333,9 @@ export default function App() {
           </div>
           <div className="RakutenMaxMania">
             <RakutenMaxMania />
+          </div>
+          <div className="RakutenMnk">
+            <RakutenMnk />
           </div>
           <hr></hr>
 
