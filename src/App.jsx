@@ -29,6 +29,7 @@ import PartnerizeMnkdigi from "./Components/PartnerizeMnkdigi";
 import PartnerizeMMadsDigital from "./Components/PartnerizeMMadsDigital";
 
 import AwinMediamax from "./Components/AwinMediamax";
+import AwinMaxmania from "./Components/AwinMaxmania";
 
 import OctaadsMedia from "./Components/OctaadsMedia";
 
@@ -398,6 +399,9 @@ export default function App() {
           <hr></hr>
           <div className="AwinMediamax">
             <AwinMediamax />
+          </div>
+          <div className="AwinMaxmania">
+            <AwinMaxmania />
           </div>
           <hr></hr>
 
