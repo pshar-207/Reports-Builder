@@ -13,21 +13,8 @@ const Campaigns = [
     Id: 2463,
   },
   {
-    name: "Charlotte Tilbury UK",
-    Id: 534,
-  },
-  {
-    name: "GoCity",
-    Id: 1179,
-  },
-  {
-    name: "Saatva.com",
-    Id: 1275,
-  },
-
-  {
-    // name: "Gamivo Global",
-    Id: 2367,
+    name: "Toms Americas",
+    Id: 2748,
   },
 ];
 
@@ -52,22 +39,8 @@ export default function PartnerizeMaxMania() {
         payout: ((actionEarning * 80) / 100).toFixed(10),
         payout_currency: row["currency"].split(" ")[0],
         campaign_id: campaign.Id,
-        publisher_id: row["publisher_reference"],
-        status: row["publisher_reference"] === "77" ? "Pending" : "Approved",
-        sub1: row["clickref"],
-        device_id: row["ref_device"] || "unknown",
-      };
-    } else if (campaign.Id === 2367 && campaign.name === "Gamivo Global") {
-      return {
-        created: row["conversion_date"],
-        txn_id: row["conversion_id"],
-        sale_amount: row["value"],
-        revenue: actionEarning,
-        payout: ((actionEarning * 80) / 100).toFixed(10),
-        payout_currency: row["currency"].split(" ")[0],
-        campaign_id: campaign.Id,
-        publisher_id: row["publisher_reference"],
-        status: row["publisher_reference"] === "77" ? "Pending" : "Approved",
+        publisher_id: row["advertiser_reference"],
+        status: row["advertiser_reference"] === "77" ? "Pending" : "Approved",
         sub1: row["clickref"],
         device_id: row["ref_device"] || "unknown",
       };
@@ -85,38 +58,7 @@ export default function PartnerizeMaxMania() {
         sub1: row["clickref"],
         device_id: row["ref_device"] || "unknown",
       };
-    } else if (
-      campaign.Id === 534 &&
-      campaign.name === "Charlotte Tilbury UK"
-    ) {
-      return {
-        created: row["conversion_date"],
-        txn_id: row["conversion_id"],
-        sale_amount: row["value"],
-        revenue: actionEarning,
-        payout: ((actionEarning * 80) / 100).toFixed(10),
-        payout_currency: row["currency"].split(" ")[0],
-        campaign_id: campaign.Id,
-        publisher_id: row["advertiser_reference"],
-        status: row["advertiser_reference"] === "77" ? "Pending" : "Approved",
-        sub1: row["clickref"],
-        device_id: row["ref_device"] || "unknown",
-      };
-    } else if (campaign.Id === 1179 && campaign.name === "GoCity") {
-      return {
-        created: row["conversion_date"],
-        txn_id: row["conversion_id"],
-        sale_amount: row["value"],
-        revenue: actionEarning,
-        payout: ((actionEarning * 80) / 100).toFixed(10),
-        payout_currency: row["currency"].split(" ")[0],
-        campaign_id: campaign.Id,
-        publisher_id: row["advertiser_reference"],
-        status: row["advertiser_reference"] === "77" ? "Pending" : "Approved",
-        sub1: row["clickref"],
-        device_id: row["ref_device"] || "unknown",
-      };
-    } else if (campaign.Id === 1275 && campaign.name === "Saatva.com") {
+    } else if (campaign.Id === 2748 && campaign.name === "Toms Americas") {
       return {
         created: row["conversion_date"],
         txn_id: row["conversion_id"],
