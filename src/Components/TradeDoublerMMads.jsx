@@ -5,33 +5,8 @@ import { saveAs } from "file-saver";
 
 const Campaigns = [
   {
-    name: "Caledonian Travel",
-    Id: 1388,
-  },
-  {
-    name: "Hurley UK",
-    Id: 2237,
-  },
-  {
     name: "Irish Ferries UK",
     Id: 2497,
-  },
-  {
-    name: "PULL and BEAR UK",
-    Id: 2496,
-  },
-
-  {
-    name: "Eobuwie (PL)",
-    Id: 2122,
-  },
-  {
-    // name: "Modivo.pl",
-    Id: 2121,
-  },
-  {
-    // name: "EuroParcs | Unique holiday parks in the Netherlands, Belgium, Luxembourg, Austria and Germany",
-    Id: 2490,
   },
 ];
 
@@ -44,82 +19,7 @@ export default function TradeDoublerMMads() {
   const mapTradeDoublerRow = (row, campaign) => {
     const actionEarning = parseFloat(row["commission"]);
 
-    if (campaign.Id === 1388 && campaign.name === "Caledonian Travel") {
-      return {
-        // p1: row["epi2"].split("_")[1],
-        created: row["timeOfTransaction"],
-        txn_id: row["transactionId"],
-        sale_amount: row["orderValue"],
-        revenue: actionEarning,
-        payout: ((actionEarning * 80) / 100).toFixed(10),
-        payout_currency: "USD",
-        campaign_id: campaign.Id,
-        publisher_id: row["epi"].split("_")[0],
-        status: row["epi"].split("_")[0] === "77" ? "Pending" : "Approved",
-        sub1: row["orderNumber"],
-        device_id: row["mobileDeviceType"] || "unknown",
-      };
-    } else if (campaign.Id === 2237 && campaign.name === "Hurley UK") {
-      return {
-        p1: row["epi"].split("_")[1],
-        created: row["timeOfTransaction"],
-        txn_id: row["transactionId"],
-        sale_amount: row["orderValue"],
-        revenue: actionEarning,
-        payout: ((actionEarning * 80) / 100).toFixed(10),
-        payout_currency: "USD",
-        campaign_id: campaign.Id,
-        publisher_id: row["epi"].split("_")[0],
-        status: row["epi"].split("_")[0] === "77" ? "Pending" : "Approved",
-        sub1: row["orderNumber"],
-        device_id: row["mobileDeviceType"] || "unknown",
-      };
-    } else if (campaign.Id === 2122 && campaign.name === "Eobuwie (PL)") {
-      return {
-        // p1: row["epi2"].split("_")[1],
-        created: row["timeOfTransaction"],
-        txn_id: row["transactionId"],
-        sale_amount: row["orderValue"],
-        revenue: actionEarning,
-        payout: ((actionEarning * 80) / 100).toFixed(10),
-        payout_currency: "USD",
-        campaign_id: campaign.Id,
-        publisher_id: row["epi2"].split("_")[0],
-        status: row["epi2"].split("_")[0] === "77" ? "Pending" : "Approved",
-        sub1: row["orderNumber"],
-        device_id: row["mobileDeviceType"] || "unknown",
-      };
-    } else if (campaign.Id === 2121 && campaign.name === "Modivo.pl") {
-      return {
-        // p1: row["epi2"].split("_")[1],
-        created: row["timeOfTransaction"],
-        txn_id: row["transactionId"],
-        sale_amount: row["orderValue"],
-        revenue: actionEarning,
-        payout: ((actionEarning * 80) / 100).toFixed(10),
-        payout_currency: "USD",
-        campaign_id: campaign.Id,
-        publisher_id: row["epi2"].split("_")[0],
-        status: row["epi2"].split("_")[0] === "77" ? "Pending" : "Approved",
-        sub1: row["orderNumber"],
-        device_id: row["mobileDeviceType"] || "unknown",
-      };
-    } else if (campaign.Id === 2496 && campaign.name === "PULL and BEAR UK") {
-      return {
-        p1: row["epi"].split("_")[1],
-        created: row["timeOfTransaction"],
-        txn_id: row["transactionId"],
-        sale_amount: row["orderValue"],
-        revenue: actionEarning,
-        payout: ((actionEarning * 80) / 100).toFixed(10),
-        payout_currency: "USD",
-        campaign_id: campaign.Id,
-        publisher_id: row["epi"].split("_")[0],
-        status: row["epi"].split("_")[0] === "77" ? "Pending" : "Approved",
-        sub1: row["orderNumber"],
-        device_id: row["mobileDeviceType"] || "unknown",
-      };
-    } else if (campaign.Id === 2497 && campaign.name === "Irish Ferries UK") {
+    if (campaign.Id === 2497 && campaign.name === "Irish Ferries UK") {
       return {
         p1: row["epi"].split("_")[1],
         created: row["timeOfTransaction"],

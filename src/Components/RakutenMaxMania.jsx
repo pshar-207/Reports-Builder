@@ -5,18 +5,6 @@ import { saveAs } from "file-saver";
 
 const Campaigns = [
   {
-    name: "Kitsch",
-    Id: 2107,
-  },
-  {
-    name: "Temu USA",
-    Id: 2489,
-  },
-  {
-    name: "SHEIN USD",
-    Id: 2572,
-  },
-  {
     name: "Etsy Affiliate US",
     Id: 2769,
   },
@@ -40,44 +28,6 @@ export default function RakutenMMAds() {
     };
 
     if (campaign.Id === 2107 && campaign.name === "Kitsch") {
-      return {
-        p1: row["Member ID (U1)"] ? row["Member ID (U1)"].split("_")[1] : "",
-        created: formatDate(row["Transaction Date"]),
-        txn_id: row["Order ID"],
-        sale_amount: row["Sales"],
-        revenue: actionEarning,
-        payout: ((actionEarning * 80) / 100).toFixed(10),
-        payout_currency: row["Currency"],
-        campaign_id: campaign.Id,
-        publisher_id: row["Member ID (U1)"]
-          ? row["Member ID (U1)"].split("_")[0]
-          : "",
-        status:
-          row["Member ID (U1)"] && row["Member ID (U1)"].split("_")[0] === "77"
-            ? "Pending"
-            : "Approved",
-        device_id: row["Device"] || "unknown",
-      };
-    } else if (campaign.Id === 2489 && campaign.name === "Temu USA") {
-      return {
-        p1: row["Member ID (U1)"] ? row["Member ID (U1)"].split("_")[1] : "",
-        created: formatDate(row["Transaction Date"]),
-        txn_id: row["Order ID"],
-        sale_amount: row["Sales"],
-        revenue: actionEarning,
-        payout: ((actionEarning * 80) / 100).toFixed(10),
-        payout_currency: row["Currency"],
-        campaign_id: campaign.Id,
-        publisher_id: row["Member ID (U1)"]
-          ? row["Member ID (U1)"].split("_")[0]
-          : "",
-        status:
-          row["Member ID (U1)"] && row["Member ID (U1)"].split("_")[0] === "77"
-            ? "Pending"
-            : "Approved",
-        device_id: row["Device"] || "unknown",
-      };
-    } else if (campaign.Id === 2572 && campaign.name === "SHEIN USD") {
       return {
         p1: row["Member ID (U1)"] ? row["Member ID (U1)"].split("_")[1] : "",
         created: formatDate(row["Transaction Date"]),
