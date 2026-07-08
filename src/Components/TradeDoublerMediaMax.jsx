@@ -5,41 +5,12 @@ import { saveAs } from "file-saver";
 
 const Campaigns = [
   {
-    name: "Caledonian Travel",
-    Id: 2460,
+    name: "Eurowings DE",
+    Id: 3010,
   },
   {
-    name: "PULL and BEAR UK",
-    Id: 2464,
-  },
-  {
-    name: "HSE.de",
-    Id: 2397,
-  },
-  {
-    name: "ReifenDirekt DE",
-    Id: 2300,
-  },
-  {
-    name: "Sportstylestory.com(PL)",
-    Id: 2394,
-  },
-
-  {
-    // name: "EuroParcs Resort",
-    Id: 2401,
-  },
-  {
-    // name: "GANT PL",
-    Id: 2396,
-  },
-  {
-    // name: "Lacoste PL",
-    Id: 2395,
-  },
-  {
-    // name: "Lycamobile",
-    Id: 2331,
+    name: "Autodoc",
+    Id: 2400,
   },
 ];
 
@@ -52,7 +23,7 @@ export default function TradeDoublerMediaMax() {
   const mapTradeDoublerRow = (row, campaign) => {
     const actionEarning = parseFloat(row["commission"]);
 
-    if (campaign.Id === 2401 && campaign.name === "EuroParcs Resort") {
+    if (campaign.Id === 3010 && campaign.name === "Eurowings DE") {
       return {
         p1: row["epi2"].split("_")[1],
         created: row["timeOfTransaction"],
@@ -67,115 +38,9 @@ export default function TradeDoublerMediaMax() {
         sub1: row["orderNumber"],
         device_id: row["mobileDeviceType"] || "unknown",
       };
-    } else if (campaign.Id === 2397 && campaign.name === "HSE.de") {
-      return {
-        // p1: row["epi2"].split("_")[1],
-        created: row["timeOfTransaction"],
-        txn_id: row["transactionId"],
-        sale_amount: row["orderValue"],
-        revenue: actionEarning,
-        payout: ((actionEarning * 80) / 100).toFixed(10),
-        payout_currency: "USD",
-        campaign_id: campaign.Id,
-        publisher_id: row["epi"].split("_")[0],
-        status: row["epi"].split("_")[0] === "77" ? "Pending" : "Approved",
-        sub1: row["orderNumber"],
-        device_id: row["mobileDeviceType"] || "unknown",
-      };
-    } else if (campaign.Id === 2300 && campaign.name === "ReifenDirekt DE") {
+    } else if (campaign.Id === 2400 && campaign.name === "Autodoc") {
       return {
         p1: row["epi2"].split("_")[1],
-        created: row["timeOfTransaction"],
-        txn_id: row["transactionId"],
-        sale_amount: row["orderValue"],
-        revenue: actionEarning,
-        payout: ((actionEarning * 80) / 100).toFixed(10),
-        payout_currency: "USD",
-        campaign_id: campaign.Id,
-        publisher_id: row["epi2"].split("_")[0],
-        status: row["epi2"].split("_")[0] === "77" ? "Pending" : "Approved",
-        sub1: row["orderNumber"],
-        device_id: row["mobileDeviceType"] || "unknown",
-      };
-    } else if (
-      campaign.Id === 2394 &&
-      campaign.name === "Sportstylestory.com(PL)"
-    ) {
-      return {
-        p1: row["epi2"].split("_")[1],
-        created: row["timeOfTransaction"],
-        txn_id: row["transactionId"],
-        sale_amount: row["orderValue"],
-        revenue: actionEarning,
-        payout: ((actionEarning * 80) / 100).toFixed(10),
-        payout_currency: "USD",
-        campaign_id: campaign.Id,
-        publisher_id: row["epi2"].split("_")[0],
-        status: row["epi2"].split("_")[0] === "77" ? "Pending" : "Approved",
-        sub1: row["orderNumber"],
-        device_id: row["mobileDeviceType"] || "unknown",
-      };
-    } else if (campaign.Id === 2464 && campaign.name === "PULL and BEAR UK") {
-      return {
-        created: row["timeOfTransaction"],
-        txn_id: row["transactionId"],
-        sale_amount: row["orderValue"],
-        revenue: actionEarning,
-        payout: ((actionEarning * 80) / 100).toFixed(10),
-        payout_currency: "USD",
-        campaign_id: campaign.Id,
-        publisher_id: row["epi"],
-        status: row["epi"].split("_")[0] === "77" ? "Pending" : "Approved",
-        sub1: row["orderNumber"],
-        device_id: row["mobileDeviceType"] || "unknown",
-      };
-    } else if (campaign.Id === 2396 && campaign.name === "GANT PL") {
-      return {
-        p1: row["epi2"].split("_")[1],
-        created: row["timeOfTransaction"],
-        txn_id: row["transactionId"],
-        sale_amount: row["orderValue"],
-        revenue: actionEarning,
-        payout: ((actionEarning * 80) / 100).toFixed(10),
-        payout_currency: "USD",
-        campaign_id: campaign.Id,
-        publisher_id: row["epi2"].split("_")[0],
-        status: row["epi2"].split("_")[0] === "77" ? "Pending" : "Approved",
-        sub1: row["orderNumber"],
-        device_id: row["mobileDeviceType"] || "unknown",
-      };
-    } else if (campaign.Id === 2395 && campaign.name === "Lacoste PL") {
-      return {
-        p1: row["epi2"].split("_")[1],
-        created: row["timeOfTransaction"],
-        txn_id: row["transactionId"],
-        sale_amount: row["orderValue"],
-        revenue: actionEarning,
-        payout: ((actionEarning * 80) / 100).toFixed(10),
-        payout_currency: "USD",
-        campaign_id: campaign.Id,
-        publisher_id: row["epi2"].split("_")[0],
-        status: row["epi2"].split("_")[0] === "77" ? "Pending" : "Approved",
-        sub1: row["orderNumber"],
-        device_id: row["mobileDeviceType"] || "unknown",
-      };
-    } else if (campaign.Id === 2331 && campaign.name === "Lycamobile") {
-      return {
-        p1: row["epi2"].split("_")[1],
-        created: row["timeOfTransaction"],
-        txn_id: row["transactionId"],
-        sale_amount: row["orderValue"],
-        revenue: actionEarning,
-        payout: ((actionEarning * 80) / 100).toFixed(10),
-        payout_currency: "USD",
-        campaign_id: campaign.Id,
-        publisher_id: row["epi2"].split("_")[0],
-        status: row["epi2"].split("_")[0] === "77" ? "Pending" : "Approved",
-        sub1: row["orderNumber"],
-        device_id: row["mobileDeviceType"] || "unknown",
-      };
-    } else if (campaign.Id === 2460 && campaign.name === "Caledonian Travel") {
-      return {
         created: row["timeOfTransaction"],
         txn_id: row["transactionId"],
         sale_amount: row["orderValue"],
