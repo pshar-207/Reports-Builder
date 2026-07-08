@@ -5,8 +5,8 @@ import { saveAs } from "file-saver";
 
 const Campaigns = [
   {
-    // name: "AH Voordeelshop",
-    Id: 2385,
+    name: "Saatva.com",
+    Id: 1275,
   },
 ];
 
@@ -19,9 +19,9 @@ export default function PartnerizeMMadsDigital() {
   const mapPartnerizeRow = (row, campaign) => {
     const actionEarning = parseFloat(row["publisher_commission"]);
 
-    if (campaign.Id === 2385 && campaign.name === "AH Voordeelshop") {
+    if (campaign.Id === 1275 && campaign.name === "Saatva.com") {
       return {
-        p1: row["publisher_reference"].split("_")[1],
+        // p1: row["publisher_reference"].split("_")[1],
         created: row["conversion_date"],
         txn_id: row["conversion_id"],
         sale_amount: row["value"],
@@ -29,9 +29,9 @@ export default function PartnerizeMMadsDigital() {
         payout: ((actionEarning * 80) / 100).toFixed(10),
         payout_currency: row["currency"].split(" ")[0],
         campaign_id: campaign.Id,
-        publisher_id: row["publisher_reference"].split("_")[0],
+        publisher_id: row["advertiser_reference"].split("_")[0],
         status:
-          row["publisher_reference"].split("_")[0] === "77"
+          row["advertiser_reference"].split("_")[0] === "77"
             ? "Pending"
             : "Approved",
         sub1: row["clickref"],
