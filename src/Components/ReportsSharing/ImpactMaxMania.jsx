@@ -84,16 +84,6 @@ const Campaigns = [
     payoutPercent: 80,
     publisher: "Levitadz",
   },
-  {
-    name: "Humble Bundle, Inc.",
-    payoutPercent: 80,
-    publisher: "Levitadz",
-  },
-  {
-    name: "Raisin US",
-    payoutPercent: 80,
-    publisher: "Levitadz",
-  },
 
   {
     name: "Castlery US",
@@ -122,6 +112,26 @@ const Campaigns = [
   },
   {
     name: "SHOKZ US",
+    payoutPercent: 80,
+    publisher: "DDM Rupali",
+  },
+  {
+    name: "Raisin US",
+    payoutPercent: 80,
+    publisher: "DDM Rupali",
+  },
+  {
+    name: "Humble Bundle, Inc.",
+    payoutPercent: 80,
+    publisher: "DDM Rupali",
+  },
+  {
+    name: "Domestika",
+    payoutPercent: 80,
+    publisher: "DDM Rupali",
+  },
+  {
+    name: "Super.com - Travel",
     payoutPercent: 80,
     publisher: "DDM Rupali",
   },

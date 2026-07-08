@@ -35,11 +35,6 @@ const Campaigns = [
     payoutPercent: 80,
     publisher: "Raffesia Sahil",
   },
-  {
-    name: "Coursera B2C Affiliate Program",
-    payoutPercent: 80,
-    publisher: "Raffesia Sahil",
-  },
 
   {
     name: "Lenme",

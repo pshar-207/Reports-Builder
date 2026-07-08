@@ -9,6 +9,26 @@ const Campaigns = [
     payoutPercent: 80,
     publisher: "Sachin Sharma",
   },
+  {
+    name: "StubHub NORAM",
+    payoutPercent: 90,
+    publisher: "ClickOrbits",
+  },
+  {
+    name: "Adorama",
+    payoutPercent: 80,
+    publisher: "Levitaadz",
+  },
+  {
+    name: "Traveloka Indonesia",
+    payoutPercent: 80,
+    publisher: "DDM",
+  },
+  {
+    name: "viagogo",
+    payoutPercent: 80,
+    publisher: "DDM",
+  },
 ];
 export default function PartnerizeMaxManiaReportSharing() {
   const [rawData, setRawData] = useState([]);

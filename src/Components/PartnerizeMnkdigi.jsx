@@ -16,6 +16,10 @@ const Campaigns = [
     name: "viagogo",
     Id: 2696,
   },
+  {
+    name: "G-Star RAW",
+    Id: 2758,
+  },
 ];
 
 export default function PartnerizeMnkdigi() {
@@ -60,6 +64,21 @@ export default function PartnerizeMnkdigi() {
         device_id: row["ref_device"] || "unknown",
       };
     } else if (campaign.Id === 2696 && campaign.name === "viagogo") {
+      return {
+        // p1: row["publisher_reference0"],
+        created: row["conversion_date"],
+        txn_id: row["conversion_id"],
+        sale_amount: row["value"],
+        revenue: actionEarning,
+        payout: ((actionEarning * 80) / 100).toFixed(10),
+        payout_currency: row["currency"],
+        campaign_id: campaign.Id,
+        publisher_id: row["advertiser_reference"],
+        status: row["advertiser_reference"] === "77" ? "Pending" : "Approved",
+        sub1: row["clickref"],
+        device_id: row["ref_device"] || "unknown",
+      };
+    } else if (campaign.Id === 2758 && campaign.name === "G-Star RAW") {
       return {
         // p1: row["publisher_reference0"],
         created: row["conversion_date"],

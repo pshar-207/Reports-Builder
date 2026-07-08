@@ -5,37 +5,12 @@ import { saveAs } from "file-saver";
 
 const Campaigns = [
   {
-    name: "Albert Heijn Netherlands",
-    Id: 1706,
+    name: "Adorama",
+    Id: 2777,
   },
   {
-    name: "AirAsia Travel",
-    Id: 2380,
-  },
-  {
-    name: "StubHub NORAM",
-    Id: 1540,
-  },
-  {
-    name: "Victoria's Secret",
-    Id: 2433,
-  },
-
-  {
-    // name: "AH Voordeelshop",
-    Id: 2385,
-  },
-  {
-    // name: "Feel Good Contacts UK",
-    Id: 2376,
-  },
-  {
-    // name: "New Balance - KSA",
-    Id: 2379,
-  },
-  {
-    // name: "Trainline",
-    Id: 2162,
+    name: "viagogo",
+    Id: 1541,
   },
 ];
 
@@ -48,9 +23,9 @@ export default function PartnerizeMaxMania() {
   const mapPartnerizeRow = (row, campaign) => {
     const actionEarning = parseFloat(row["publisher_commission"]);
 
-    if (campaign.Id === 2385 && campaign.name === "AH Voordeelshop") {
+    if (campaign.Id === 2777 && campaign.name === "Adorama") {
       return {
-        p1: row["publisher_reference"].split("_")[1],
+        // p1: row["publisher_reference"].split("_")[1],
         created: row["conversion_date"],
         txn_id: row["conversion_id"],
         sale_amount: row["value"],
@@ -66,27 +41,7 @@ export default function PartnerizeMaxMania() {
         sub1: row["clickref"],
         device_id: row["ref_device"] || "unknown",
       };
-    } else if (campaign.Id === 2380 && campaign.name === "AirAsia Travel") {
-      return {
-        created: row["conversion_date"],
-        txn_id: row["conversion_id"],
-        sale_amount: row["value"],
-        revenue: actionEarning,
-        payout: ((actionEarning * 80) / 100).toFixed(10),
-        payout_currency: row["currency"].split(" ")[0],
-        campaign_id: campaign.Id,
-        publisher_id: row["publisher_reference"].split("_")[0],
-        status:
-          row["publisher_reference"].split("_")[0] === "77"
-            ? "Pending"
-            : "Approved",
-        sub1: row["clickref"],
-        device_id: row["ref_device"] || "unknown",
-      };
-    } else if (
-      campaign.Id === 1706 &&
-      campaign.name === "Albert Heijn Netherlands"
-    ) {
+    } else if (campaign.Id === 1541 && campaign.name === "viagogo") {
       return {
         created: row["conversion_date"],
         txn_id: row["conversion_id"],
@@ -97,87 +52,6 @@ export default function PartnerizeMaxMania() {
         campaign_id: campaign.Id,
         publisher_id: row["advertiser_reference"],
         status: row["advertiser_reference"] === "77" ? "Pending" : "Approved",
-        sub1: row["publisher_reference"],
-        device_id: row["ref_device"] || "unknown",
-      };
-    } else if (
-      campaign.Id === 2376 &&
-      campaign.name === "Feel Good Contacts UK"
-    ) {
-      return {
-        p1: row["advertiser_reference"].split("_")[1],
-        created: row["conversion_date"],
-        txn_id: row["conversion_id"],
-        sale_amount: row["value"],
-        revenue: actionEarning,
-        payout: ((actionEarning * 80) / 100).toFixed(10),
-        payout_currency: row["currency"].split(" ")[0],
-        campaign_id: campaign.Id,
-        publisher_id: row["advertiser_reference"].split("_")[0],
-        status:
-          row["advertiser_reference"].split("_")[0] === "77"
-            ? "Pending"
-            : "Approved",
-        sub1: row["publisher_reference"],
-        device_id: row["ref_device"] || "unknown",
-      };
-    } else if (campaign.Id === 2379 && campaign.name === "New Balance - KSA") {
-      return {
-        created: row["conversion_date"],
-        txn_id: row["conversion_id"],
-        sale_amount: row["value"],
-        revenue: actionEarning,
-        payout: ((actionEarning * 80) / 100).toFixed(10),
-        payout_currency: row["currency"].split(" ")[0],
-        campaign_id: campaign.Id,
-        publisher_id: row["publisher_reference"].split("_")[0],
-        status:
-          row["publisher_reference"].split("_")[0] === "77"
-            ? "Pending"
-            : "Approved",
-        sub1: row["advertiser_reference"],
-        device_id: row["ref_device"] || "unknown",
-      };
-    } else if (campaign.Id === 1540 && campaign.name === "StubHub NORAM") {
-      return {
-        p1: row["publisher_reference"],
-        created: row["conversion_date"],
-        txn_id: row["conversion_id"],
-        sale_amount: row["value"],
-        revenue: actionEarning,
-        payout: ((actionEarning * 80) / 100).toFixed(10),
-        payout_currency: row["currency"].split(" ")[0],
-        campaign_id: campaign.Id,
-        publisher_id: row["advertiser_reference"],
-        status: row["advertiser_reference"] === "77" ? "Pending" : "Approved",
-        sub1: row["clickref"],
-        device_id: row["ref_device"] || "unknown",
-      };
-    } else if (campaign.Id === 2162 && campaign.name === "Trainline") {
-      return {
-        created: row["conversion_date"],
-        txn_id: row["conversion_id"],
-        sale_amount: row["value"],
-        revenue: actionEarning,
-        payout: ((actionEarning * 80) / 100).toFixed(10),
-        payout_currency: row["currency"].split(" ")[0],
-        campaign_id: campaign.Id,
-        publisher_id: row["advertiser_reference"],
-        status: row["advertiser_reference"] === "77" ? "Pending" : "Approved",
-        sub1: row["clickref"],
-        device_id: row["ref_device"] || "unknown",
-      };
-    } else if (campaign.Id === 2433 && campaign.name === "Victoria's Secret") {
-      return {
-        created: row["conversion_date"],
-        txn_id: row["conversion_id"],
-        sale_amount: row["value"],
-        revenue: actionEarning,
-        payout: ((actionEarning * 80) / 100).toFixed(10),
-        payout_currency: row["currency"].split(" ")[0],
-        campaign_id: campaign.Id,
-        publisher_id: row["publisher_reference"],
-        status: row["publisher_reference"] === "77" ? "Pending" : "Approved",
         sub1: row["clickref"],
         device_id: row["ref_device"] || "unknown",
       };
