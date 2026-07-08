@@ -5,33 +5,12 @@ import { saveAs } from "file-saver";
 
 const Campaigns = [
   {
-    name: "GoCity",
+    // name: "GoCity",
     Id: 2154,
   },
   {
-    name: "H&M (Hennes & Mauritz)",
+    // name: "H&M (Hennes & Mauritz)",
     Id: 2324,
-  },
-  {
-    name: "Malwarebytes | Cybersecurity for Everyone",
-    Id: 2393,
-  },
-  {
-    name: "StubHub NORAM",
-    Id: 662,
-  },
-  {
-    name: "F-Secure | Internet Security & VPN",
-    Id: 2279,
-  },
-
-  {
-    // name: "Playstation Direct DE",
-    Id: 1985,
-  },
-  {
-    // name: "Victoria's Secret",
-    Id: 1338,
   },
 ];
 
@@ -72,96 +51,6 @@ export default function Partnerizemediamaxadv() {
         campaign_id: campaign.Id,
         publisher_id: row["publisher_reference"],
         status: row["publisher_reference"] === "77" ? "Pending" : "Approved",
-        sub1: row["clickref"],
-        device_id: row["ref_device"] || "unknown",
-      };
-    } else if (
-      campaign.Id === 2393 &&
-      campaign.name === "Malwarebytes | Cybersecurity for Everyone"
-    ) {
-      return {
-        p1: row["publisher_reference"],
-        created: row["conversion_date"],
-        txn_id: row["conversion_id"],
-        sale_amount: row["value"],
-        revenue: actionEarning,
-        payout: ((actionEarning * 80) / 100).toFixed(10),
-        payout_currency: row["currency"].split(" ")[0],
-        campaign_id: campaign.Id,
-        publisher_id: row["publisher_reference"].split("_")[0],
-        status:
-          row["publisher_reference"].split("_")[0] === "77"
-            ? "Pending"
-            : "Approved",
-        sub1: row["clickref"],
-        device_id: row["ref_device"] || "unknown",
-      };
-    } else if (
-      campaign.Id === 1985 &&
-      campaign.name === "Playstation Direct DE"
-    ) {
-      return {
-        p1: row["publisher_reference"],
-        created: row["conversion_date"],
-        txn_id: row["conversion_id"],
-        sale_amount: row["value"],
-        revenue: actionEarning,
-        payout: ((actionEarning * 80) / 100).toFixed(10),
-        payout_currency: row["currency"].split(" ")[0],
-        campaign_id: campaign.Id,
-        publisher_id: row["advertiser_reference"],
-        status: row["advertiser_reference"] === "77" ? "Pending" : "Approved",
-        sub1: row["clickref"],
-        device_id: row["ref_device"] || "unknown",
-      };
-    } else if (campaign.Id === 1338 && campaign.name === "Victoria's Secret") {
-      return {
-        // p1: row["publisher_reference"],
-        created: row["conversion_date"],
-        txn_id: row["conversion_id"],
-        sale_amount: row["value"],
-        revenue: actionEarning,
-        payout: ((actionEarning * 80) / 100).toFixed(10),
-        payout_currency: row["currency"].split(" ")[0],
-        campaign_id: campaign.Id,
-        publisher_id: row["publisher_reference"],
-        status: row["publisher_reference"] === "77" ? "Pending" : "Approved",
-        sub1: row["clickref"],
-        device_id: row["ref_device"] || "unknown",
-      };
-    } else if (campaign.Id === 662 && campaign.name === "StubHub NORAM") {
-      return {
-        // p1: row["publisher_reference"],
-        created: row["conversion_date"],
-        txn_id: row["conversion_id"],
-        sale_amount: row["value"],
-        revenue: actionEarning,
-        payout: ((actionEarning * 80) / 100).toFixed(10),
-        payout_currency: row["currency"].split(" ")[0],
-        campaign_id: campaign.Id,
-        publisher_id: row["publisher_reference"],
-        status: row["publisher_reference"] === "77" ? "Pending" : "Approved",
-        sub1: row["clickref"],
-        device_id: row["ref_device"] || "unknown",
-      };
-    } else if (
-      campaign.Id === 2279 &&
-      campaign.name === "F-Secure | Internet Security & VPN"
-    ) {
-      return {
-        p1: row["advertiser_reference"].split("_")[1],
-        created: row["conversion_date"],
-        txn_id: row["conversion_id"],
-        sale_amount: row["value"],
-        revenue: actionEarning,
-        payout: ((actionEarning * 80) / 100).toFixed(10),
-        payout_currency: row["currency"].split(" ")[0],
-        campaign_id: campaign.Id,
-        publisher_id: row["advertiser_reference"].split("_")[0],
-        status:
-          row["advertiser_reference"].split("_")[0] === "77"
-            ? "Pending"
-            : "Approved",
         sub1: row["clickref"],
         device_id: row["ref_device"] || "unknown",
       };
