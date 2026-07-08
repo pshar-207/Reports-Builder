@@ -25,6 +25,7 @@ import Partnerizemediamaxadv from "./Components/Partnerizemediamaxadv";
 import PartnerizeMaxMania from "./Components/PartnerizeMaxMania";
 import PartnerizeMMadsTech from "./Components/PartnerizeMMadsTech";
 import PartnerizeMnkdigi from "./Components/PartnerizeMnkdigi";
+import PartnerizeMMadsDigital from "./Components/PartnerizeMMadsDigital";
 
 import AwinMediamax from "./Components/AwinMediamax";
 
@@ -379,6 +380,10 @@ export default function App() {
 
           <div className="PartnerizeMMadsTech">
             <PartnerizeMMadsTech />
+          </div>
+
+          <div className="PartnerizeMMadsDigital">
+            <PartnerizeMMadsDigital />
           </div>
 
           <div className="PartnerizeMnkdigi">
