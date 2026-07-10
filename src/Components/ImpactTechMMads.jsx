@@ -5,143 +5,32 @@ import { saveAs } from "file-saver";
 
 const Campaigns = [
   {
-    name: "12Go Asia Pte., Ltd.",
-    Id: 2202,
+    name: "Airpaz",
+    Id: 2593,
   },
   {
-    name: "Constant Contact",
-    Id: 1271,
+    name: "DoorDash, Inc. Canada",
+    Id: 2981,
   },
   {
-    name: "ExpressVPN",
-    Id: 2436,
+    name: "en route jewelry",
+    Id: 2825,
   },
   {
-    name: "Garvee",
-    Id: 2635,
-  },
-  {
-    name: "Lenme",
-    Id: 2625,
+    name: "Little Sleepies",
+    Id: 2247,
   },
   {
     name: "LUVME HAIR",
     Id: 706,
   },
   {
-    name: "LycaMobile USA",
-    Id: 2347,
+    name: "Reolink",
+    Id: 2858,
   },
   {
-    name: "Orthofeet",
-    Id: 2342,
-  },
-  {
-    name: "Saily",
-    Id: 2363,
-  },
-  {
-    name: "Solo Stove",
-    Id: 2437,
-  },
-  {
-    name: "Whatnot Affiliates",
-    Id: 2214,
-  },
-  {
-    name: "PopAi",
-    Id: 2677,
-  },
-  {
-    name: "Malaysia Airlines",
-    Id: 1717,
-  },
-  {
-    name: "WPS SOFTWARE PTE.LTD.",
-    Id: 2209,
-  },
-  {
-    name: "Fubo - Live Sports  TV",
-    Id: 2697,
-  },
-  {
-    name: "Advance Auto Parts",
-    Id: 2253,
-  },
-  {
-    name: "Emmiol-Affiliate",
-    Id: 715,
-  },
-  {
-    name: "Qatar Airways",
-    Id: 1638,
-  },
-  {
-    name: "Spocket",
-    Id: 2205,
-  },
-  {
-    name: "Alinea Invest",
-    Id: 2760,
-  },
-  {
-    name: "Airpaz",
-    Id: 2593,
-  },
-  {
-    name: "EaseUS (EN - Global)",
-    Id: 2853,
-  },
-
-  {
-    // name: "Envato Placeit",
-    Id: 1318,
-  },
-  {
-    // name: "BARK",
-    Id: 2249,
-  },
-  {
-    // name: "Bluehost",
-    Id: 2231,
-  },
-  {
-    // name: "Buoy",
-    Id: 2495,
-  },
-  {
-    // name: "H10 Hotels ( GLOBAL)",
-    Id: 1319,
-  },
-  {
-    // name: "Hostinger",
-    Id: 2349,
-  },
-  {
-    // name: "Logitech - US, Canada & Mexico",
-    Id: 2517,
-  },
-  {
-    // name: "UniqueVintage",
-    Id: 708,
-  },
-  {
-    // name: "Vecteezy.com",
-    Id: 2204,
-  },
-
-  {
-    // name: "Belkin US",
-    Id: 2346,
-  },
-  {
-    // name: "Shop LC",
-    Id: 2228,
-  },
-
-  {
-    // name: "Hydro Flask",
-    Id: 2583,
+    name: "Udemy",
+    Id: 2841,
   },
 ];
 
@@ -154,7 +43,7 @@ export default function ImpactTechMMads() {
   const mapImpactRow = (row, campaign) => {
     const actionEarning = parseFloat(row["Action Earnings"]);
 
-    if (campaign.Id === 2253 && campaign.name === "Advance Auto Parts") {
+    if (campaign.Id === 2593 && campaign.name === "Airpaz") {
       return {
         // p1: row["Sub Id 1"],
         created: row["Action Date"],
@@ -164,12 +53,30 @@ export default function ImpactTechMMads() {
         payout: ((actionEarning * 80) / 100).toFixed(10),
         payout_currency: "USD",
         campaign_id: campaign.Id,
-        publisher_id: row["Sub Id 1"],
-        status: row["Sub Id 1"] === "77" ? "Pending" : "Approved",
-        // sub1: row["Sub Id 3"],
+        publisher_id: row["Sub Id 2"],
+        status: row["Sub Id 2"] === "77" ? "Pending" : "Approved",
+        sub1: row["Sub Id 1"],
         device_id: row["Device Type"] || "unknown",
       };
-    } else if (campaign.Id === 2249 && campaign.name === "BARK") {
+    } else if (
+      campaign.Id === 2981 &&
+      campaign.name === "DoorDash, Inc. Canada"
+    ) {
+      return {
+        // p1: row["Sub Id 1"],
+        created: row["Action Date"],
+        txn_id: row["Action Id"],
+        sale_amount: row["Sale Amount"],
+        revenue: actionEarning,
+        payout: ((actionEarning * 80) / 100).toFixed(10),
+        payout_currency: "USD",
+        campaign_id: campaign.Id,
+        publisher_id: row["Sub Id 2"],
+        status: row["Sub Id 2"] === "77" ? "Pending" : "Approved",
+        sub1: row["Sub Id 3"],
+        device_id: row["Device Type"] || "unknown",
+      };
+    } else if (campaign.Id === 2825 && campaign.name === "en route jewelry") {
       return {
         p1: row["Sub Id 1"],
         created: row["Action Date"],
@@ -179,44 +86,12 @@ export default function ImpactTechMMads() {
         payout: ((actionEarning * 80) / 100).toFixed(10),
         payout_currency: "USD",
         campaign_id: campaign.Id,
-        publisher_id: row["Sub Id 2"],
-        status: row["Sub Id 2"] === "77" ? "Pending" : "Approved",
+        publisher_id: row["Sub Id 1"],
+        status: row["Sub Id 1"] === "77" ? "Pending" : "Approved",
         sub1: row["Sub Id 3"],
         device_id: row["Device Type"] || "unknown",
       };
-    } else if (campaign.Id === 2231 && campaign.name === "Bluehost") {
-      return {
-        created: row["Action Date"],
-        txn_id: row["Action Id"],
-        sale_amount: row["Sale Amount"],
-        revenue: actionEarning,
-        payout: ((actionEarning * 90) / 100).toFixed(10),
-        payout_currency: "USD",
-        campaign_id: campaign.Id,
-        publisher_id: row["Sub Id 1"],
-        status: row["Sub Id 1"] === "77" ? "Pending" : "Approved",
-        // sub1: row["Sub Id 3"],
-        device_id: row["Device Type"] || "unknown",
-      };
-    } else if (campaign.Id === 2495 && campaign.name === "Buoy") {
-      return {
-        p1: row["Sub Id 3"],
-        created: row["Action Date"],
-        txn_id: row["Action Id"],
-        sale_amount: row["Sale Amount"],
-        revenue: actionEarning,
-        payout: ((actionEarning * 80) / 100).toFixed(10),
-        payout_currency: "USD",
-        campaign_id: campaign.Id,
-        publisher_id: row["Sub Id 2"],
-        status: row["Sub Id 2"] === "77" ? "Pending" : "Approved",
-        sub1: row["Sub Id 1"],
-        device_id: row["Device Type"] || "unknown",
-      };
-    } else if (
-      campaign.Id === 1319 &&
-      campaign.name === "H10 Hotels ( GLOBAL)"
-    ) {
+    } else if (campaign.Id === 2247 && campaign.name === "Little Sleepies") {
       return {
         p1: row["Sub Id 1"],
         created: row["Action Date"],
@@ -226,41 +101,9 @@ export default function ImpactTechMMads() {
         payout: ((actionEarning * 80) / 100).toFixed(10),
         payout_currency: "USD",
         campaign_id: campaign.Id,
-        publisher_id: row["Sub Id 2"],
-        status: row["Sub Id 2"] === "77" ? "Pending" : "Approved",
+        publisher_id: row["Sub Id 1"],
+        status: row["Sub Id 1"] === "77" ? "Pending" : "Approved",
         sub1: row["Sub Id 3"],
-        device_id: row["Device Type"] || "unknown",
-      };
-    } else if (campaign.Id === 2349 && campaign.name === "Hostinger") {
-      return {
-        created: row["Action Date"],
-        txn_id: row["Action Id"],
-        sale_amount: row["Sale Amount"],
-        revenue: actionEarning,
-        payout: ((actionEarning * 80) / 100).toFixed(10),
-        payout_currency: "USD",
-        campaign_id: campaign.Id,
-        publisher_id: row["Sub Id 2"],
-        status: row["Sub Id 2"] === "77" ? "Pending" : "Approved",
-        sub1: row["Sub Id 3"],
-        device_id: row["Device Type"] || "unknown",
-      };
-    } else if (
-      campaign.Id === 2517 &&
-      campaign.name === "Logitech - US, Canada & Mexico"
-    ) {
-      return {
-        p1: row["Sub Id 3"],
-        created: row["Action Date"],
-        txn_id: row["Action Id"],
-        sale_amount: row["Sale Amount"],
-        revenue: actionEarning,
-        payout: ((actionEarning * 80) / 100).toFixed(10),
-        payout_currency: "USD",
-        campaign_id: campaign.Id,
-        publisher_id: row["Sub Id 2"],
-        status: row["Sub Id 2"] === "77" ? "Pending" : "Approved",
-        sub1: row["Sub Id 1"],
         device_id: row["Device Type"] || "unknown",
       };
     } else if (campaign.Id === 706 && campaign.name === "LUVME HAIR") {
@@ -278,21 +121,7 @@ export default function ImpactTechMMads() {
         sub1: row["Sub Id 3"],
         device_id: row["Device Type"] || "unknown",
       };
-    } else if (campaign.Id === 1717 && campaign.name === "Malaysia Airlines") {
-      return {
-        created: row["Action Date"],
-        txn_id: row["Action Id"],
-        sale_amount: row["Sale Amount"],
-        revenue: actionEarning,
-        payout: ((actionEarning * 80) / 100).toFixed(10),
-        payout_currency: "USD",
-        campaign_id: campaign.Id,
-        publisher_id: row["Sub Id 2"],
-        status: row["Sub Id 2"] === "77" ? "Pending" : "Approved",
-        sub1: row["Sub Id 1"],
-        device_id: row["Device Type"] || "unknown",
-      };
-    } else if (campaign.Id === 2342 && campaign.name === "Orthofeet") {
+    } else if (campaign.Id === 2858 && campaign.name === "Reolink") {
       return {
         p1: row["Sub Id 1"],
         created: row["Action Date"],
@@ -307,22 +136,7 @@ export default function ImpactTechMMads() {
         sub1: row["Sub Id 3"],
         device_id: row["Device Type"] || "unknown",
       };
-    } else if (campaign.Id === 1638 && campaign.name === "Qatar Airways") {
-      return {
-        // p1: row["Sub Id 3"],
-        created: row["Action Date"],
-        txn_id: row["Action Id"],
-        sale_amount: row["Sale Amount"],
-        revenue: actionEarning,
-        payout: ((actionEarning * 80) / 100).toFixed(10),
-        payout_currency: "USD",
-        campaign_id: campaign.Id,
-        publisher_id: row["Sub Id 2"],
-        status: row["Sub Id 2"] === "77" ? "Pending" : "Approved",
-        sub1: row["Sub Id 3"],
-        device_id: row["Device Type"] || "unknown",
-      };
-    } else if (campaign.Id === 2437 && campaign.name === "Solo Stove") {
+    } else if (campaign.Id === 2841 && campaign.name === "Udemy") {
       return {
         p1: row["Sub Id 1"],
         created: row["Action Date"],
@@ -335,347 +149,6 @@ export default function ImpactTechMMads() {
         publisher_id: row["Sub Id 2"],
         status: row["Sub Id 2"] === "77" ? "Pending" : "Approved",
         sub1: row["Sub Id 3"],
-        device_id: row["Device Type"] || "unknown",
-      };
-    } else if (campaign.Id === 708 && campaign.name === "UniqueVintage") {
-      return {
-        p1: row["Sub Id 1"],
-        created: row["Action Date"],
-        txn_id: row["Action Id"],
-        sale_amount: row["Sale Amount"],
-        revenue: actionEarning,
-        payout: ((actionEarning * 70) / 100).toFixed(10),
-        payout_currency: "USD",
-        campaign_id: campaign.Id,
-        publisher_id: row["Sub Id 2"],
-        status: row["Sub Id 2"] === "77" ? "Pending" : "Approved",
-        sub1: row["Sub Id 3"],
-        device_id: row["Device Type"] || "unknown",
-      };
-    } else if (campaign.Id === 2204 && campaign.name === "Vecteezy.com") {
-      return {
-        p1: row["Sub Id 1"],
-        created: row["Action Date"],
-        txn_id: row["Action Id"],
-        sale_amount: row["Sale Amount"],
-        revenue: actionEarning,
-        payout: ((actionEarning * 80) / 100).toFixed(10),
-        payout_currency: "USD",
-        campaign_id: campaign.Id,
-        publisher_id: row["Sub Id 2"],
-        status: row["Sub Id 2"] === "77" ? "Pending" : "Approved",
-        sub1: row["Sub Id 3"],
-        device_id: row["Device Type"] || "unknown",
-      };
-    } else if (campaign.Id === 2214 && campaign.name === "Whatnot Affiliates") {
-      return {
-        p1: row["Sub Id 1"],
-        created: row["Action Date"],
-        txn_id: row["Action Id"],
-        sale_amount: row["Sale Amount"],
-        revenue: actionEarning,
-        payout: ((actionEarning * 80) / 100).toFixed(10),
-        payout_currency: "USD",
-        campaign_id: campaign.Id,
-        publisher_id: row["Sub Id 2"],
-        status: row["Sub Id 2"] === "77" ? "Pending" : "Approved",
-        sub1: row["Sub Id 3"],
-        device_id: row["Device Type"] || "unknown",
-      };
-    } else if (campaign.Id === 2346 && campaign.name === "Belkin US") {
-      return {
-        p1: row["Sub Id 1"],
-        created: row["Action Date"],
-        txn_id: row["Action Id"],
-        sale_amount: row["Sale Amount"],
-        revenue: actionEarning,
-        payout: ((actionEarning * 80) / 100).toFixed(10),
-        payout_currency: "USD",
-        campaign_id: campaign.Id,
-        publisher_id: row["Sub Id 2"],
-        status: row["Sub Id 2"] === "77" ? "Pending" : "Approved",
-        sub1: row["Sub Id 3"],
-        device_id: row["Device Type"] || "unknown",
-      };
-    } else if (campaign.Id === 1271 && campaign.name === "Constant Contact") {
-      return {
-        p1: row["Sub Id 1"],
-        created: row["Action Date"],
-        txn_id: row["Action Id"],
-        sale_amount: row["Sale Amount"],
-        revenue: actionEarning,
-        payout: ((actionEarning * 80) / 100).toFixed(10),
-        payout_currency: "USD",
-        campaign_id: campaign.Id,
-        publisher_id: row["Sub Id 2"],
-        status: row["Sub Id 2"] === "77" ? "Pending" : "Approved",
-        sub1: row["Sub Id 3"],
-        device_id: row["Device Type"] || "unknown",
-      };
-    } else if (campaign.Id === 2436 && campaign.name === "ExpressVPN") {
-      return {
-        p1: row["Sub Id 1"],
-        created: row["Action Date"],
-        txn_id: row["Action Id"],
-        sale_amount: row["Sale Amount"],
-        revenue: actionEarning,
-        payout: ((actionEarning * 80) / 100).toFixed(10),
-        payout_currency: "USD",
-        campaign_id: campaign.Id,
-        publisher_id: row["Sub Id 2"],
-        status: row["Sub Id 2"] === "77" ? "Pending" : "Approved",
-        sub1: row["Sub Id 3"],
-        device_id: row["Device Type"] || "unknown",
-      };
-    } else if (campaign.Id === 2228 && campaign.name === "Shop LC") {
-      return {
-        created: row["Action Date"],
-        txn_id: row["Action Id"],
-        sale_amount: row["Sale Amount"],
-        revenue: actionEarning,
-        payout: ((actionEarning * 80) / 100).toFixed(10),
-        payout_currency: "USD",
-        campaign_id: campaign.Id,
-        publisher_id: row["Sub Id 2"],
-        status: row["Sub Id 2"] === "77" ? "Pending" : "Approved",
-        sub1: row["Sub Id 3"],
-        device_id: row["Device Type"] || "unknown",
-      };
-    } else if (campaign.Id === 2205 && campaign.name === "Spocket") {
-      return {
-        p1: row["Sub Id 1"],
-        created: row["Action Date"],
-        txn_id: row["Action Id"],
-        sale_amount: row["Sale Amount"],
-        revenue: actionEarning,
-        payout: ((actionEarning * 80) / 100).toFixed(10),
-        payout_currency: "USD",
-        campaign_id: campaign.Id,
-        publisher_id: row["Sub Id 2"],
-        status: row["Sub Id 2"] === "77" ? "Pending" : "Approved",
-        sub1: row["Sub Id 3"],
-        device_id: row["Device Type"] || "unknown",
-      };
-    } else if (
-      campaign.Id === 2209 &&
-      campaign.name === "WPS SOFTWARE PTE.LTD."
-    ) {
-      return {
-        p1: row["Sub Id 1"],
-        created: row["Action Date"],
-        txn_id: row["Action Id"],
-        sale_amount: row["Sale Amount"],
-        revenue: actionEarning,
-        payout: ((actionEarning * 80) / 100).toFixed(10),
-        payout_currency: "USD",
-        campaign_id: campaign.Id,
-        publisher_id: row["Sub Id 2"],
-        status: row["Sub Id 2"] === "77" ? "Pending" : "Approved",
-        sub1: row["Sub Id 3"],
-        device_id: row["Device Type"] || "unknown",
-      };
-    } else if (campaign.Id === 2347 && campaign.name === "LycaMobile USA") {
-      return {
-        p1: row["Sub Id 3"],
-        created: row["Action Date"],
-        txn_id: row["Action Id"],
-        sale_amount: row["Sale Amount"],
-        revenue: actionEarning,
-        payout: ((actionEarning * 80) / 100).toFixed(10),
-        payout_currency: "USD",
-        campaign_id: campaign.Id,
-        publisher_id: row["Sub Id 2"],
-        status: row["Sub Id 2"] === "77" ? "Pending" : "Approved",
-        sub1: row["Sub Id 1"],
-        device_id: row["Device Type"] || "unknown",
-      };
-    } else if (campaign.Id === 2583 && campaign.name === "Hydro Flask") {
-      return {
-        p1: row["Sub Id 3"],
-        created: row["Action Date"],
-        txn_id: row["Action Id"],
-        sale_amount: row["Sale Amount"],
-        revenue: actionEarning,
-        payout: ((actionEarning * 80) / 100).toFixed(10),
-        payout_currency: "USD",
-        campaign_id: campaign.Id,
-        publisher_id: row["Sub Id 2"],
-        status: row["Sub Id 2"] === "77" ? "Pending" : "Approved",
-        sub1: row["Sub Id 1"],
-        device_id: row["Device Type"] || "unknown",
-      };
-    } else if (
-      campaign.Id === 2202 &&
-      campaign.name === "12Go Asia Pte., Ltd."
-    ) {
-      return {
-        p1: row["Sub Id 1"],
-        created: row["Action Date"],
-        txn_id: row["Action Id"],
-        sale_amount: row["Sale Amount"],
-        revenue: actionEarning,
-        payout: ((actionEarning * 80) / 100).toFixed(10),
-        payout_currency: "USD",
-        campaign_id: campaign.Id,
-        publisher_id: row["Sub Id 2"],
-        status: row["Sub Id 2"] === "77" ? "Pending" : "Approved",
-        sub1: row["Sub Id 3"],
-        device_id: row["Device Type"] || "unknown",
-      };
-    } else if (campaign.Id === 2363 && campaign.name === "Saily") {
-      return {
-        p1: row["Sub Id 1"],
-        created: row["Action Date"],
-        txn_id: row["Action Id"],
-        sale_amount: row["Sale Amount"],
-        revenue: actionEarning,
-        payout: ((actionEarning * 80) / 100).toFixed(10),
-        payout_currency: "USD",
-        campaign_id: campaign.Id,
-        publisher_id: row["Sub Id 2"],
-        status: row["Sub Id 2"] === "77" ? "Pending" : "Approved",
-        sub1: row["Sub Id 3"],
-        device_id: row["Device Type"] || "unknown",
-      };
-    } else if (campaign.Id === 1318 && campaign.name === "Envato Placeit") {
-      return {
-        p1: row["Sub Id 3"],
-        created: row["Action Date"],
-        txn_id: row["Action Id"],
-        sale_amount: row["Sale Amount"],
-        revenue: actionEarning,
-        payout: ((actionEarning * 80) / 100).toFixed(10),
-        payout_currency: "USD",
-        campaign_id: campaign.Id,
-        publisher_id: row["Sub Id 2"],
-        status: row["Sub Id 2"] === "77" ? "Pending" : "Approved",
-        sub1: row["Sub Id 1"],
-        device_id: row["Device Type"] || "unknown",
-      };
-    } else if (campaign.Id === 2635 && campaign.name === "Garvee") {
-      return {
-        p1: row["Sub Id 1"],
-        created: row["Action Date"],
-        txn_id: row["Action Id"],
-        sale_amount: row["Sale Amount"],
-        revenue: actionEarning,
-        payout: ((actionEarning * 80) / 100).toFixed(10),
-        payout_currency: "USD",
-        campaign_id: campaign.Id,
-        publisher_id: row["Sub Id 2"],
-        status: row["Sub Id 2"] === "77" ? "Pending" : "Approved",
-        sub1: row["Sub Id 3"],
-        device_id: row["Device Type"] || "unknown",
-      };
-    } else if (campaign.Id === 2625 && campaign.name === "Lenme") {
-      return {
-        // p1: row["Sub Id 1"],
-        created: row["Action Date"],
-        txn_id: row["Action Id"],
-        sale_amount: row["Sale Amount"],
-        revenue: actionEarning,
-        payout: ((actionEarning * 80) / 100).toFixed(10),
-        payout_currency: "USD",
-        campaign_id: campaign.Id,
-        publisher_id: row["Sub Id 1"],
-        status: row["Sub Id 1"] === "77" ? "Pending" : "Approved",
-        sub1: row["Sub Id 2"],
-        device_id: row["Device Type"] || "unknown",
-      };
-    } else if (campaign.Id === 2677 && campaign.name === "PopAi") {
-      return {
-        // p1: row["Sub Id 1"],
-        created: row["Action Date"],
-        txn_id: row["Action Id"],
-        sale_amount: row["Sale Amount"],
-        revenue: actionEarning,
-        payout: ((actionEarning * 80) / 100).toFixed(10),
-        payout_currency: "USD",
-        campaign_id: campaign.Id,
-        publisher_id: row["Sub Id 3"],
-        status: row["Sub Id 3"] === "77" ? "Pending" : "Approved",
-        sub1: row["Sub Id 1"],
-        device_id: row["Device Type"] || "unknown",
-      };
-    } else if (
-      campaign.Id === 2697 &&
-      campaign.name === "Fubo - Live Sports  TV"
-    ) {
-      return {
-        // p1: row["Sub Id 1"],
-        created: row["Action Date"],
-        txn_id: row["Action Id"],
-        sale_amount: row["Sale Amount"],
-        revenue: actionEarning,
-        payout: ((actionEarning * 80) / 100).toFixed(10),
-        payout_currency: "USD",
-        campaign_id: campaign.Id,
-        publisher_id: "",
-        status: "Approved",
-        // sub1: row["Sub Id 1"],
-        device_id: row["Device Type"] || "unknown",
-      };
-    } else if (campaign.Id === 715 && campaign.name === "Emmiol-Affiliate") {
-      return {
-        p1: row["Sub Id 1"],
-        created: row["Action Date"],
-        txn_id: row["Action Id"],
-        sale_amount: row["Sale Amount"],
-        revenue: actionEarning,
-        payout: ((actionEarning * 80) / 100).toFixed(10),
-        payout_currency: "USD",
-        campaign_id: campaign.Id,
-        publisher_id: row["Sub Id 2"],
-        status: row["Sub Id 2"] === "77" ? "Pending" : "Approved",
-        sub1: row["Sub Id 3"],
-        device_id: row["Device Type"] || "unknown",
-      };
-    } else if (campaign.Id === 2760 && campaign.name === "Alinea Invest") {
-      return {
-        // p1: row["Sub Id 1"],
-        created: row["Action Date"],
-        txn_id: row["Action Id"],
-        sale_amount: row["Sale Amount"],
-        revenue: actionEarning,
-        payout: ((actionEarning * 80) / 100).toFixed(10),
-        payout_currency: "USD",
-        campaign_id: campaign.Id,
-        publisher_id: row["Sub Id 2"],
-        status: row["Sub Id 2"] === "77" ? "Pending" : "Approved",
-        sub1: row["Sub Id 1"],
-        device_id: row["Device Type"] || "unknown",
-      };
-    } else if (campaign.Id === 2593 && campaign.name === "Airpaz") {
-      return {
-        // p1: row["Sub Id 1"],
-        created: row["Action Date"],
-        txn_id: row["Action Id"],
-        sale_amount: row["Sale Amount"],
-        revenue: actionEarning,
-        payout: ((actionEarning * 80) / 100).toFixed(10),
-        payout_currency: "USD",
-        campaign_id: campaign.Id,
-        publisher_id: row["Sub Id 2"],
-        status: row["Sub Id 2"] === "77" ? "Pending" : "Approved",
-        sub1: row["Sub Id 1"],
-        device_id: row["Device Type"] || "unknown",
-      };
-    } else if (
-      campaign.Id === 2853 &&
-      campaign.name === "EaseUS (EN - Global)"
-    ) {
-      return {
-        // p1: row["Sub Id 1"],
-        created: row["Action Date"],
-        txn_id: row["Action Id"],
-        sale_amount: row["Sale Amount"],
-        revenue: actionEarning,
-        payout: ((actionEarning * 90) / 100).toFixed(10),
-        payout_currency: "USD",
-        campaign_id: campaign.Id,
-        publisher_id: row["Sub Id 2"],
-        status: row["Sub Id 2"] === "77" ? "Pending" : "Approved",
-        sub1: row["Sub Id 1"],
         device_id: row["Device Type"] || "unknown",
       };
     }
