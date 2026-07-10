@@ -5,41 +5,12 @@ import { saveAs } from "file-saver";
 
 const Campaigns = [
   {
+    name: "Hertz Corporate Europe",
+    Id: 2985,
+  },
+  {
     name: "Mindvalley",
     Id: 1700,
-  },
-  {
-    name: "Renderforest",
-    Id: 1205,
-  },
-  {
-    name: "Fubo - Live Sports  TV",
-    Id: 2471,
-  },
-
-  {
-    // name: "Bitdefender",
-    Id: 1201,
-  },
-  {
-    // name: "Bluehost",
-    Id: 1147,
-  },
-  {
-    // name: "DocHub",
-    Id: 1194,
-  },
-  {
-    // name: "Hostinger",
-    Id: 2423,
-  },
-  {
-    // name: "Magoosh",
-    Id: 1268,
-  },
-  {
-    // name: "Envato",
-    Id: 1205,
   },
 ];
 
@@ -52,24 +23,9 @@ export default function ImpactSaleMMads() {
   const mapImpactRow = (row, campaign) => {
     const actionEarning = parseFloat(row["Action Earnings"]);
 
-    if (campaign.Id === 1201 && campaign.name === "Bitdefender") {
+    if (campaign.Id === 2985 && campaign.name === "Hertz Corporate Europe") {
       return {
-        p1: row["Sub Id 3"],
-        created: row["Action Date"],
-        txn_id: row["Action Id"],
-        sale_amount: row["Sale Amount"],
-        revenue: actionEarning,
-        payout: ((actionEarning * 80) / 100).toFixed(10),
-        payout_currency: "INR",
-        campaign_id: campaign.Id,
-        publisher_id: row["Sub Id 2"],
-        status: row["Sub Id 2"] === "77" ? "Pending" : "Approved",
-        sub1: row["Sub Id 1"],
-        device_id: row["Device Type"] || "unknown",
-      };
-    } else if (campaign.Id === 1147 && campaign.name === "Bluehost") {
-      return {
-        // p1: row["Sub Id 1"],
+        p1: row["Sub Id 1"],
         created: row["Action Date"],
         txn_id: row["Action Id"],
         sale_amount: row["Sale Amount"],
@@ -80,51 +36,6 @@ export default function ImpactSaleMMads() {
         publisher_id: row["Sub Id 2"],
         status: row["Sub Id 2"] === "77" ? "Pending" : "Approved",
         sub1: row["Sub Id 3"],
-        device_id: row["Device Type"] || "unknown",
-      };
-    } else if (campaign.Id === 1194 && campaign.name === "DocHub") {
-      return {
-        p1: row["Sub Id 3"],
-        created: row["Action Date"],
-        txn_id: row["Action Id"],
-        sale_amount: row["Sale Amount"],
-        revenue: actionEarning,
-        payout: ((actionEarning * 80) / 100).toFixed(10),
-        payout_currency: "INR",
-        campaign_id: campaign.Id,
-        publisher_id: row["Sub Id 2"],
-        status: row["Sub Id 2"] === "77" ? "Pending" : "Approved",
-        sub1: row["Sub Id 1"],
-        device_id: row["Device Type"] || "unknown",
-      };
-    } else if (campaign.Id === 2423 && campaign.name === "Hostinger") {
-      return {
-        // p1: row["Sub Id 1"],
-        created: row["Action Date"],
-        txn_id: row["Action Id"],
-        sale_amount: row["Sale Amount"],
-        revenue: actionEarning,
-        payout: ((actionEarning * 80) / 100).toFixed(10),
-        payout_currency: "INR",
-        campaign_id: campaign.Id,
-        publisher_id: row["Sub Id 2"],
-        status: row["Sub Id 2"] === "77" ? "Pending" : "Approved",
-        sub1: row["Sub Id 3"],
-        device_id: row["Device Type"] || "unknown",
-      };
-    } else if (campaign.Id === 1268 && campaign.name === "Magoosh") {
-      return {
-        p1: row["Sub Id 3"],
-        created: row["Action Date"],
-        txn_id: row["Action Id"],
-        sale_amount: row["Sale Amount"],
-        revenue: actionEarning,
-        payout: ((actionEarning * 80) / 100).toFixed(10),
-        payout_currency: "INR",
-        campaign_id: campaign.Id,
-        publisher_id: row["Sub Id 2"],
-        status: row["Sub Id 2"] === "77" ? "Pending" : "Approved",
-        sub1: row["Sub Id 1"],
         device_id: row["Device Type"] || "unknown",
       };
     } else if (campaign.Id === 1700 && campaign.name === "Mindvalley") {
@@ -135,39 +46,6 @@ export default function ImpactSaleMMads() {
         sale_amount: row["Sale Amount"],
         revenue: actionEarning,
         payout: ((actionEarning * 80) / 100).toFixed(10),
-        payout_currency: "INR",
-        campaign_id: campaign.Id,
-        publisher_id: row["Sub Id 2"],
-        status: row["Sub Id 2"] === "77" ? "Pending" : "Approved",
-        sub1: row["Sub Id 1"],
-        device_id: row["Device Type"] || "unknown",
-      };
-    } else if (campaign.Id === 1205 && campaign.name === "Renderforest") {
-      return {
-        p1: row["Sub Id 3"],
-        created: row["Action Date"],
-        txn_id: row["Action Id"],
-        sale_amount: row["Sale Amount"],
-        revenue: actionEarning,
-        payout: ((actionEarning * 80) / 100).toFixed(10),
-        payout_currency: "INR",
-        campaign_id: campaign.Id,
-        publisher_id: row["Sub Id 2"],
-        status: row["Sub Id 2"] === "77" ? "Pending" : "Approved",
-        sub1: row["Sub Id 1"],
-        device_id: row["Device Type"] || "unknown",
-      };
-    } else if (
-      campaign.Id === 2471 &&
-      campaign.name === "Fubo - Live Sports  TV"
-    ) {
-      return {
-        // p1: row["Sub Id 3"],
-        created: row["Action Date"],
-        txn_id: row["Action Id"],
-        sale_amount: row["Sale Amount"],
-        revenue: actionEarning,
-        payout: ((actionEarning * 92) / 100).toFixed(10),
         payout_currency: "INR",
         campaign_id: campaign.Id,
         publisher_id: row["Sub Id 2"],
