@@ -48,6 +48,10 @@ const Campaigns = [
     name: "Whatnot Affiliates",
     Id: 2250,
   },
+  {
+    name: "FitVille-UK",
+    Id: 3016,
+  },
 ];
 
 export default function ImpactMediaMax() {
@@ -226,6 +230,21 @@ export default function ImpactMediaMax() {
         sale_amount: row["Sale Amount"],
         revenue: actionEarning,
         payout: ((actionEarning * 80) / 100).toFixed(10),
+        payout_currency: "USD",
+        campaign_id: campaign.Id,
+        publisher_id: row["Sub Id 2"],
+        status: row["Sub Id 2"] === "77" ? "Pending" : "Approved",
+        sub1: row["Sub Id 1"],
+        device_id: row["Device Type"] || "unknown",
+      };
+    } else if (campaign.Id === 3016 && campaign.name === "FitVille-UK") {
+      return {
+        p1: row["Sub Id 3"],
+        created: row["Action Date"],
+        txn_id: row["Action Id"],
+        sale_amount: row["Sale Amount"],
+        revenue: actionEarning,
+        payout: ((actionEarning * 90) / 100).toFixed(10),
         payout_currency: "USD",
         campaign_id: campaign.Id,
         publisher_id: row["Sub Id 2"],
