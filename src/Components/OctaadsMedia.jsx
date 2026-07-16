@@ -10,23 +10,19 @@ const Campaigns = [
   },
   {
     name: "Booking.com North America",
-    Id: 1605,
+    Id: 2545,
   },
   {
-    name: "Lufthansa.com",
-    Id: 2555,
-  },
-  {
-    name: "Turkish Airlines",
-    Id: 2017,
-  },
-  {
-    name: "Dorothy Perkins UK",
-    Id: 2541,
+    name: "Debenhams UK",
+    Id: 3018,
   },
   {
     name: "Trivago UK",
     Id: 2772,
+  },
+  {
+    name: "Trivago DE",
+    Id: 2805,
   },
 ];
 
@@ -39,9 +35,9 @@ export default function OctaadsMedia() {
   const mapOctaadsMediaRow = (row, campaign) => {
     const actionEarning = parseFloat(row["MMAds Commission"]);
 
-    if (campaign.Id === 2545 && campaign.name === "Booking.com LATAM") {
+    if (campaign.Id === 3018 && campaign.name === "Debenhams UK") {
       return {
-        p1: row["click_ref2"],
+        p1: row["click_ref3"].split("_")[1],
         created: row["date"],
         txn_id: row["id"],
         sale_amount: row["sale_amount"],
@@ -49,47 +45,14 @@ export default function OctaadsMedia() {
         payout: ((actionEarning * 80) / 100).toFixed(10),
         payout_currency: row["Currency"],
         campaign_id: campaign.Id,
-        publisher_id: row["click_ref2"],
-        status: row["click_ref2"] === "77" ? "Pending" : "Approved",
-        // sub1: row["clickref"],
-        device_id: row["click_device"] || "unknown",
-      };
-    } else if (
-      campaign.Id === 1605 &&
-      campaign.name === "Booking.com North America"
-    ) {
-      return {
-        p1: row["click_ref3"],
-        created: row["date"],
-        txn_id: row["id"],
-        sale_amount: row["sale_amount"],
-        revenue: actionEarning,
-        payout: ((actionEarning * 80) / 100).toFixed(10),
-        payout_currency: row["Currency"],
-        campaign_id: campaign.Id,
-        publisher_id: row["click_ref2"],
-        status: row["click_ref2"] === "77" ? "Pending" : "Approved",
-        // sub1: row["clickref"],
-        device_id: row["click_device"] || "unknown",
-      };
-    } else if (campaign.Id === 2541 && campaign.name === "Dorothy Perkins UK") {
-      return {
-        p1: row["click_ref3"],
-        created: row["date"],
-        txn_id: row["id"],
-        sale_amount: row["sale_amount"],
-        revenue: actionEarning,
-        payout: ((actionEarning * 80) / 100).toFixed(10),
-        payout_currency: row["Currency"],
-        campaign_id: campaign.Id,
-        publisher_id: row["click_ref2"],
-        status: row["click_ref2"] === "77" ? "Pending" : "Approved",
+        publisher_id: row["click_ref3"].split("_")[0],
+        status: "Pending",
         // sub1: row["clickref"],
         device_id: row["click_device"] || "unknown",
       };
     } else if (campaign.Id === 2772 && campaign.name === "Trivago UK") {
       return {
-        p1: row["click_ref3"],
+        p1: row["click_ref3"].split("_")[1],
         created: row["date"],
         txn_id: row["id"],
         sale_amount: row["sale_amount"],
@@ -97,8 +60,23 @@ export default function OctaadsMedia() {
         payout: ((actionEarning * 80) / 100).toFixed(10),
         payout_currency: row["Currency"],
         campaign_id: campaign.Id,
-        publisher_id: row["click_ref2"],
-        status: row["click_ref2"] === "77" ? "Pending" : "Approved",
+        publisher_id: row["click_ref3"].split("_")[0],
+        status: "Pending",
+        // sub1: row["clickref"],
+        device_id: row["click_device"] || "unknown",
+      };
+    } else if (campaign.Id === 2805 && campaign.name === "Trivago DE") {
+      return {
+        p1: row["click_ref3"].split("_")[1],
+        created: row["date"],
+        txn_id: row["id"],
+        sale_amount: row["sale_amount"],
+        revenue: actionEarning,
+        payout: ((actionEarning * 80) / 100).toFixed(10),
+        payout_currency: row["Currency"],
+        campaign_id: campaign.Id,
+        publisher_id: row["click_ref3"].split("_")[0],
+        status: "Pending",
         // sub1: row["clickref"],
         device_id: row["click_device"] || "unknown",
       };
@@ -126,23 +104,26 @@ export default function OctaadsMedia() {
     }
   };
 
-  const mapOctaadsTurkishAirlinesRow = (row, campaign) => {
-    const actionEarning = parseFloat(row["MMAds Total Commission"]);
+  const mapOctaadsBookingRow = (row, campaign) => {
+    const actionEarning = parseFloat(row["MMAds Publisher Commission (USD)"]);
 
-    if (campaign.Id === 2017 && campaign.name === "Turkish Airlines") {
+    if (
+      (campaign.Id === 2545 && campaign.name === "Booking.com LATAM") ||
+      (campaign.Id === 2545 && campaign.name === "Booking.com North America")
+    ) {
       return {
         p1: "",
-        created: row["Transaction Date"],
-        txn_id: row["Transaction ID"],
-        sale_amount: row["Gross Sales"],
+        created: row["Posting Date"],
+        txn_id: row["Order ID"],
+        sale_amount: row["Sale Amount (USD)"],
         revenue: actionEarning,
         payout: ((actionEarning * 80) / 100).toFixed(10),
-        payout_currency: row["Currency"],
+        payout_currency: "USD",
         campaign_id: campaign.Id,
         publisher_id: "",
         status: "Pending",
-        sub1: row["Order ID"],
-        device_id: row["Device"] || "unknown",
+        // sub1: row["Order ID"],
+        // device_id: row["Device"] || "unknown",
       };
     }
   };
@@ -238,7 +219,10 @@ export default function OctaadsMedia() {
         const worksheet = workbook.Sheets[workbook.SheetNames[0]];
         const jsonData = XLSX.utils.sheet_to_json(worksheet, { defval: "" });
 
-        if (jsonData[0]["Advertiser Name"] == "Turkish Airlines") {
+        if (
+          jsonData[0]["Advertiser Name"] == "Booking.com LATAM" ||
+          jsonData[0]["Advertiser Name"] == "Booking.com North America "
+        ) {
           const cleaned = jsonData
             .filter(
               (row) =>
@@ -267,7 +251,7 @@ export default function OctaadsMedia() {
             }
 
             brandWise[brand] = brandRows.map((row) =>
-              mapOctaadsTurkishAirlinesRow(row, config),
+              mapOctaadsBookingRow(row, config),
             );
           });
 

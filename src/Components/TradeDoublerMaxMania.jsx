@@ -12,6 +12,10 @@ const Campaigns = [
     name: "Hume Health",
     Id: 3014,
   },
+  {
+    name: "Hugendubel",
+    Id: 2025,
+  },
 ];
 
 export default function TradeDoublerMaxMania() {
