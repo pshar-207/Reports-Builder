@@ -32,6 +32,12 @@ const Campaigns = [
   },
 
   {
+    name: "ExpressVPN",
+    payoutPercent: 80,
+    publisher: "Analytics clouds",
+  },
+
+  {
     name: "Alinea Invest",
     payoutPercent: 80,
     publisher: "ViralSpot",
@@ -41,15 +47,30 @@ const Campaigns = [
     payoutPercent: 80,
     publisher: "ViralSpot",
   },
+  {
+    name: "Cashably",
+    payoutPercent: 80,
+    publisher: "ViralSpot",
+  },
 
   {
     name: "PopAi",
     payoutPercent: 85,
     publisher: "ClickOrbit Vratika",
   },
+  {
+    name: "EaseUS (EN - Global)",
+    payoutPercent: 90,
+    publisher: "ClickOrbit Vratika",
+  },
 
   {
     name: "Airpaz",
+    payoutPercent: 80,
+    publisher: "Levitadz",
+  },
+  {
+    name: "DoorDash, Inc. Canada",
     payoutPercent: 80,
     publisher: "Levitadz",
   },
@@ -75,22 +96,6 @@ const Campaigns = [
     name: "Razer Affiliate Program",
     payoutPercent: 80,
     publisher: "Sachin Sharma",
-  },
-  {
-    name: "French bee USA",
-    payoutPercent: 80,
-    publisher: "Sachin Sharma",
-  },
-
-  {
-    name: "Qatar Airways",
-    payoutPercent: 80,
-    publisher: "Pause",
-  },
-  {
-    name: "OpenArt AI",
-    payoutPercent: 80,
-    publisher: "Pause",
   },
 ];
 
