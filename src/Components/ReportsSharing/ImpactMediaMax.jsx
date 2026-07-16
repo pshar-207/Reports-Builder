@@ -48,6 +48,17 @@ const Campaigns = [
   },
 
   {
+    name: "FitVille-DE",
+    payoutPercent: 90,
+    publisher: "ClickOrbit Vratika",
+  },
+  {
+    name: "FitVille-UK",
+    payoutPercent: 90,
+    publisher: "ClickOrbit Vratika",
+  },
+
+  {
     name: "Boden DE",
     payoutPercent: 80,
     publisher: "Dealism",
@@ -70,14 +81,9 @@ const Campaigns = [
   },
 
   {
-    name: "Airalo",
+    name: "Coursera B2C Affiliate Program",
     payoutPercent: 80,
-    publisher: "Pause",
-  },
-  {
-    name: "OpenArt AI",
-    payoutPercent: 80,
-    publisher: "Pause",
+    publisher: "Sachin Sharma",
   },
 ];
 
