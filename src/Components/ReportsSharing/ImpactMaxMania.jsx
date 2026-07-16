@@ -24,11 +24,37 @@ const Campaigns = [
     payoutPercent: 80,
     publisher: "AM Tech",
   },
+  {
+    name: "New Balance Athletics, Inc.",
+    payoutPercent: 80,
+    publisher: "AM Tech",
+  },
+  {
+    name: "Contiki",
+    payoutPercent: 80,
+    publisher: "AM Tech",
+  },
 
   {
     name: "AppSumo",
     payoutPercent: 80,
     publisher: "Raffesia Sahil",
+  },
+  {
+    name: "Ultahost",
+    payoutPercent: 80,
+    publisher: "Raffesia Sahil",
+  },
+  {
+    name: "iHerb",
+    payoutPercent: 80,
+    publisher: "Raffesia Sahil",
+  },
+
+  {
+    name: "Super.com - Travel",
+    payoutPercent: 80,
+    publisher: "Analytics clouds",
   },
 
   {
@@ -68,6 +94,11 @@ const Campaigns = [
     payoutPercent: 80,
     publisher: "Dealism",
   },
+  {
+    name: "QVC - US",
+    payoutPercent: 80,
+    publisher: "Dealism",
+  },
 
   {
     name: "AARP",
@@ -81,6 +112,11 @@ const Campaigns = [
   },
   {
     name: "Airpaz",
+    payoutPercent: 80,
+    publisher: "Levitadz",
+  },
+  {
+    name: "Omio Travel Partner Program",
     payoutPercent: 80,
     publisher: "Levitadz",
   },
@@ -131,8 +167,8 @@ const Campaigns = [
     publisher: "DDM Rupali",
   },
   {
-    name: "Super.com - Travel",
-    payoutPercent: 80,
+    name: "Upstart Personal Loans",
+    payoutPercent: 90,
     publisher: "DDM Rupali",
   },
 
@@ -141,11 +177,21 @@ const Campaigns = [
     payoutPercent: 80,
     publisher: "Ideaclan",
   },
+  {
+    name: "Upstart Personal Loans",
+    payoutPercent: 80,
+    publisher: "Ideaclan",
+  },
+  {
+    name: "Carwow UK",
+    payoutPercent: 80,
+    publisher: "Ideaclan",
+  },
 
   {
-    name: "Taskrabbit North America",
+    name: "Helium 10",
     payoutPercent: 80,
-    publisher: "Pause",
+    publisher: "String Solution",
   },
 ];
 
