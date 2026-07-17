@@ -16,6 +16,10 @@ const Campaigns = [
     name: "Toms Americas",
     Id: 2748,
   },
+  {
+    name: "Bloom & Wild UK",
+    Id: 2813,
+  },
 ];
 
 export default function PartnerizeMaxMania() {
@@ -60,6 +64,21 @@ export default function PartnerizeMaxMania() {
       };
     } else if (campaign.Id === 2748 && campaign.name === "Toms Americas") {
       return {
+        created: row["conversion_date"],
+        txn_id: row["conversion_id"],
+        sale_amount: row["value"],
+        revenue: actionEarning,
+        payout: ((actionEarning * 80) / 100).toFixed(10),
+        payout_currency: row["currency"].split(" ")[0],
+        campaign_id: campaign.Id,
+        publisher_id: row["advertiser_reference"],
+        status: row["advertiser_reference"] === "77" ? "Pending" : "Approved",
+        sub1: row["clickref"],
+        device_id: row["ref_device"] || "unknown",
+      };
+    } else if (campaign.Id === 2813 && campaign.name === "Bloom & Wild UK") {
+      return {
+        P1: row["publisher_reference"],
         created: row["conversion_date"],
         txn_id: row["conversion_id"],
         sale_amount: row["value"],
