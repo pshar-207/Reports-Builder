@@ -5,12 +5,8 @@ import { saveAs } from "file-saver";
 
 const Campaigns = [
   {
-    // name: "GoCity",
-    Id: 2154,
-  },
-  {
-    // name: "H&M (Hennes & Mauritz)",
-    Id: 2324,
+    name: "F-Secure | Internet Security & VPN",
+    Id: 2279,
   },
 ];
 
@@ -23,7 +19,10 @@ export default function Partnerizemediamaxadv() {
   const mapPartnerizeRow = (row, campaign) => {
     const actionEarning = parseFloat(row["publisher_commission"]);
 
-    if (campaign.Id === 2154 && campaign.name === "GoCity") {
+    if (
+      campaign.Id === 2279 &&
+      campaign.name === "F-Secure | Internet Security & VPN"
+    ) {
       return {
         created: row["conversion_date"],
         txn_id: row["conversion_id"],
@@ -32,8 +31,8 @@ export default function Partnerizemediamaxadv() {
         payout: ((actionEarning * 80) / 100).toFixed(10),
         payout_currency: row["currency"].split(" ")[0],
         campaign_id: campaign.Id,
-        publisher_id: row["publisher_reference"],
-        status: row["publisher_reference"] === "77" ? "Pending" : "Approved",
+        publisher_id: row["advertiser_reference"],
+        status: row["advertiser_reference"] === "77" ? "Pending" : "Approved",
         sub1: row["clickref"],
         device_id: row["ref_device"] || "unknown",
       };
