@@ -56,6 +56,11 @@ const Campaigns = [
     payoutPercent: 80,
     publisher: "Analytics clouds",
   },
+  {
+    name: "Travala.com",
+    payoutPercent: 80,
+    publisher: "Analytics clouds",
+  },
 
   {
     name: "Remitly",
