@@ -8,6 +8,11 @@ const Campaigns = [
     payoutPercent: 80,
     publisher: "AM Tech",
   },
+  {
+    name: "Caden Lane",
+    payoutPercent: 80,
+    publisher: "AM Tech",
+  },
 ];
 
 export default function RakutenMaxManiaReportSharing() {
