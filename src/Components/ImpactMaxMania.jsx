@@ -116,6 +116,14 @@ const Campaigns = [
     name: "GLD",
     Id: 2847,
   },
+  {
+    name: "1st Phorm",
+    Id: 2659,
+  },
+  {
+    name: "Freecash",
+    Id: 2913,
+  },
 ];
 
 export default function ImpactMaxMania() {
@@ -557,6 +565,36 @@ export default function ImpactMaxMania() {
         publisher_id: row["Sub Id 2"],
         status: row["Sub Id 2"] === "77" ? "Pending" : "Approved",
         sub1: row["Sub Id 1"],
+        device_id: row["Device Type"] || "unknown",
+      };
+    } else if (campaign.Id === 2659 && campaign.name === "1st Phorm") {
+      return {
+        p1: row["Sub Id 3"],
+        created: row["Action Date"],
+        txn_id: row["Action Id"],
+        sale_amount: row["Sale Amount"],
+        revenue: actionEarning,
+        payout: ((actionEarning * 80) / 100).toFixed(10),
+        payout_currency: "USD",
+        campaign_id: campaign.Id,
+        publisher_id: row["Sub Id 2"],
+        status: row["Sub Id 2"] === "77" ? "Pending" : "Approved",
+        sub1: row["Sub Id 1"],
+        device_id: row["Device Type"] || "unknown",
+      };
+    } else if (campaign.Id === 2913 && campaign.name === "Freecash") {
+      return {
+        // p1: row["Sub Id 3"],
+        created: row["Action Date"],
+        txn_id: row["Action Id"],
+        sale_amount: row["Sale Amount"],
+        revenue: actionEarning,
+        payout: ((actionEarning * 80) / 100).toFixed(10),
+        payout_currency: "USD",
+        campaign_id: campaign.Id,
+        publisher_id: row["Sub Id 1"],
+        status: row["Sub Id 1"] === "77" ? "Pending" : "Approved",
+        sub1: row["Sub Id 2"],
         device_id: row["Device Type"] || "unknown",
       };
     }
