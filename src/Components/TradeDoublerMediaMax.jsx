@@ -12,6 +12,10 @@ const Campaigns = [
     name: "Autodoc",
     Id: 2400,
   },
+  {
+    name: "Ferryhopper DE",
+    Id: 3123,
+  },
 ];
 
 export default function TradeDoublerMediaMax() {
@@ -50,6 +54,21 @@ export default function TradeDoublerMediaMax() {
         campaign_id: campaign.Id,
         publisher_id: row["epi2"].split("_")[0],
         status: row["epi2"].split("_")[0] === "77" ? "Pending" : "Approved",
+        sub1: row["orderNumber"],
+        device_id: row["mobileDeviceType"] || "unknown",
+      };
+    } else if (campaign.Id === 3123 && campaign.name === "Ferryhopper DE") {
+      return {
+        p1: row["epi"].split("_")[1],
+        created: row["timeOfTransaction"],
+        txn_id: row["transactionId"],
+        sale_amount: row["orderValue"],
+        revenue: actionEarning,
+        payout: ((actionEarning * 80) / 100).toFixed(10),
+        payout_currency: "USD",
+        campaign_id: campaign.Id,
+        publisher_id: row["epi"].split("_")[0],
+        status: row["epi"].split("_")[0] === "77" ? "Pending" : "Approved",
         sub1: row["orderNumber"],
         device_id: row["mobileDeviceType"] || "unknown",
       };
