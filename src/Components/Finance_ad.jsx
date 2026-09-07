@@ -25,6 +25,8 @@ export default function TradeDoublerMaatr() {
       camp_id = 2575;
     } else if (row["Program"] == "Bank of Scotland") {
       camp_id = 2576;
+    } else if (row["Program"] == "auxmoney") {
+      camp_id = 2666;
     }
 
     const revenue = parseFloat(
