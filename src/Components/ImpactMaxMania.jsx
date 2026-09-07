@@ -124,6 +124,34 @@ const Campaigns = [
     name: "Freecash",
     Id: 2913,
   },
+  {
+    name: "Cariloha",
+    Id: 3082,
+  },
+  {
+    name: "Liquid Web",
+    Id: 2817,
+  },
+  {
+    name: "Better World Books",
+    Id: 3122,
+  },
+  {
+    name: "OGLmove",
+    Id: 3081,
+  },
+  {
+    name: "XTEINK",
+    Id: 3115,
+  },
+  {
+    name: "Kizik",
+    Id: 2935,
+  },
+  {
+    name: "Little Sleepies",
+    Id: 2434,
+  },
 ];
 
 export default function ImpactMaxMania() {
@@ -595,6 +623,111 @@ export default function ImpactMaxMania() {
         publisher_id: row["Sub Id 1"],
         status: row["Sub Id 1"] === "77" ? "Pending" : "Approved",
         sub1: row["Sub Id 2"],
+        device_id: row["Device Type"] || "unknown",
+      };
+    } else if (campaign.Id === 3082 && campaign.name === "Cariloha") {
+      return {
+        p1: row["Sub Id 3"],
+        created: row["Action Date"],
+        txn_id: row["Action Id"],
+        sale_amount: row["Sale Amount"],
+        revenue: actionEarning,
+        payout: ((actionEarning * 80) / 100).toFixed(10),
+        payout_currency: "USD",
+        campaign_id: campaign.Id,
+        publisher_id: row["Sub Id 2"],
+        status: row["Sub Id 2"] === "77" ? "Pending" : "Approved",
+        sub1: row["Sub Id 1"],
+        device_id: row["Device Type"] || "unknown",
+      };
+    } else if (campaign.Id === 2817 && campaign.name === "Liquid Web") {
+      return {
+        p1: row["Sub Id 3"],
+        created: row["Action Date"],
+        txn_id: row["Action Id"],
+        sale_amount: row["Sale Amount"],
+        revenue: actionEarning,
+        payout: ((actionEarning * 80) / 100).toFixed(10),
+        payout_currency: "USD",
+        campaign_id: campaign.Id,
+        publisher_id: row["Sub Id 2"],
+        status: row["Sub Id 2"] === "77" ? "Pending" : "Approved",
+        sub1: row["Sub Id 1"],
+        device_id: row["Device Type"] || "unknown",
+      };
+    } else if (campaign.Id === 3122 && campaign.name === "Better World Books") {
+      return {
+        p1: row["Sub Id 1"],
+        created: row["Action Date"],
+        txn_id: row["Action Id"],
+        sale_amount: row["Sale Amount"],
+        revenue: actionEarning,
+        payout: ((actionEarning * 80) / 100).toFixed(10),
+        payout_currency: "USD",
+        campaign_id: campaign.Id,
+        publisher_id: row["Sub Id 2"],
+        status: row["Sub Id 2"] === "77" ? "Pending" : "Approved",
+        sub1: row["Sub Id 3"],
+        device_id: row["Device Type"] || "unknown",
+      };
+    } else if (campaign.Id === 3081 && campaign.name === "OGLmove") {
+      return {
+        p1: row["Sub Id 1"],
+        created: row["Action Date"],
+        txn_id: row["Action Id"],
+        sale_amount: row["Sale Amount"],
+        revenue: actionEarning,
+        payout: ((actionEarning * 80) / 100).toFixed(10),
+        payout_currency: "USD",
+        campaign_id: campaign.Id,
+        publisher_id: row["Sub Id 2"],
+        status: row["Sub Id 2"] === "77" ? "Pending" : "Approved",
+        sub1: row["Sub Id 3"],
+        device_id: row["Device Type"] || "unknown",
+      };
+    } else if (campaign.Id === 3115 && campaign.name === "XTEINK") {
+      return {
+        p1: row["Sub Id 1"],
+        created: row["Action Date"],
+        txn_id: row["Action Id"],
+        sale_amount: row["Sale Amount"],
+        revenue: actionEarning,
+        payout: ((actionEarning * 80) / 100).toFixed(10),
+        payout_currency: "USD",
+        campaign_id: campaign.Id,
+        publisher_id: row["Sub Id 2"],
+        status: row["Sub Id 2"] === "77" ? "Pending" : "Approved",
+        sub1: row["Sub Id 3"],
+        device_id: row["Device Type"] || "unknown",
+      };
+    } else if (campaign.Id === 2935 && campaign.name === "Kizik") {
+      return {
+        p1: row["Sub Id 1"],
+        created: row["Action Date"],
+        txn_id: row["Action Id"],
+        sale_amount: row["Sale Amount"],
+        revenue: actionEarning,
+        payout: ((actionEarning * 80) / 100).toFixed(10),
+        payout_currency: "USD",
+        campaign_id: campaign.Id,
+        publisher_id: row["Sub Id 2"],
+        status: row["Sub Id 2"] === "77" ? "Pending" : "Approved",
+        sub1: row["Sub Id 3"],
+        device_id: row["Device Type"] || "unknown",
+      };
+    } else if (campaign.Id === 2434 && campaign.name === "Little Sleepies") {
+      return {
+        p1: row["Sub Id 3"],
+        created: row["Action Date"],
+        txn_id: row["Action Id"],
+        sale_amount: row["Sale Amount"],
+        revenue: actionEarning,
+        payout: ((actionEarning * 80) / 100).toFixed(10),
+        payout_currency: "USD",
+        campaign_id: campaign.Id,
+        publisher_id: row["Sub Id 2"],
+        status: row["Sub Id 2"] === "77" ? "Pending" : "Approved",
+        sub1: row["Sub Id 1"],
         device_id: row["Device Type"] || "unknown",
       };
     }
