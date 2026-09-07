@@ -16,6 +16,10 @@ const Campaigns = [
     name: "Hugendubel",
     Id: 2025,
   },
+  {
+    name: "Promovacances",
+    Id: 1689,
+  },
 ];
 
 export default function TradeDoublerMaxMania() {
@@ -54,6 +58,36 @@ export default function TradeDoublerMaxMania() {
         campaign_id: campaign.Id,
         publisher_id: row["epi"].split("_")[0],
         status: row["epi"].split("_")[0] === "77" ? "Pending" : "Approved",
+        sub1: row["orderNumber"],
+        device_id: row["mobileDeviceType"] || "unknown",
+      };
+    } else if (campaign.Id === 3014 && campaign.name === "Hugendubel") {
+      return {
+        p1: row["epi"],
+        created: row["timeOfTransaction"],
+        txn_id: row["transactionId"],
+        sale_amount: row["orderValue"],
+        revenue: actionEarning,
+        payout: ((actionEarning * 80) / 100).toFixed(10),
+        payout_currency: "USD",
+        campaign_id: campaign.Id,
+        publisher_id: row["epi"],
+        status: row["epi"] === "77" ? "Pending" : "Approved",
+        sub1: row["orderNumber"],
+        device_id: row["mobileDeviceType"] || "unknown",
+      };
+    } else if (campaign.Id === 1689 && campaign.name === "Promovacances") {
+      return {
+        p1: row["epi"],
+        created: row["timeOfTransaction"],
+        txn_id: row["transactionId"],
+        sale_amount: row["orderValue"],
+        revenue: actionEarning,
+        payout: ((actionEarning * 80) / 100).toFixed(10),
+        payout_currency: "USD",
+        campaign_id: campaign.Id,
+        publisher_id: row["epi2"],
+        status: row["epi2"] === "77" ? "Pending" : "Approved",
         sub1: row["orderNumber"],
         device_id: row["mobileDeviceType"] || "unknown",
       };
