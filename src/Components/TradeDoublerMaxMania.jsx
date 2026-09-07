@@ -61,7 +61,7 @@ export default function TradeDoublerMaxMania() {
         sub1: row["orderNumber"],
         device_id: row["mobileDeviceType"] || "unknown",
       };
-    } else if (campaign.Id === 3014 && campaign.name === "Hugendubel") {
+    } else if (campaign.Id === 2025 && campaign.name === "Hugendubel") {
       return {
         p1: row["epi"],
         created: row["timeOfTransaction"],
