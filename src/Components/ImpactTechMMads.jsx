@@ -36,6 +36,14 @@ const Campaigns = [
     name: "Cashably",
     Id: 3023,
   },
+  {
+    name: "Malaysia Airlines",
+    Id: 1717,
+  },
+  {
+    name: "Hostinger",
+    Id: 2349,
+  },
 ];
 
 export default function ImpactTechMMads() {
@@ -168,6 +176,36 @@ export default function ImpactTechMMads() {
         publisher_id: row["Sub Id 1"],
         status: row["Sub Id 1"] === "77" ? "Pending" : "Approved",
         sub1: row["Sub Id 2"],
+        device_id: row["Device Type"] || "unknown",
+      };
+    } else if (campaign.Id === 1717 && campaign.name === "Malaysia Airlines") {
+      return {
+        p1: row["Sub Id 3"],
+        created: row["Action Date"],
+        txn_id: row["Action Id"],
+        sale_amount: row["Sale Amount"],
+        revenue: actionEarning,
+        payout: ((actionEarning * 80) / 100).toFixed(10),
+        payout_currency: "USD",
+        campaign_id: campaign.Id,
+        publisher_id: row["Sub Id 2"],
+        status: row["Sub Id 2"] === "77" ? "Pending" : "Approved",
+        sub1: row["Sub Id 1"],
+        device_id: row["Device Type"] || "unknown",
+      };
+    } else if (campaign.Id === 2349 && campaign.name === "Hostinger") {
+      return {
+        p1: row["Sub Id 3"],
+        created: row["Action Date"],
+        txn_id: row["Action Id"],
+        sale_amount: row["Sale Amount"],
+        revenue: actionEarning,
+        payout: ((actionEarning * 80) / 100).toFixed(10),
+        payout_currency: "USD",
+        campaign_id: campaign.Id,
+        publisher_id: row["Sub Id 2"],
+        status: row["Sub Id 2"] === "77" ? "Pending" : "Approved",
+        sub1: row["Sub Id 1"],
         device_id: row["Device Type"] || "unknown",
       };
     }
