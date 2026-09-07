@@ -8,6 +8,10 @@ const Campaigns = [
     name: "Etsy Affiliate US",
     Id: 2769,
   },
+  {
+    name: "Caden Lane",
+    Id: 2130,
+  },
 ];
 
 export default function RakutenMMAds() {
@@ -47,6 +51,25 @@ export default function RakutenMMAds() {
         device_id: row["Device"] || "unknown",
       };
     } else if (campaign.Id === 2769 && campaign.name === "Etsy Affiliate US") {
+      return {
+        p1: row["Member ID (U1)"] ? row["Member ID (U1)"].split("_")[1] : "",
+        created: formatDate(row["Transaction Date"]),
+        txn_id: row["Order ID"],
+        sale_amount: row["Sales"],
+        revenue: actionEarning,
+        payout: ((actionEarning * 80) / 100).toFixed(10),
+        payout_currency: row["Currency"],
+        campaign_id: campaign.Id,
+        publisher_id: row["Member ID (U1)"]
+          ? row["Member ID (U1)"].split("_")[0]
+          : "",
+        status:
+          row["Member ID (U1)"] && row["Member ID (U1)"].split("_")[0] === "77"
+            ? "Pending"
+            : "Approved",
+        device_id: row["Device"] || "unknown",
+      };
+    } else if (campaign.Id === 2130 && campaign.name === "Caden Lane") {
       return {
         p1: row["Member ID (U1)"] ? row["Member ID (U1)"].split("_")[1] : "",
         created: formatDate(row["Transaction Date"]),
