@@ -25,7 +25,7 @@ export default function AwinMaxmania() {
         sale_amount: row["sale_amount"],
         revenue: actionEarning,
         payout: ((actionEarning * 80) / 100).toFixed(10),
-        payout_currency: "GBP",
+        payout_currency: "EUR",
         campaign_id: campaign.Id,
         publisher_id: row["click_ref2"],
         status: row["click_ref2"] === "77" ? "Pending" : "Approved",

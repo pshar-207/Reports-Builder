@@ -11,6 +11,10 @@ const Campaigns = [
     name: "Trivago UK",
     Id: 2628,
   },
+  {
+    name: "El Corte Ingles ES",
+    Id: 2590,
+  },
 ];
 
 export default function AwinMediamax() {
@@ -47,6 +51,20 @@ export default function AwinMediamax() {
         campaign_id: campaign.Id,
         publisher_id: row["click_ref"],
         status: row["click_ref"] === "77" ? "Pending" : "Approved",
+        sub1: row["clickref"],
+        device_id: row["click_device"] || "unknown",
+      };
+    } else if (campaign.Id === 2590 && campaign.name === "El Corte Ingles ES") {
+      return {
+        created: row["date"],
+        txn_id: row["id"],
+        sale_amount: row["sale_amount"],
+        revenue: actionEarning,
+        payout: ((actionEarning * 80) / 100).toFixed(10),
+        payout_currency: "EUR",
+        campaign_id: campaign.Id,
+        publisher_id: row["click_ref2"],
+        status: row["click_ref2"] === "77" ? "Pending" : "Approved",
         sub1: row["clickref"],
         device_id: row["click_device"] || "unknown",
       };
