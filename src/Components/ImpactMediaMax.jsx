@@ -68,6 +68,10 @@ const Campaigns = [
     name: "LATAM Airlines ( USA/EU )",
     Id: 2355,
   },
+  {
+    name: "WPS SOFTWARE PTE.LTD.",
+    Id: 2326,
+  },
 ];
 
 export default function ImpactMediaMax() {
@@ -328,6 +332,24 @@ export default function ImpactMediaMax() {
         campaign_id: campaign.Id,
         publisher_id: row["Sub Id 2"],
         status: row["Sub Id 2"] === "77" ? "Pending" : "Approved",
+        sub1: row["Sub Id 1"],
+        device_id: row["Device Type"] || "unknown",
+      };
+    } else if (
+      campaign.Id === 2326 &&
+      campaign.name === "WPS SOFTWARE PTE.LTD."
+    ) {
+      return {
+        p1: row["Sub Id 2"],
+        created: row["Action Date"],
+        txn_id: row["Action Id"],
+        sale_amount: row["Sale Amount"],
+        revenue: actionEarning,
+        payout: ((actionEarning * 80) / 100).toFixed(10),
+        payout_currency: "USD",
+        campaign_id: campaign.Id,
+        publisher_id: row["SharedId"],
+        status: row["SharedId"] === "77" ? "Pending" : "Approved",
         sub1: row["Sub Id 1"],
         device_id: row["Device Type"] || "unknown",
       };
