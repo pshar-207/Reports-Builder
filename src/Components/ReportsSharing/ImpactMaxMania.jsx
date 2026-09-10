@@ -61,6 +61,11 @@ const Campaigns = [
     payoutPercent: 80,
     publisher: "Analytics clouds",
   },
+  {
+    name: "New Balance Athletics, Inc.",
+    payoutPercent: 80,
+    publisher: "Analytics clouds",
+  },
 
   {
     name: "Remitly",
