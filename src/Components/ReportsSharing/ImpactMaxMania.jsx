@@ -25,7 +25,7 @@ const Campaigns = [
     publisher: "AM Tech",
   },
   {
-    name: "New Balance Athletics, Inc.",
+    name: "Uniform Advantage",
     payoutPercent: 80,
     publisher: "AM Tech",
   },

@@ -24,6 +24,11 @@ const Campaigns = [
     payoutPercent: 80,
     publisher: "AM Tech",
   },
+  {
+    name: "Logitech - US, Canada & Mexico",
+    payoutPercent: 80,
+    publisher: "AM Tech",
+  },
 
   {
     name: "Udemy",
