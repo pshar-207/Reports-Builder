@@ -23,6 +23,11 @@ const Campaigns = [
     payoutPercent: 80,
     publisher: "Dealism",
   },
+  {
+    name: "Kitsch",
+    payoutPercent: 80,
+    publisher: "AM Tech",
+  },
 ];
 
 export default function AwinMediaMaxReportSharing() {

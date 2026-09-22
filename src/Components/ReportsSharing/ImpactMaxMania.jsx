@@ -34,6 +34,11 @@ const Campaigns = [
     payoutPercent: 80,
     publisher: "AM Tech",
   },
+  {
+    name: "SimpliSafe Home Security",
+    payoutPercent: 80,
+    publisher: "AM Tech",
+  },
 
   {
     name: "AppSumo",
