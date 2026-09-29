@@ -31,27 +31,60 @@ const Campaigns = [
   },
 
   {
-    name: "Udemy",
+    name: "AppSumo",
     payoutPercent: 80,
-    publisher: "Raffesia Sahil",
+    publisher: "Dev",
+  },
+  {
+    name: "Malaysia Airlines",
+    payoutPercent: 80,
+    publisher: "Dev",
   },
 
   {
-    name: "ExpressVPN",
+    name: "Little Sleepies",
     payoutPercent: 80,
-    publisher: "Analytics clouds",
+    publisher: "Ideaclan",
   },
 
   {
-    name: "Alinea Invest",
+    name: "Airpaz",
     payoutPercent: 80,
-    publisher: "ViralSpot",
+    publisher: "Levitadz",
   },
   {
-    name: "Lenme",
+    name: "DoorDash, Inc. Canada",
     payoutPercent: 80,
-    publisher: "ViralSpot",
+    publisher: "Levitadz",
   },
+  {
+    name: "Breakout",
+    payoutPercent: 80,
+    publisher: "Levitadz",
+  },
+  {
+    name: "Coursera B2C Affiliate Program",
+    payoutPercent: 80,
+    publisher: "Levitadz",
+  },
+
+  {
+    name: "Razer Affiliate Program",
+    payoutPercent: 80,
+    publisher: "Sachin Sharma",
+  },
+
+  {
+    name: "Faye Travel Insurance",
+    payoutPercent: 80,
+    publisher: "String Solution",
+  },
+  {
+    name: "Semrush",
+    payoutPercent: 80,
+    publisher: "String Solution",
+  },
+
   {
     name: "Cashably",
     payoutPercent: 80,
@@ -67,40 +100,6 @@ const Campaigns = [
     name: "EaseUS (EN - Global)",
     payoutPercent: 90,
     publisher: "ClickOrbit Vratika",
-  },
-
-  {
-    name: "Airpaz",
-    payoutPercent: 80,
-    publisher: "Levitadz",
-  },
-  {
-    name: "DoorDash, Inc. Canada",
-    payoutPercent: 80,
-    publisher: "Levitadz",
-  },
-
-  {
-    name: "NordVPN",
-    payoutPercent: 80,
-    publisher: "DDM Rupali",
-  },
-  {
-    name: "Charles & Keith US",
-    payoutPercent: 80,
-    publisher: "DDM Rupali",
-  },
-
-  {
-    name: "Little Sleepies",
-    payoutPercent: 80,
-    publisher: "Ideaclan",
-  },
-
-  {
-    name: "Razer Affiliate Program",
-    payoutPercent: 80,
-    publisher: "Sachin Sharma",
   },
 ];
 

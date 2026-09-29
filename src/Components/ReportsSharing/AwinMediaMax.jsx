@@ -4,6 +4,12 @@ import { saveAs } from "file-saver";
 
 const Campaigns = [
   {
+    name: "Kitsch",
+    payoutPercent: 80,
+    publisher: "AM Tech",
+  },
+
+  {
     name: "Trivago USA",
     payoutPercent: 80,
     publisher: "Dealism",
@@ -19,14 +25,15 @@ const Campaigns = [
     publisher: "Dealism",
   },
   {
-    name: "El Corte Ingles ES",
+    name: "Swimply",
     payoutPercent: 80,
     publisher: "Dealism",
   },
+
   {
-    name: "Kitsch",
+    name: "El Corte Ingles ES",
     payoutPercent: 80,
-    publisher: "AM Tech",
+    publisher: "Levitadz",
   },
 ];
 

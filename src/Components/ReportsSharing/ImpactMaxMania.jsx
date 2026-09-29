@@ -5,11 +5,6 @@ import { saveAs } from "file-saver";
 
 const Campaigns = [
   {
-    name: "Rothy's",
-    payoutPercent: 80,
-    publisher: "AM Tech",
-  },
-  {
     name: "Network Solutions Affiliate Program",
     payoutPercent: 80,
     publisher: "AM Tech",
@@ -20,12 +15,12 @@ const Campaigns = [
     publisher: "AM Tech",
   },
   {
-    name: "Ro",
+    name: "Rothy's",
     payoutPercent: 80,
     publisher: "AM Tech",
   },
   {
-    name: "Uniform Advantage",
+    name: "Ro",
     payoutPercent: 80,
     publisher: "AM Tech",
   },
@@ -41,65 +36,6 @@ const Campaigns = [
   },
 
   {
-    name: "AppSumo",
-    payoutPercent: 80,
-    publisher: "Raffesia Sahil",
-  },
-  {
-    name: "Ultahost",
-    payoutPercent: 80,
-    publisher: "Raffesia Sahil",
-  },
-  {
-    name: "iHerb",
-    payoutPercent: 80,
-    publisher: "Raffesia Sahil",
-  },
-
-  {
-    name: "Super.com - Travel",
-    payoutPercent: 80,
-    publisher: "Analytics clouds",
-  },
-  {
-    name: "TRAVALA",
-    payoutPercent: 80,
-    publisher: "Analytics clouds",
-  },
-  {
-    name: "New Balance Athletics, Inc.",
-    payoutPercent: 80,
-    publisher: "Analytics clouds",
-  },
-
-  {
-    name: "Remitly",
-    payoutPercent: 80,
-    publisher: "ViralSpot",
-  },
-
-  {
-    name: "Boden DE",
-    payoutPercent: 90,
-    publisher: "ClickOrbit Vratika",
-  },
-  {
-    name: "Kovo Affiliate Program",
-    payoutPercent: 85,
-    publisher: "ClickOrbit Vratika",
-  },
-  {
-    name: "flexispot.de",
-    payoutPercent: 85,
-    publisher: "ClickOrbit Vratika",
-  },
-  {
-    name: "Taskrabbit UK",
-    payoutPercent: 90,
-    publisher: "ClickOrbit Vratika",
-  },
-
-  {
     name: "StockX",
     payoutPercent: 80,
     publisher: "Dealism",
@@ -110,9 +46,45 @@ const Campaigns = [
     publisher: "Dealism",
   },
   {
-    name: "QVC - US",
+    name: "Kovo Affiliate Program",
     payoutPercent: 80,
     publisher: "Dealism",
+  },
+  {
+    name: "XTEINK",
+    payoutPercent: 80,
+    publisher: "Dealism",
+  },
+  {
+    name: "EaseUS (EN - Global)",
+    payoutPercent: 80,
+    publisher: "Dealism",
+  },
+  {
+    name: "Garnet Hill",
+    payoutPercent: 80,
+    publisher: "Dealism",
+  },
+  {
+    name: "Insta360",
+    payoutPercent: 80,
+    publisher: "Dealism",
+  },
+
+  {
+    name: "Little Sleepies",
+    payoutPercent: 80,
+    publisher: "Ideaclan",
+  },
+  {
+    name: "Samsonite",
+    payoutPercent: 80,
+    publisher: "Ideaclan",
+  },
+  {
+    name: "Carwow UK",
+    payoutPercent: 80,
+    publisher: "Ideaclan",
   },
 
   {
@@ -135,78 +107,78 @@ const Campaigns = [
     payoutPercent: 80,
     publisher: "Levitadz",
   },
-
   {
-    name: "Castlery US",
+    name: "Acorns Early (Formerly GoHenry) Kids Debit Card",
     payoutPercent: 80,
-    publisher: "DDM Rupali",
-  },
-  {
-    name: "QVC - US",
-    payoutPercent: 80,
-    publisher: "DDM Rupali",
-  },
-  {
-    name: "Boden Australia",
-    payoutPercent: 80,
-    publisher: "DDM Rupali",
-  },
-  {
-    name: "Boden FR",
-    payoutPercent: 80,
-    publisher: "DDM Rupali",
-  },
-  {
-    name: "en route jewelry",
-    payoutPercent: 80,
-    publisher: "DDM Rupali",
-  },
-  {
-    name: "SHOKZ US",
-    payoutPercent: 80,
-    publisher: "DDM Rupali",
-  },
-  {
-    name: "Raisin US",
-    payoutPercent: 80,
-    publisher: "DDM Rupali",
-  },
-  {
-    name: "Humble Bundle, Inc.",
-    payoutPercent: 80,
-    publisher: "DDM Rupali",
-  },
-  {
-    name: "Domestika",
-    payoutPercent: 80,
-    publisher: "DDM Rupali",
-  },
-  {
-    name: "Upstart Personal Loans",
-    payoutPercent: 90,
-    publisher: "DDM Rupali",
-  },
-
-  {
-    name: "REEF",
-    payoutPercent: 80,
-    publisher: "Ideaclan",
-  },
-  {
-    name: "Upstart Personal Loans",
-    payoutPercent: 80,
-    publisher: "Ideaclan",
-  },
-  {
-    name: "Carwow UK",
-    payoutPercent: 80,
-    publisher: "Ideaclan",
+    publisher: "Levitadz",
   },
 
   {
     name: "Helium 10",
     payoutPercent: 80,
     publisher: "String Solution",
+  },
+
+  {
+    name: "Alinea Invest",
+    payoutPercent: 80,
+    publisher: "ViralSpot",
+  },
+  {
+    name: "Semrush",
+    payoutPercent: 80,
+    publisher: "ViralSpot",
+  },
+  {
+    name: "Remitly",
+    payoutPercent: 80,
+    publisher: "ViralSpot",
+  },
+  {
+    name: "Crypto.com Affiliates",
+    payoutPercent: 80,
+    publisher: "ViralSpot",
+  },
+  {
+    name: "CapCut Affiliate Program",
+    payoutPercent: 80,
+    publisher: "ViralSpot",
+  },
+  {
+    name: "Freecash",
+    payoutPercent: 80,
+    publisher: "ViralSpot",
+  },
+  {
+    name: "Long-Term Care",
+    payoutPercent: 80,
+    publisher: "ViralSpot",
+  },
+  {
+    name: "Lenme",
+    payoutPercent: 80,
+    publisher: "ViralSpot",
+  },
+  {
+    name: "Everyday Life",
+    payoutPercent: 80,
+    publisher: "ViralSpot",
+  },
+
+  {
+    name: "Boden DE",
+    payoutPercent: 90,
+    publisher: "ClickOrbit Vratika",
+  },
+  {
+    name: "flexispot.de",
+    payoutPercent: 85,
+    publisher: "ClickOrbit Vratika",
+  },
+  {
+    name: "Taskrabbit UK",
+    payoutPercent: 90,
+    publisher: "ClickOrbit Vratika",
   },
 ];
 

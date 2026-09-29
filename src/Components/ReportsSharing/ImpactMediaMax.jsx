@@ -5,11 +5,6 @@ import { saveAs } from "file-saver";
 
 const Campaigns = [
   {
-    name: "Network Solutions Affiliate Programs",
-    payoutPercent: 80,
-    publisher: "AM Tech",
-  },
-  {
     name: "Ro",
     payoutPercent: 80,
     publisher: "AM Tech",
@@ -31,20 +26,30 @@ const Campaigns = [
   },
 
   {
-    name: "Udemy",
+    name: "Airpaz",
     payoutPercent: 80,
-    publisher: "Raffesia Sahil",
+    publisher: "Levitadz",
+  },
+  {
+    name: "BetterHelp",
+    payoutPercent: 80,
+    publisher: "Levitadz",
+  },
+  {
+    name: "Contiki",
+    payoutPercent: 80,
+    publisher: "Levitadz",
+  },
+  {
+    name: "Virgin Voyages",
+    payoutPercent: 80,
+    publisher: "Levitadz",
   },
 
   {
-    name: "Lenme",
+    name: "Coursera B2C Affiliate Program",
     payoutPercent: 80,
-    publisher: "ViralSpot",
-  },
-  {
-    name: "Pogo",
-    payoutPercent: 80,
-    publisher: "ViralSpot",
+    publisher: "Sachin Sharma",
   },
 
   {
@@ -56,34 +61,6 @@ const Campaigns = [
     name: "FitVille-UK",
     payoutPercent: 90,
     publisher: "ClickOrbit Vratika",
-  },
-
-  {
-    name: "Boden DE",
-    payoutPercent: 80,
-    publisher: "Dealism",
-  },
-  {
-    name: "Hers, Inc.",
-    payoutPercent: 80,
-    publisher: "Dealism",
-  },
-
-  {
-    name: "Airpaz",
-    payoutPercent: 80,
-    publisher: "Levitadz",
-  },
-  {
-    name: "BetterHelp",
-    payoutPercent: 80,
-    publisher: "Levitadz",
-  },
-
-  {
-    name: "Coursera B2C Affiliate Program",
-    payoutPercent: 80,
-    publisher: "Sachin Sharma",
   },
 ];
 

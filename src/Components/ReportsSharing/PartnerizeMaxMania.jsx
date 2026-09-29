@@ -5,14 +5,14 @@ import { saveAs } from "file-saver";
 
 const Campaigns = [
   {
-    name: "viagogo",
+    name: "Etihad Airways Partner Program",
     payoutPercent: 80,
-    publisher: "Sachin Sharma",
+    publisher: "AM Tech",
   },
   {
-    name: "StubHub NORAM",
-    payoutPercent: 90,
-    publisher: "ClickOrbits",
+    name: "viagogo",
+    payoutPercent: 80,
+    publisher: "Dealism",
   },
   {
     name: "Adorama",
@@ -20,14 +20,9 @@ const Campaigns = [
     publisher: "Levitaadz",
   },
   {
-    name: "Traveloka Indonesia",
-    payoutPercent: 80,
-    publisher: "DDM",
-  },
-  {
-    name: "viagogo",
-    payoutPercent: 80,
-    publisher: "DDM",
+    name: "StubHub NORAM",
+    payoutPercent: 90,
+    publisher: "ClickOrbits",
   },
 ];
 export default function PartnerizeMaxManiaReportSharing() {
