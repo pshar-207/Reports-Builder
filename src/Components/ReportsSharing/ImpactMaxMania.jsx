@@ -180,6 +180,18 @@ const Campaigns = [
     payoutPercent: 90,
     publisher: "ClickOrbit Vratika",
   },
+
+  {
+    name: "Ticketek Australia Partner Program",
+    payoutPercent: 80,
+    publisher: "Sachin Sharma",
+  },
+
+  {
+    name: "New Balance Athletics, Inc.",
+    payoutPercent: 80,
+    publisher: "Analytic",
+  },
 ];
 
 export default function ImpactMaxManiaReport() {

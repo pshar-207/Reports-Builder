@@ -24,6 +24,11 @@ const Campaigns = [
     payoutPercent: 90,
     publisher: "ClickOrbits",
   },
+  {
+    name: "H&M (Hennes & Mauritz)",
+    payoutPercent: 90,
+    publisher: "Analytic",
+  },
 ];
 export default function PartnerizeMaxManiaReportSharing() {
   const [rawData, setRawData] = useState([]);
